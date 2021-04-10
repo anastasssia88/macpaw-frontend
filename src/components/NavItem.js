@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react';
 import styled from 'styled-components'
 import { Link, NavLink } from "react-router-dom";
 
 
 
 const NavItem = ({imgSrc, btnContent, btnUrl, green, yellow}) => {
+    // const [state, setState] = useState(false);
+
     return (
         <Wrapper 
             imgSrc={imgSrc} 
@@ -28,13 +30,6 @@ const NavItem = ({imgSrc, btnContent, btnUrl, green, yellow}) => {
 
 export default NavItem
 
-const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-`
 
 
 const Div = styled.div`
@@ -54,9 +49,6 @@ const Div = styled.div`
     justify-content: center;
     align-items: center;
 
-    &:hover {
-        border: 5px solid #FFFFFF;
-    }
 `
 
 const A = styled.a`
@@ -70,7 +62,20 @@ const A = styled.a`
     border-radius: 10px;
     transition: all 0.4s ease;
 
-    &:hover {
+`
+
+const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &:hover ${A} {
         background: #FBE0DC;
     }
+
+    &:hover ${Div} {
+        border: 5px solid #FFFFFF;
+    }
+
 `
