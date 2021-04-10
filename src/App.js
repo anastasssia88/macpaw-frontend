@@ -6,6 +6,7 @@ import { lightTheme, darkTheme } from "./theme/theme";
 
 // Components
 import Sidenav from './layout/Sidenav'
+import Home from './pages/Home'
 
 function App() {
   return (
@@ -13,10 +14,7 @@ function App() {
     <ThemeProvider theme = {lightTheme}>
       <DocumentBody>
           <Sidenav />
-          <div>
-            <h1>Hi Intern!</h1>
-            <p>Welcome to MSI 2021 Front-end test</p>
-          </div>
+          <Home />
       </DocumentBody>
     </ThemeProvider>
     </Router>

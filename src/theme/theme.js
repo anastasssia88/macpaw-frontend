@@ -5,6 +5,7 @@ export const lightTheme = {
     bgMain: "#F8F8F7;",
     bgSide: "#E5E5E5",
     bgPink: "#FBE0DC",
+    bgBox: "#FFFFFF"
 
   };
   
