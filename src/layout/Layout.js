@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from "styled-components";
 
-const Layout = ({children}) => {
+const Layout = ({children, flex, flexCol}) => {
     return (
-        <Section>
+        <Section flex={flex} flexCol={flexCol}  >
             {children}
         </Section>
     )
@@ -22,4 +22,5 @@ const Section = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: ${props => props.flexCol ? 'column' : 'row'};
 `

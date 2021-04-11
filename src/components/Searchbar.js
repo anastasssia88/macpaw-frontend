@@ -17,6 +17,22 @@ const Searchbar = () => {
 
 export default Searchbar
 
+
+
+const Input = styled.input`
+    background: ${props => props.theme.bgSearch};
+    width: 300px;
+    height: 40px;
+    padding: 0.8rem 0rem;
+    max-width: 300px;
+    outline: none;
+    border: none;
+
+    &:focus::placeholder {
+    color: transparent;
+}
+`
+
 const Div = styled.div`
     background: ${props => props.theme.bgBox};
     border: none;
@@ -37,30 +53,9 @@ const Div = styled.div`
         border: 2px solid #FBE0DC;
     }
 
-    /* &:focus{
-        border: 2px solid #FF868E;
-    } */
-`
-const Input = styled.input`
-    width: 300px;
-    height: 40px;
-    padding: 0.8rem 0rem;
-    max-width: 300px;
-    outline: none;
-    border: none;
-
-    /* &:focus {
-        outline: none;
-        border: none;
-    } */
-
-    &:focus ${Div} {
-        border: 2px solid #FF868E;
-    }
-
-    &:focus::placeholder {
-    color: transparent;
-}
+    ${Input}:focus & {
+        border: 2px solid black;
+  }
 `
 
 const Icon = styled.div`
