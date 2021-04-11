@@ -9,9 +9,9 @@ import NavItem from './NavItem'
 const Navbar = () => {
     return (
         <Wrapper>
-            <NavItem btnContent="Voting" imgSrc={votingImg} />
-            <NavItem btnContent="Breeds" imgSrc={breedsImg} green />
-            <NavItem btnContent="Gallery" imgSrc={galleryImg} yellow />
+            <NavItem btnContent="Voting" imgSrc={votingImg} url="/voting" alt="voting" />
+            <NavItem btnContent="Breeds" imgSrc={breedsImg} green url="/breeds" alt="breeds" />
+            <NavItem btnContent="Gallery" imgSrc={galleryImg} yellow url="/breeds" alt="gallery" />
         </Wrapper>
     )
 }

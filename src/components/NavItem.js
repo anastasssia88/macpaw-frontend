@@ -4,32 +4,33 @@ import { Link, NavLink } from "react-router-dom";
 
 
 
-const NavItem = ({imgSrc, btnContent, btnUrl, green, yellow}) => {
+const NavItem = ({imgSrc, btnContent, url, green, yellow, alt}) => {
     // const [state, setState] = useState(false);
 
     return (
         <Wrapper 
             imgSrc={imgSrc} 
             btnContent={btnContent} 
-            btnUrl={btnUrl} 
+            url={url} 
             green={green}
             yellow={yellow}
+            alt={alt}
         >
             <Div
             green={green}
             yellow={yellow}
             >
-                <img src={imgSrc} alt=""/>
+                <img src={imgSrc} alt={alt} />
             </Div>
-            <Link href="#">
+            <Link to={url} >
                 <A>{btnContent}</A>
             </Link>
+            {/* <Link href="/voting">Link to votig</Link> */}
         </Wrapper>
     )
 }
 
 export default NavItem
-
 
 
 const Div = styled.div`

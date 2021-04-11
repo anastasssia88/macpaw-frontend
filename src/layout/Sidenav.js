@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components';
 import logo from '../images/logo.svg'
+import {Link}  from "react-router-dom";
+
 
 // Components
 // import Text from '../components/Text'
@@ -10,7 +12,10 @@ const Sidenav = () => {
     return (
         <Section>
             <Wrapper>
-                <Logo src={logo} alt="pets paw" />
+                <Link to="/">
+                    <Logo src={logo} alt="pets paw" />
+                </Link>
+                {/* <Logo src={logo} alt="pets paw" /> */}
                 <div>
                     <h1>Hi Intern!</h1>
                     <p>Welcome to MSI 2021 Front-end test</p>
@@ -31,6 +36,7 @@ const Section = styled.section`
     background: ${props => props.theme.bgMain};
     height: 100vh;
     width: 50%;
+    position: sticky;
 `
 
 const Wrapper = styled.div`

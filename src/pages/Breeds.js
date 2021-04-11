@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Voting = () => {
+const Breeds = () => {
     return (
         <div>
-            Voting page
+            Breeds
         </div>
     )
 }
 
-export default Voting
+export default Breeds
