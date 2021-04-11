@@ -44,7 +44,7 @@ const Wrapper = styled.div`
 
     h1 {
         margin-top: 5rem;
-        color: ${props => props.theme.textPrim};
+        color: ${props => props.theme.textPrim}; 
     }
 
     p {

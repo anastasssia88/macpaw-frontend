@@ -14,18 +14,16 @@ const NavItem = ({imgSrc, btnContent, url, green, yellow, alt}) => {
             url={url} 
             green={green}
             yellow={yellow}
-            alt={alt}
-        >
-            <Div
-            green={green}
-            yellow={yellow}
-            >
-                <img src={imgSrc} alt={alt} />
-            </Div>
+            alt={alt}>
             <Link to={url} >
+                <Div
+                green={green}
+                yellow={yellow}
+                >
+                    <img src={imgSrc} alt={alt} />
+                </Div>
                 <A>{btnContent}</A>
             </Link>
-            {/* <Link href="/voting">Link to votig</Link> */}
         </Wrapper>
     )
 }

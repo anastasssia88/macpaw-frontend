@@ -13,5 +13,10 @@ export const darkTheme = {
     textPrim: "#FFFFFF", // white
     textSec: "#8C8C8C", // gray
 
+    bgMain: "#1D1D1D;",
+    bgSide: "rgba(255, 255, 255, 0.05)",
+    bgPink: "rgba(255, 255, 255, 0.05)",
+    bgBox: "rgba(255, 255, 255, 0.1)"
+
 }
   
