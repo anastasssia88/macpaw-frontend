@@ -10,6 +10,9 @@ import Home from './pages/Home'
 import Voting from './pages/Voting'
 import Breeds from './pages/Breeds'
 import Gallery from './pages/Gallery'
+import Liked from './pages/Liked'
+import Favorites from './pages/Favorites'
+import Disliked from './pages/Dislikes'
 
 function App() {
   return (
@@ -27,6 +30,15 @@ function App() {
             </Route>
             <Route exact path="/gallery" >
                 <Gallery />
+            </Route>
+            <Route exact path="/liked" >
+                <Liked />
+            </Route>
+            <Route exact path="/favorites" >
+                <Favorites />
+            </Route>
+            <Route exact path="/disliked" >
+                <Disliked />
             </Route>
           </Switch>
       </DocumentBody>
