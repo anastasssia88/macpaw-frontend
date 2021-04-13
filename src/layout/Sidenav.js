@@ -16,7 +16,7 @@ const Sidenav = () => {
 
     useEffect(() => {
         setPath(location.pathname)
-    }, [location.pathname])
+    }, [location.pathname]) 
 
     return (
         <Section>

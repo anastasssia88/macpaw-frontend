@@ -7,12 +7,12 @@ import ActionLog from '../components/ActionLog'
 
 const Dislikes = () => {
     return (
-        <div>
+        <Layout flexCol>
             <Search />
             <Wrapper>
                 <GoBack btnContent="Dislikes" />
             </Wrapper>
-        </div>
+        </Layout> 
     )
 }
 

@@ -14,8 +14,8 @@ const NavItem = ({imgSrc, btnContent, url, green, yellow, alt, path}) => {
             setActive(false)
         }
     }, [url, path])
-    // console.log(path === url);
-    return (
+
+    return ( 
         <Wrapper 
             imgSrc={imgSrc} 
             btnContent={btnContent} 

@@ -7,12 +7,12 @@ import ActionLog from '../components/ActionLog'
 
 const Favorites = () => {
     return (
-        <div>
+        <Layout flexCol>
             <Search />
             <Wrapper>
                 <GoBack btnContent="Favorites" />
             </Wrapper>
-        </div>
+        </Layout> 
     )
 }
 
