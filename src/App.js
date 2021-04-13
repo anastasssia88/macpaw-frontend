@@ -1,14 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "./theme/theme";
+import { lightTheme , darkTheme } from "./theme/theme";
 
 // Components
 import Sidenav from './layout/Sidenav'
 import Home from './pages/Home'
 import Voting from './pages/Voting'
 import Breeds from './pages/Breeds'
+import Gallery from './pages/Gallery'
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
             </Route>
             <Route exact path="/breeds" >
                 <Breeds />
+            </Route>
+            <Route exact path="/gallery" >
+                <Gallery />
             </Route>
           </Switch>
       </DocumentBody>
