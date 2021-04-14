@@ -142,6 +142,10 @@ h1, h2, h3, h4, h5, p, div, span, a {
     font-family: 'Jost', sans-serif;
 }
 
+p {
+  font-size: 400;
+}
+
 h1 {
     font-size: 44px;
     font-weight: 500; 

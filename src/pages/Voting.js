@@ -6,7 +6,7 @@ import dog from '../images/dog-voting.png'
 import Search from '../layout/Search' 
 import Layout from '../layout/Layout'
 import GoBack from '../components/GoBack'
-import ActionLog from '../components/ActionLog'
+import ActionLog from '../layout/ActionLog'
 // import Flexbox from '../layout/Flexbox'
 
 const Voting = ({like, fav, disl}) => {

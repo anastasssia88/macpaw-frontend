@@ -47,8 +47,14 @@ const Section = styled.section`
     background: ${props => props.theme.bgMain};
     height: 100vh;
     width: 50%;
-    position: sticky;
 `
+
+// const Section = styled.section`
+//     background: ${props => props.theme.bgMain};
+//     height: 100vh;
+//     width: 50%;
+//     position: fixed;
+// `
 
 const Wrapper = styled.div`
     margin: 2rem 8rem;

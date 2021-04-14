@@ -4,7 +4,7 @@ import HeroImg from '../images/girl-and-pet.svg'
 
 const Home = () => {
     return (
-        <Section>
+        <Section >
             <div>
                 <img src={HeroImg} alt="girl and pet"/>
             </div>
@@ -23,7 +23,6 @@ const Section = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
-
 
     div {
         background: ${props => props.theme.bgPink};
