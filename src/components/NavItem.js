@@ -44,9 +44,9 @@ const Div = styled.div`
     background-color: ${props => props.green && '#97EAB9'};
     background-color: ${props => props.yellow && '#FFD280'};
 
-    width: 139.24px;
-    height: 198px;
     padding: 1.3rem 1rem;
+    width: 138px;
+    height: 198px;
     margin-bottom: 1.7rem;
     border-radius: 20px;
     border: 5px solid rgba(255, 255, 255, 0.6);

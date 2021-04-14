@@ -128,6 +128,12 @@ table {
 
 html {
     height: 100vh;
+    scroll-behavior: smooth;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 * {

@@ -20,6 +20,7 @@ const Sidenav = () => {
 
     return (
         <Section>
+            <div>
             <Wrapper>
                 <Link to="/">
                     <Logo src={logo} alt="pets paw" />
@@ -33,9 +34,10 @@ const Sidenav = () => {
                         <NavItem btnContent="Breeds" imgSrc={breedsImg} green url="/breeds" alt="breeds" path={path} />
                         <NavItem btnContent="Gallery" imgSrc={galleryImg} yellow url="/gallery" alt="gallery" path={path} />
                     </Nav>
-                </div>
+                </div> 
                 
             </Wrapper>
+            </div>
         </Section>
     )
 }
@@ -43,21 +45,25 @@ const Sidenav = () => {
 export default Sidenav
 
 
-const Section = styled.section`
-    background: ${props => props.theme.bgMain};
-    height: 100vh;
-    width: 50%;
-`
-
 // const Section = styled.section`
 //     background: ${props => props.theme.bgMain};
 //     height: 100vh;
 //     width: 50%;
-//     position: fixed;
 // `
 
+const Section = styled.section`
+    background: ${props => props.theme.bgMain};
+    min-height: 100vh;
+    height: auto;
+    width: 50%;
+    
+`
+
 const Wrapper = styled.div`
+    width: 450px;
     margin: 2rem 8rem;
+    position: fixed;
+    background: ${props => props.theme.bgMain};
 
     h1 {
         margin-top: 5rem;
