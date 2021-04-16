@@ -1,22 +1,20 @@
 import React from 'react'
 import styled from 'styled-components';
+import Dropdown from '../components/Dropdown'
 
 const Sorting = () => {
     return (
         <Wrapper>
-            <SortBtn wMax>
-                <p>All breeds</p>
-                <svg viewBox="0 0 12 12"> 
-                    <path d="M6.59406 9.17405L11.7538 4.01423C12.0821 3.68603 12.0821 3.15383 11.7538 2.82575C11.4256 2.49767 10.8935 2.49767 10.5655 2.82575L5.99993 7.39142L1.43458 2.82593C1.10635 2.49779 0.574264 2.49779 0.24617 2.82593C-0.0820567 3.15401 -0.0820567 3.68615 0.24617 4.01435L5.40591 9.17418C5.57003 9.33824 5.78492 9.42017 5.9999 9.42017C6.21498 9.42017 6.43002 9.33807 6.59406 9.17405Z"></path>
-                </svg>
-            </SortBtn>
 
-            <SortBtn w100>
+            <Dropdown lg header="All breeds" />
+            <Dropdown md header="Limit: 10" />
+
+            {/* <SortBtn w100>
                 <p>Limit: 10</p>
                 <svg viewBox="0 0 12 12"> 
                     <path d="M6.59406 9.17405L11.7538 4.01423C12.0821 3.68603 12.0821 3.15383 11.7538 2.82575C11.4256 2.49767 10.8935 2.49767 10.5655 2.82575L5.99993 7.39142L1.43458 2.82593C1.10635 2.49779 0.574264 2.49779 0.24617 2.82593C-0.0820567 3.15401 -0.0820567 3.68615 0.24617 4.01435L5.40591 9.17418C5.57003 9.33824 5.78492 9.42017 5.9999 9.42017C6.21498 9.42017 6.43002 9.33807 6.59406 9.17405Z"></path>
                 </svg>
-            </SortBtn>
+            </SortBtn> */}
             
             <SortBtn sort>
                 <svg viewBox="0 0 20 20"> 
@@ -38,17 +36,17 @@ const Wrapper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
 `
 
 const SortBtn = styled.div`
     background-color: ${props => props.theme.bgSort};
     color: ${props => props.theme.textSec};
-    height: 40px;
-    width: 40px;
-    min-width: ${props => props.w100 && '110px'};
-    width: ${props => props.wMax && '100%'};
+    min-height: 40px;
+    min-width: 40px;
+    /* width: ${props => props.w100 && '110px'};
+    width: ${props => props.wMax && '100%'}; */
     padding: 0px 10px;
     margin-left: 10px;
     border-radius: 10px;
@@ -56,6 +54,14 @@ const SortBtn = styled.div`
     display: flex;
     justify-content: space-between;
     align-content: center;
+
+    &:hover {
+        border: 2px solid #FBE0DC;
+    }
+
+    &:hover svg {
+        fill: #FF868E;
+    }
 
     p {
         align-self: center;
@@ -68,5 +74,6 @@ const SortBtn = styled.div`
         width: ${props => props.sort && '18px'};
         height: ${props => props.sort && '20px'};
         align-self: center;
+
     }
 `

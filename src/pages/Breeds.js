@@ -7,6 +7,7 @@ import Layout from '../layout/Layout'
 import GoBack from '../components/GoBack'
 import Sorting from '../components/Sorting'
 
+
 const Breeds = () => {
     return (
         <Layout flexCol>

@@ -29,7 +29,7 @@ const Sidenav = () => {
                     <h1>Hi Intern!</h1>
                     <p>Welcome to MSI 2021 Front-end test</p>
                     <h3>Lets start using The Dogs API</h3>
-                    <Nav>
+                    <Nav> 
                         <NavItem btnContent="Voting" imgSrc={votingImg} url="/voting" alt="voting" path={path} />
                         <NavItem btnContent="Breeds" imgSrc={breedsImg} green url="/breeds" alt="breeds" path={path} />
                         <NavItem btnContent="Gallery" imgSrc={galleryImg} yellow url="/gallery" alt="gallery" path={path} />
