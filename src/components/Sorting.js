@@ -50,6 +50,7 @@ const SortBtn = styled.div`
     padding: 0px 10px;
     margin-left: 10px;
     border-radius: 10px;
+    border: 2px solid rgba(255, 134, 142, 0);
 
     display: flex;
     justify-content: space-between;

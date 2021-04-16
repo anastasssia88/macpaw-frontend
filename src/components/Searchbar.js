@@ -40,14 +40,14 @@ const Div = styled.div`
     width: 470px;
     height: 60px;
     padding: 0px 10px 0px 20px;
+    border: 2px solid rgba(255, 134, 142, 0);
+
 
 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
-    transition: border 0.1s ease;
 
     &:hover{
         border: 2px solid #FBE0DC;

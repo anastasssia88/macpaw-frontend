@@ -17,7 +17,7 @@ const Breeds = () => {
                     <GoBack btnContent="Breeds" />
                     <Sorting />
                 </span>
-                <Grid />
+                {/* <Grid /> */}
             </Wrapper>
         </Layout> 
     )
