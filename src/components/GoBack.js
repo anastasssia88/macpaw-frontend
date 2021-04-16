@@ -17,7 +17,7 @@ const GoBack = ({btnContent}) => {
 export default GoBack
 
 const Div = styled.div`
-    width: 100%;
+    width: auto;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;

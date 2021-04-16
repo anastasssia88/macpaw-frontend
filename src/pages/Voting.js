@@ -63,7 +63,6 @@ const Flexbox = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 `
 
 const Actions = styled.div`

@@ -4,30 +4,50 @@ import dog from '../images/dog-voting.png'
  
 const Grid = () => {
     return (
-        <GridContainer>
-            <GridItem one>
-                <Img src={dog} alr="dog" lg />
-            </GridItem>
-            <GridItem two>
-                <Img src={dog} alr="dog" sm/>
-            </GridItem>
-            <GridItem three>
-                <Img src={dog} alr="dog" sm/>
-            </GridItem>
-            <GridItem four>
-                <Img src={dog} alr="dog" lg />
-            </GridItem>
-            <GridItem five>
-                <Img src={dog} alr="dog" sm />
-            </GridItem>
-        </GridContainer>
+        <>
+            <PatternOne>
+                <GridItem one>
+                    <Img src={dog} alr="dog" lg />
+                </GridItem>
+                <GridItem two>
+                    <Img src={dog} alr="dog" />
+                </GridItem>
+                <GridItem three>
+                    <Img src={dog} alr="dog" />
+                </GridItem>
+                <GridItem four>
+                    <Img src={dog} alr="dog" lg />
+                </GridItem>
+                <GridItem five>
+                    <Img src={dog} alr="dog" />
+                </GridItem>
+            </PatternOne>
+
+            <PatternTwo>
+                <GridItem one>
+                    <Img src={dog} alr="dog"  />
+                </GridItem>
+                <GridItem two>
+                    <Img src={dog} alr="dog"/>
+                </GridItem>
+                <GridItem three>
+                    <Img src={dog} alr="dog" lg/>
+                </GridItem>
+                <GridItem four>
+                    <Img src={dog} alr="dog" lg/>
+                </GridItem>
+                <GridItem five>
+                    <Img src={dog} alr="dog" />
+                </GridItem>
+            </PatternTwo>
+        </>
     )
 }
 
 export default Grid
 
 
-const GridContainer = styled.div`
+const PatternOne = styled.div`
     padding: 10px;
     display: grid;
     grid-template-columns: repeat(3, 32%);
@@ -41,6 +61,13 @@ const GridContainer = styled.div`
         "five four four";
 
     justify-content: space-evenly;
+`
+
+const PatternTwo = styled(PatternOne)`
+    grid-template-areas: 
+        "one two three"
+        "four four three"
+        "four four five";
 `
 
 const GridItem = styled.div`
@@ -58,8 +85,8 @@ const GridItem = styled.div`
 
 const Img = styled.img`
     width: 100%;
-    height: 100%;
-    height: ${props => props.sm && '140px'};
+    height: 140px;
+    /* height: ${props => props.sm && '140px'}; */
     height: ${props => props.lg && '300px'};
     border-radius: 20px;
 `
