@@ -47,7 +47,7 @@ const Div = styled.div`
     padding: 1.3rem 1rem;
     width: 138px;
     height: 198px;
-    margin-bottom: 1.7rem;
+    margin-bottom: 1rem;
     border-radius: 20px;
     border: 5px solid rgba(255, 255, 255, 0.6);
     border: ${props => props.active && '5px solid #FBE0DC'};
@@ -58,17 +58,20 @@ const Div = styled.div`
     align-items: center;
 `
 
-const A = styled.span`
+const A = styled.div`
     width: 100%;
+    max-height: 36px;
     background: ${props => props.theme.bgBox};
-    background-color: ${props => props.active && '#FF868E'};
+    background: ${props => props.active && '#FF868E'};
 
     color: #FF868E;
     color: ${props => props.active && 'white'};
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: 2px;
-    padding: 0.5rem 2rem;
+    padding: 10px 0px;
+    /* padding: 0.5rem 2rem; */
     text-transform: uppercase;
+    text-align: center;
     border-radius: 10px;
     transition: all 0.3s ease;
 `
