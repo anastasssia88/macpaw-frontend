@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 
-import Grid from '../layout/Grid'
+// import Grid from '../layout/Grid'
 import Search from '../layout/Search' 
 import Layout from '../layout/Layout'
 import GoBack from '../components/GoBack'

@@ -13,6 +13,7 @@ const Gallery = () => {
             <Wrapper>
                 <GoBack btnContent="Galery" />
             </Wrapper>
+            <Grid />
         </Layout>
     )
 }

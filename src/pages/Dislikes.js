@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Layout from '../layout/Layout'
 import Search from '../layout/Search' 
 import GoBack from '../components/GoBack'
-import ActionLog from '../layout/ActionLog'
+// import ActionLog from '../layout/ActionLog'
 
 const Dislikes = () => {
     return (

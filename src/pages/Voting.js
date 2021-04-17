@@ -1,21 +1,54 @@
-import React from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components';
-import dog from '../images/dog-voting.png'
+import dogStatic from '../images/dog-voting.png'
+import axios from 'axios'
+import {DogContext} from '../../src/DogContext'
 
 // Components
 import Search from '../layout/Search' 
 import Layout from '../layout/Layout'
 import GoBack from '../components/GoBack'
 import ActionLog from '../layout/ActionLog'
-// import Flexbox from '../layout/Flexbox'
 
-const Voting = ({like, fav, disl}) => {
+
+const Voting = ({like, fav, disl}) => { 
+    const dog = useContext( DogContext )
+    const url = dog[0].url
+    const id = dog[0].id;
+    console.log(url)
+    console.log(id)
+
+    // const [isLoading, setLoading] = useState(false);
+    // const [isError, setError] = useState(false);
+    // const [data, setData] = useState({});
+
+    // useEffect(() => {
+    //     const fetchDdata = async () => {
+    //         setError(false);
+    //         setLoading(true);
+
+    //         try {
+    //             const response = await axios('https://api.thedogapi.com/v1/images/search');
+    //             setData(response.data[0])
+                
+    //         } catch (error) {
+    //             setError(true)
+    //         }
+    //         setLoading(false)
+    //     };
+    //     fetchDdata()
+    // }, []);
+
+    // if (isError) return <h1>Error, try again!</h1>
+    // if (isLoading) return <h1>Loading</h1>
+
     return (
         <Layout flexCol> 
             <Search />
             <Wrapper>
                 <GoBack btnContent="Voting" />
-                <Img src={dog} alt="this is dog" />
+                <Img src={dogStatic} alt="this is dog" />
+
                 <Flexbox>
                     <Actions>
                         <ActionBtn like>
@@ -55,6 +88,8 @@ const Img = styled.img`
     border-radius: 20px;
     width: 100%;
     height: auto;
+    max-width: 100%;
+    max-height: 50%;
     /* padding: 20px; */
 `
 
