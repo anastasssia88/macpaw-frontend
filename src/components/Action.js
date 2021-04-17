@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components';
 
-const Action = ({viewBox, d, fav, time}) => {
+const Action = ({content, viewBox, d, fav, dis, time}) => {
     return (
         <Wrapper>
             <div>
             <Time>{time}</Time>
-            <p>Image ID: <span>fQSunHvl8</span> was added to Favourites</p>
+            <p>Image ID: <span>fQSunHvl8</span> {content}</p>
             </div>
-            <SVG fav={fav} viewBox={viewBox}> 
+            <SVG fav={fav} dis={dis} viewBox={viewBox}> 
                 <path d={d}></path>
             </SVG>
         </Wrapper>

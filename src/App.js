@@ -19,32 +19,32 @@ function App() {
   return (
     <Router>
     <ThemeProvider theme = {lightTheme}>
-      <DogProvider>
         <DocumentBody>
             <Sidenav />
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/voting">
-                  <Voting />
-              </Route>
-              <Route exact path="/breeds" >
-                  <Breeds />
-              </Route>
-              <Route exact path="/gallery" >
-                  <Gallery />
-              </Route>
-              <Route exact path="/liked" >
-                  <Liked />
-              </Route>
-              <Route exact path="/favorites" >
-                  <Favorites />
-              </Route>
-              <Route exact path="/disliked" >
-                  <Disliked />
-              </Route>
-            </Switch>
+            <DogProvider>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/voting">
+                    <Voting />
+                </Route>
+                <Route exact path="/breeds" >
+                    <Breeds />
+                </Route>
+                <Route exact path="/gallery" >
+                    <Gallery />
+                </Route>
+                <Route exact path="/liked" >
+                    <Liked />
+                </Route>
+                <Route exact path="/favorites" >
+                    <Favorites />
+                </Route>
+                <Route exact path="/disliked" >
+                    <Disliked />
+                </Route>
+              </Switch>
+            </DogProvider>
         </DocumentBody>
-      </DogProvider>
     </ThemeProvider>
     </Router>
   );

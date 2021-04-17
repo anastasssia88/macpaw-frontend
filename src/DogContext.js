@@ -6,6 +6,9 @@ export const DogContext = createContext()
 export const DogProvider = ({ children }) => {
     const [data, setData] = useState({});
 
+    const [liked, addToLiked] = useState([]); 
+
+
     useEffect(() => {
         const fetchData = async () => {
             const response = await axios('https://api.thedogapi.com/v1/images/search');
@@ -15,7 +18,7 @@ export const DogProvider = ({ children }) => {
     }, []);
 
     return (
-        <DogContext.Provider value={[ data, setData]}> 
+        <DogContext.Provider value={[ liked, addToLiked]}> 
             { children }
         </DogContext.Provider>
     )

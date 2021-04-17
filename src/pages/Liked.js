@@ -12,7 +12,7 @@ const Liked = () => {
             <Wrapper>
                 <GoBack btnContent="Liked" />
             </Wrapper>
-        </Layout>
+        </Layout> 
     )
 }
 

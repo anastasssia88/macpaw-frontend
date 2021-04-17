@@ -12,46 +12,37 @@ import ActionLog from '../layout/ActionLog'
 
 
 const Voting = ({like, fav, disl}) => { 
-    const dog = useContext( DogContext )
-    const url = dog[0].url
-    const id = dog[0].id;
-    console.log(url)
-    console.log(id)
+    const [ liked, addToLiked ] = useContext( DogContext )
+    const [ randomDog, setRandomDog ] = useState({})
 
-    // const [isLoading, setLoading] = useState(false);
-    // const [isError, setError] = useState(false);
-    // const [data, setData] = useState({});
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await axios('https://api.thedogapi.com/v1/images/search');
+            setRandomDog(response.data[0])
+            };
+        fetchData(randomDog)
+    }, [liked]);
 
-    // useEffect(() => {
-    //     const fetchDdata = async () => {
-    //         setError(false);
-    //         setLoading(true);
+    const url = randomDog.url
+    const id = randomDog.id
 
-    //         try {
-    //             const response = await axios('https://api.thedogapi.com/v1/images/search');
-    //             setData(response.data[0])
-                
-    //         } catch (error) {
-    //             setError(true)
-    //         }
-    //         setLoading(false)
-    //     };
-    //     fetchDdata()
-    // }, []);
 
-    // if (isError) return <h1>Error, try again!</h1>
-    // if (isLoading) return <h1>Loading</h1>
+    const handleLike = (randomDog) => {
+        addToLiked(prevLiked => [...prevLiked, randomDog])
+    }
+    console.log(liked);
+
 
     return (
         <Layout flexCol> 
             <Search />
             <Wrapper>
                 <GoBack btnContent="Voting" />
-                <Img src={dogStatic} alt="this is dog" />
+                <Img src={url} alt="this is dog" />
 
                 <Flexbox>
                     <Actions>
-                        <ActionBtn like>
+                        <ActionBtn like onClick={() => handleLike(randomDog)}>
                             <SVG like viewBox="0 0 30 30"> 
                                 <path d="M0 15C0 6.71573 6.71573 0 15 0C23.2843 0 30 6.71573 30 15C30 23.2843 23.2843 30 15 30C6.71573 30 0 23.2843 0 15ZM15 2C7.8203 2 2 7.8203 2 15C2 22.1797 7.8203 28 15 28C22.1797 28 28 22.1797 28 15C28 7.8203 22.1797 2 15 2ZM10 12H8V10H10V12ZM22 12H20V10H22V12ZM9.2 16.6L9.8 17.4C12.4 20.8667 17.6 20.8667 20.2 17.4L20.8 16.6L22.4 17.8L21.8 18.6C18.4 23.1333 11.6 23.1333 8.2 18.6L7.6 17.8L9.2 16.6Z"></path>
                             </SVG >
@@ -67,6 +58,7 @@ const Voting = ({like, fav, disl}) => {
                             </SVG>
                         </ActionBtn>
                     </Actions>
+                    {/* ACTION LOG HERE */}
                     <ActionLog />
                 </Flexbox>
             </Wrapper>
