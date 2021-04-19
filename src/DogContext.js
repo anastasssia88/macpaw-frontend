@@ -7,6 +7,8 @@ export const DogProvider = ({ children }) => {
     const [data, setData] = useState({});
 
     const [liked, addToLiked] = useState([]); 
+    const [favorites, addToFav] = useState([]); 
+    const [disliked, addToDisliked] = useState([]); 
 
 
     useEffect(() => {
@@ -18,7 +20,7 @@ export const DogProvider = ({ children }) => {
     }, []);
 
     return (
-        <DogContext.Provider value={[ liked, addToLiked]}> 
+        <DogContext.Provider value={{ likeKey: [liked, addToLiked], favKey: [favorites, addToFav], disKey: [disliked, addToDisliked]} }> 
             { children }
         </DogContext.Provider>
     )
