@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components';
-import dogStatic from '../images/dog-voting.png'
 import axios from 'axios'
 import {DogContext} from '../../src/DogContext'
 
@@ -8,7 +7,7 @@ import {DogContext} from '../../src/DogContext'
 import Search from '../layout/Search' 
 import Layout from '../layout/Layout'
 import GoBack from '../components/GoBack'
-import ActionLog from '../layout/ActionLog'
+import UserAction from '../components/UserAction'
 
 
 const Voting = ({ like, fav, disl }) => { 
@@ -20,12 +19,16 @@ const Voting = ({ like, fav, disl }) => {
 
     // Local state with data from dog's api
     const [ randomDog, setRandomDog ] = useState({})
+    const [ active, setActive ] = useState(false)
+    const [ log, setLog ] = useState([]) 
+
 
     // Fetching data from dogapi on changes in state liked, disliked
     useEffect(() => {
         const fetchData = async () => {
             const response = await axios('https://api.thedogapi.com/v1/images/search');
             setRandomDog(response.data[0])
+            setActive(false)
             };
         fetchData(randomDog)
     }, [liked, disliked]);
@@ -34,7 +37,6 @@ const Voting = ({ like, fav, disl }) => {
     const id = randomDog.id
 
     // Setting favorite icon filled/not filled
-    const [ active, setActive ] = useState(false)
     let path
     if (active) { 
         path = <path d="M8.07107 2C3.61354 2 0 5.61354 0 10.0711C0 12.2116 0.850339 14.2646 2.36396 15.7782L14.2929 27.7071C14.6834 28.0976 15.3166 28.0976 15.7071 27.7071L27.636 15.7782C29.1497 14.2646 30 12.2116 30 10.0711C30 5.61354 26.3865 2 21.9289 2C19.7884 2 17.7354 2.85034 16.2218 4.36396L15 5.58579L13.7782 4.36396C12.2646 2.85034 10.2116 2 8.07107 2Z" fill="#FFFFFF"></path>
@@ -43,18 +45,63 @@ const Voting = ({ like, fav, disl }) => {
     }
 
     // Handling click events
-    const handleLike = (randomDog) => {
-        addToLiked(prevLiked => [...prevLiked, randomDog])
+
+    const getTime = () => {
+        let h = new Date().getHours();
+        let m = new Date().getMinutes();
+        h = (h<10) ? '0' + h : h;
+        m = (m<10) ? '0' + m : m;
+
+        let time = h + ':' + m;
+        return time
     }
 
-    const handleFav = (randomDog) => {
-        setActive(!active)
-        addToFav(prevFavorites => [...prevFavorites, randomDog])
+    const handleClick = (type, randomDog) => {
+        let time = getTime()
+        if (type === "like") {
+            addToLiked(prevLiked => [...prevLiked, randomDog])
+            setLog(prevLog => [...prevLog, { id: randomDog.id, content: "was added to Likes", type: "like", time: time }])
+        } else if (type === "dis") {
+            addToDisliked(prevLog => [...prevLog, randomDog])
+            setLog(prevLog => [...prevLog, { id: randomDog.id, content: "was added to Dislikes", type: "dis", time: time}])
+        } else {
+            if (favorites.indexOf(randomDog) === -1) {
+                setActive(true)
+                addToFav(prevFavorites => [...prevFavorites, randomDog])
+                setLog(prevLog => [...prevLog, { id: randomDog.id, content: "was added to Favorites", type: "fav", time: time }])
+            } else {
+                setActive(false)
+                favorites.pop()
+                setLog(prevLog => [...prevLog, { id: randomDog.id, content: "was removed from Favourites", type: "", time: time}])
+            }
+        }
     }
 
-    const handleDislike = (randomDog) => {
-        addToDisliked(prevDisliked => [...prevDisliked, randomDog])
-    }
+    // const handleLike = (randomDog) => {
+    //     let time = getTime()
+    //     addToLiked(prevLiked => [...prevLiked, randomDog])
+    //     setLog(prevLog => [...prevLog, { id: randomDog.id, content: "was added to Likes", type: "like", time: time }])
+    // }
+
+    // const handleFav = (randomDog) => {
+    //     if (favorites.indexOf(randomDog) === -1) {
+    //         let time = getTime()
+    //         setActive(true)
+    //         addToFav(prevFavorites => [...prevFavorites, randomDog])
+    //         setLog(prevLog => [...prevLog, { id: randomDog.id, content: "was added to Favorites", type: "fav", time: time }])
+    //     } else {
+    //         let time = getTime()
+    //         setActive(false)
+    //         favorites.pop()
+    //         setLog(prevLog => [...prevLog, { id: randomDog.id, content: "was removed from Favourites", type: "", time: time}])
+    //     }
+    // }
+
+    // const handleDislike = (randomDog) => {
+    //     let time = getTime()
+    //     addToDisliked(prevLog => [...prevLog, {  }])
+    //     setLog(prevLog => [...prevLog, { id: randomDog.id, content: "was added to DIslikes", type: "dis", time: time}])
+    // }
 
 
     return (
@@ -66,24 +113,33 @@ const Voting = ({ like, fav, disl }) => {
 
                 <Flexbox>
                     <Actions>
-                        <ActionBtn like onClick={() => handleLike(randomDog)} >
+                        <ActionBtn like onClick={() => handleClick("like", randomDog)} >
                             <SVG like viewBox="0 0 30 30"> 
                                 <path d="M0 15C0 6.71573 6.71573 0 15 0C23.2843 0 30 6.71573 30 15C30 23.2843 23.2843 30 15 30C6.71573 30 0 23.2843 0 15ZM15 2C7.8203 2 2 7.8203 2 15C2 22.1797 7.8203 28 15 28C22.1797 28 28 22.1797 28 15C28 7.8203 22.1797 2 15 2ZM10 12H8V10H10V12ZM22 12H20V10H22V12ZM9.2 16.6L9.8 17.4C12.4 20.8667 17.6 20.8667 20.2 17.4L20.8 16.6L22.4 17.8L21.8 18.6C18.4 23.1333 11.6 23.1333 8.2 18.6L7.6 17.8L9.2 16.6Z"></path>
                             </SVG >
                         </ActionBtn>
-                        <ActionBtn fav onClick={() => handleFav(randomDog)} >
+                        <ActionBtn fav onClick={() => handleClick("fav", randomDog)} >
                             <SVG viewBox="0 0 30 26"> 
                                 { path }
                             </SVG>
                         </ActionBtn>
-                        <ActionBtn disl onClick={() => handleDislike(randomDog)} >
+                        <ActionBtn disl onClick={() => handleClick("dis", randomDog)} >
                             <SVG viewBox="0 0 30 30"> 
                                 <path d="M0 15C0 6.71573 6.71573 0 15 0C23.2843 0 30 6.71573 30 15C30 23.2843 23.2843 30 15 30C6.71573 30 0 23.2843 0 15ZM15 2C7.8203 2 2 7.8203 2 15C2 22.1797 7.8203 28 15 28C22.1797 28 28 22.1797 28 15C28 7.8203 22.1797 2 15 2ZM10 12H8V10H10V12ZM22 12H20V10H22V12ZM7.6 20.2L8.2 19.4C11.6 14.8667 18.4 14.8667 21.8 19.4L22.4 20.2L20.8 21.4L20.2 20.6C17.6 17.1333 12.4 17.1333 9.8 20.6L9.2 21.4L7.6 20.2Z"></path>
                             </SVG>
                         </ActionBtn>
                     </Actions>
-                    {/* ACTION LOG HERE */}
-                    <ActionLog />
+                    
+                    <ActionLog>
+                        { log.map( item => <UserAction 
+                            key={item.id} 
+                            id={item.id} 
+                            content={item.content} 
+                            type={item.type} 
+                            time={item.time} 
+                        />) }
+                    </ActionLog>
+
                 </Flexbox>
             </Wrapper>
         </Layout>
@@ -166,4 +222,9 @@ const ActionBtn = styled.button`
     /* &:active ${SVG} {
         fill: ${props => props.fav && "black"};
     } */
+`
+
+const ActionLog = styled.div`
+    margin: 10px 0px;
+    width: 100%;
 `
