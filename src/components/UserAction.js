@@ -16,15 +16,6 @@ const UserAction = ({id, content, type, time }) => {
     }
 
     return (
-        // <Wrapper>
-        //     <div>
-        //     <Time>{time}</Time>
-        //     <p>Image ID: <span>fQSunHvl8</span> {content}</p>
-        //     </div>
-        //     <SVG fav={fav} dis={dis} viewBox={viewBox}> 
-        //         <path d={d}></path>
-        //     </SVG>
-        // </Wrapper> 
         <Wrapper>
             <div>
                 <Time>{time}</Time>

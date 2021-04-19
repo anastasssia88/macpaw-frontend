@@ -5,17 +5,24 @@ import styled from 'styled-components';
 import Layout from '../layout/Layout'
 import Search from '../layout/Search' 
 import GoBack from '../components/GoBack'
-// import ActionLog from '../layout/ActionLog'
+import NoItemFound from '../components/NoItemFound'
+
 
 const Dislikes = () => {
     const { disKey } = useContext( DogContext )
-    const [ disliked ] = disKey
+    const [ disliked ] = disKey 
+
+    let message
+    if ( disliked.length === 0 ) {
+        message = <NoItemFound />
+    }  
 
     return (
         <Layout flexCol>
             <Search />
             <Wrapper>
                 <GoBack btnContent="Dislikes" />
+                { message }
                 <Pattern>
                     {disliked.map(dog => 
                         <GridItem >

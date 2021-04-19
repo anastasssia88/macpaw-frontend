@@ -5,17 +5,24 @@ import styled from 'styled-components';
 import Layout from '../layout/Layout'
 import Search from '../layout/Search' 
 import GoBack from '../components/GoBack'
-// import ActionLog from '../layout/ActionLog'
+import NoItemFound from '../components/NoItemFound'
+
 
 const Favorites = () => {
     const { favKey } = useContext( DogContext )
     const [ favorites ] = favKey
+
+    let message
+    if ( favorites.length === 0 ) {
+        message = <NoItemFound />
+    }  
 
     return (
         <Layout flexCol>
             <Search />
             <Wrapper>
                 <GoBack btnContent="Favorites" />
+                { message }
                 <Pattern>
                     {favorites.map(dog => 
                         <GridItem >

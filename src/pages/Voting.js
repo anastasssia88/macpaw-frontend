@@ -51,7 +51,6 @@ const Voting = ({ like, fav, disl }) => {
         let m = new Date().getMinutes();
         h = (h<10) ? '0' + h : h;
         m = (m<10) ? '0' + m : m;
-
         let time = h + ':' + m;
         return time
     }
@@ -160,9 +159,6 @@ const Img = styled.img`
     border-radius: 20px;
     width: 100%;
     height: auto;
-    max-width: 100%;
-    max-height: 50%;
-    /* padding: 20px; */
 `
 
 const Flexbox = styled.div`
@@ -218,10 +214,6 @@ const ActionBtn = styled.button`
         fill: ${props => props.fav && "#FF868E"};
         fill: ${props => props.disl && "#FFD280"};
     }
-
-    /* &:active ${SVG} {
-        fill: ${props => props.fav && "black"};
-    } */
 `
 
 const ActionLog = styled.div`
