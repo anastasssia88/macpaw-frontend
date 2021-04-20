@@ -12,6 +12,7 @@ export const DogProvider = ({ children }) => {
 
     const [ dogs, setDogs ] = useState({})
     const [ breeds, setBreeds ] = useState({})
+    const [ currBreed , setCurrBreed ] = useState({})
     
     // Fetching dogs
     useEffect(() => {
@@ -22,7 +23,7 @@ export const DogProvider = ({ children }) => {
         fetchData(dogs)
     }, []);
 
-    // Fetching breeds
+    // Fetching breed names
     useEffect(() => {
         const fetchData = async () => {
             const response = await axios('https://api.thedogapi.com/v1/breeds');
@@ -39,6 +40,7 @@ export const DogProvider = ({ children }) => {
             chunkedKey: [chunked, setChunked],
             dogsKey: [dogs, setDogs],
             breedsKey: [ breeds, setBreeds ],
+            currBreedKey: [ currBreed, setCurrBreed ]
             }}> 
             { children }
         </DogContext.Provider>

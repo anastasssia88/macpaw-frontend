@@ -1,12 +1,16 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { DogContext } from '../../src/DogContext'
 import styled from 'styled-components';
+import axios from 'axios'
+
 // import Dropdown from './Dropdown'
 
 const BreedsSort = () => {
     // Shared state
-    const { breedsKey } = useContext(DogContext)
+    const { breedsKey, currBreedKey, dogsKey } = useContext(DogContext)
+    const [dogs, setDogs] = dogsKey
     const [ breeds ] = breedsKey
+    const [ currBreed, setCurrBreed ] = currBreedKey
 
     // Opening filters
     const [breedsOpen, setBrOpen] = useState(false);
@@ -20,6 +24,21 @@ const BreedsSort = () => {
         setLimitOpen(!limitOpen);
         setBrOpen(false);
     }
+
+    // Filtering by breeds name
+    const [ activeFilter , setActive ] = useState(false)
+    const filterByBreed = (breed) => {
+        setCurrBreed({id: breed.id, name: breed.name})
+    } 
+
+    useEffect(() => {
+        const breedID = currBreed.id
+        const fetchData = async () => {
+            const response = await axios(`https://api.thedogapi.com/v1/images/search?breed_id=${breedID}&limit=20`);
+            setDogs(response.data)
+            };
+        fetchData(dogs)
+    }, [currBreed]);
 
 
     return (
@@ -41,7 +60,7 @@ const BreedsSort = () => {
                     <DropDownList md >
                         <ListItem key="all breeds" >All breeds</ListItem>
                         {
-                            breeds.map( breed => <ListItem key={breed.id}>{breed.name}</ListItem>)
+                            breeds.map( breed => <ListItem key={breed.id} onClick={() => filterByBreed(breed)} active={activeFilter} >{breed.name}</ListItem>)
                         }
                     </DropDownList>
                     </DropDownListContainer>
@@ -188,7 +207,7 @@ const DropDownHeader = styled.div`
 const DropDownListContainer = styled.div``;
 
 const DropDownList = styled.ul`
-    position: fixed; 
+    position: sticky; 
     margin-top: 10px;
     margin-left: 10px;
     padding: 1px 20px;

@@ -14,17 +14,9 @@ import BreedsSort from '../components/BreedsSort'
 const Breeds = () => {
     // Shared context
     const { chunkedKey, dogsKey } = useContext( DogContext )
-    const [chunked, setChunked] = chunkedKey
     const [dogs, setDogs] = dogsKey
+    const [chunked, setChunked] = chunkedKey
 
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const response = await axios('https://api.thedogapi.com/v1/images/search?limit=20');
-    //         setDogs(response.data)
-    //         };
-    //     fetchData(dogs)
-    // }, []);
  
     // displaying the dogs
     useEffect(() => {
@@ -49,7 +41,7 @@ const Breeds = () => {
                 </span>
                 {/* <Grid /> */}
                 <Masonry>
-                    {chunked.map(tenDogs => <Pattern>
+                    {chunked.map(tenDogs => <Pattern key={Math.random()}>
                         {tenDogs.map((dog, index) =>
                             <GridItem key={dog.id} index={index} >
                                 <Img src={dog.url} />
@@ -86,7 +78,6 @@ const Masonry = styled.div`
     border-radius: 20px;
     width: 100%;
     height: 100%;
-    padding: 20px;
 `
 
 const Pattern = styled.div`
