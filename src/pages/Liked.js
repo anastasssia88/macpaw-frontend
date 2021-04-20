@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { DogContext } from '../../src/DogContext'
 
 import styled from 'styled-components';
@@ -11,15 +11,26 @@ const Liked = () => {
     // Shared State
     const { likeKey, chunkedKey } = useContext(DogContext)
     const [liked] = likeKey
-    const [chunked] = chunkedKey
+    const [chunked, setChunked] = chunkedKey
 
-    // debugger
+    useEffect(() => {
+        if (liked.length > 0) {
+            const temporary = [...liked];
+            const result = []
+            while (temporary.length > 0) {
+                result.push(temporary.splice(0, 10))
+                // debugger
+            }
+            setChunked(result)
+        }
+    }, [liked]);
 
+
+    // if there is no items liked
     let message
     if (liked.length === 0) {
         message = <NoItemFound />
     }
-    console.log(chunked)
 
 
     return (
@@ -35,9 +46,6 @@ const Liked = () => {
                         </GridItem>)}
                 </Pattern>)
                 }
-
-
-
             </Wrapper>
         </Layout>
     )

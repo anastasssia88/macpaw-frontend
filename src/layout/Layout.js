@@ -20,7 +20,7 @@ const Section = styled.section`
     height: ${props => props.maxH100 && '100vh'};
 
     width: 50%;
-    padding: 2rem;
+    padding: 1.8rem;
 
     display: flex;
     justify-content: center;

@@ -76,32 +76,7 @@ const Voting = ({ like, fav, disl }) => {
         }
     }
 
-    // const handleLike = (randomDog) => {
-    //     let time = getTime()
-    //     addToLiked(prevLiked => [...prevLiked, randomDog])
-    //     setLog(prevLog => [...prevLog, { id: randomDog.id, content: "was added to Likes", type: "like", time: time }])
-    // }
-
-    // const handleFav = (randomDog) => {
-    //     if (favorites.indexOf(randomDog) === -1) {
-    //         let time = getTime()
-    //         setActive(true)
-    //         addToFav(prevFavorites => [...prevFavorites, randomDog])
-    //         setLog(prevLog => [...prevLog, { id: randomDog.id, content: "was added to Favorites", type: "fav", time: time }])
-    //     } else {
-    //         let time = getTime()
-    //         setActive(false)
-    //         favorites.pop()
-    //         setLog(prevLog => [...prevLog, { id: randomDog.id, content: "was removed from Favourites", type: "", time: time}])
-    //     }
-    // }
-
-    // const handleDislike = (randomDog) => {
-    //     let time = getTime()
-    //     addToDisliked(prevLog => [...prevLog, {  }])
-    //     setLog(prevLog => [...prevLog, { id: randomDog.id, content: "was added to DIslikes", type: "dis", time: time}])
-    // }
-
+    
 
     return (
         <Layout flexCol> 
@@ -158,7 +133,8 @@ const Wrapper = styled.div`
 const Img = styled.img`
     border-radius: 20px;
     width: 100%;
-    height: auto;
+    max-height: 30rem;
+    object-fit: cover;
 `
 
 const Flexbox = styled.div`

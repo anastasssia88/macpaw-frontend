@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import {DogContext} from '../../src/DogContext'
 
 import styled from 'styled-components';
@@ -9,9 +9,23 @@ import NoItemFound from '../components/NoItemFound'
 
 
 const Dislikes = () => {
-    const { disKey } = useContext( DogContext )
+    const { disKey, chunkedKey } = useContext( DogContext )
     const [ disliked ] = disKey 
+    const [chunked, setChunked] = chunkedKey
 
+    useEffect(() => {
+        if (disliked.length > 0) {
+            const temporary = [...disliked];
+            const result = []
+            while (temporary.length > 0) {
+                result.push(temporary.splice(0, 10))
+                // debugger
+            }
+            setChunked(result)
+        }
+    }, [disliked]);
+
+    // if there is no items disliked
     let message
     if ( disliked.length === 0 ) {
         message = <NoItemFound />
@@ -21,16 +35,17 @@ const Dislikes = () => {
         <Layout flexCol>
             <Search />
             <Wrapper>
-                <GoBack btnContent="Dislikes" />
-                { message }
-                <Pattern>
-                    {disliked.map(dog => 
-                        <GridItem >
-                            <Img src={dog.url} width="300px" />
+                <GoBack btnContent="Liked" />
+                {message}
+                {chunked.map(tenDogs => <Pattern>
+                    {tenDogs.map((dog, index) =>
+                        <GridItem key={dog.id} index={index} >
+                            <Img src={dog.url} />
                         </GridItem>)}
-                </Pattern>
+                </Pattern>)
+                }
             </Wrapper>
-        </Layout> 
+        </Layout>
     )
 }
 
@@ -44,7 +59,6 @@ const Wrapper = styled.div`
     padding: 20px;
 `
 
-
 const Pattern = styled.div`
     padding: 10px;
     display: grid;
@@ -56,7 +70,10 @@ const Pattern = styled.div`
     grid-template-areas: 
         "one two three"
         "one four four"
-        "five four four";
+        "five four four"
+        "six seven eight"
+        "nine nine eight"
+        "nine nine ten";
 
     justify-content: space-evenly;
 `
@@ -67,17 +84,23 @@ const GridItem = styled.div`
     color: white;
     border-radius: 20px;
 
-    grid-area: ${props => props.one && 'one'};
-    grid-area: ${props => props.two && 'two'};
-    grid-area: ${props => props.three && 'three'};
-    grid-area: ${props => props.four && 'four'};
-    grid-area: ${props => props.five && 'five'};
+    grid-area: ${props => props.index === 0 && 'one'};
+    grid-area: ${props => props.index === 1 && 'two'};
+    grid-area: ${props => props.index === 2 && 'three'};
+    grid-area: ${props => props.index === 3 && 'four'};
+    grid-area: ${props => props.index === 4 && 'five'};
+    grid-area: ${props => props.index === 5 && 'six'};
+    grid-area: ${props => props.index === 6 && 'seven'};
+    grid-area: ${props => props.index === 7 && 'eight'};
+    grid-area: ${props => props.index === 8 && 'nine'};
+    grid-area: ${props => props.index === 9 && 'ten'};
 `
 
 const Img = styled.img`
     width: 100%;
-    height: 140px;
-    /* height: ${props => props.sm && '140px'}; */
-    height: ${props => props.lg && '300px'};
+    height: 100%;
+    min-height: 120px;
+    height: ${props => props.index === 0 && '280px'};
     border-radius: 20px;
+    object-fit: cover;
 `

@@ -10,21 +10,36 @@ export const DogProvider = ({ children }) => {
     const [disliked, addToDisliked] = useState([]); 
     const [chunked, setChunked ] = useState([]);
 
+    const [ dogs, setDogs ] = useState({})
+    const [ breeds, setBreeds ] = useState({})
+    
+    // Fetching dogs
     useEffect(() => {
-        if (liked.length > 0) {
-            const temporary = [...liked];
-            const result = []
-            while (temporary.length > 0) {
-                result.push(temporary.splice(0, 10))
-                // debugger
-            }
-            setChunked(result)
-        }
-    }, [liked]);
+        const fetchData = async () => {
+            const response = await axios('https://api.thedogapi.com/v1/images/search?limit=20');
+            setDogs(response.data)
+            };
+        fetchData(dogs)
+    }, []);
 
+    // Fetching breeds
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await axios('https://api.thedogapi.com/v1/breeds');
+            setBreeds(response.data)
+            };
+        fetchData(breeds)
+    }, []);
 
     return (
-        <DogContext.Provider value={{ likeKey: [liked, addToLiked], favKey: [favorites, addToFav], disKey: [disliked, addToDisliked], chunkedKey: [chunked, setChunked]} }> 
+        <DogContext.Provider value={{ 
+            likeKey: [liked, addToLiked], 
+            favKey: [favorites, addToFav], 
+            disKey: [disliked, addToDisliked], 
+            chunkedKey: [chunked, setChunked],
+            dogsKey: [dogs, setDogs],
+            breedsKey: [ breeds, setBreeds ],
+            }}> 
             { children }
         </DogContext.Provider>
     )
