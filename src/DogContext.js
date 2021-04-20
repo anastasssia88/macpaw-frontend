@@ -4,23 +4,27 @@ import axios from 'axios'
 export const DogContext = createContext()
 
 export const DogProvider = ({ children }) => {
-    const [data, setData] = useState({});
 
     const [liked, addToLiked] = useState([]); 
     const [favorites, addToFav] = useState([]); 
     const [disliked, addToDisliked] = useState([]); 
-
+    const [chunked, setChunked ] = useState([]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await axios('https://api.thedogapi.com/v1/images/search');
-            setData(response.data[0])
-            };
-            fetchData(data)
-    }, []);
+        if (liked.length > 0) {
+            const temporary = [...liked];
+            const result = []
+            while (temporary.length > 0) {
+                result.push(temporary.splice(0, 10))
+                // debugger
+            }
+            setChunked(result)
+        }
+    }, [liked]);
+
 
     return (
-        <DogContext.Provider value={{ likeKey: [liked, addToLiked], favKey: [favorites, addToFav], disKey: [disliked, addToDisliked]} }> 
+        <DogContext.Provider value={{ likeKey: [liked, addToLiked], favKey: [favorites, addToFav], disKey: [disliked, addToDisliked], chunkedKey: [chunked, setChunked]} }> 
             { children }
         </DogContext.Provider>
     )

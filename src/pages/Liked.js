@@ -1,21 +1,26 @@
 import React, { useState, useContext } from 'react'
-import {DogContext} from '../../src/DogContext'
+import { DogContext } from '../../src/DogContext'
 
 import styled from 'styled-components';
 import Layout from '../layout/Layout'
-import Search from '../layout/Search' 
+import Search from '../layout/Search'
 import GoBack from '../components/GoBack'
 import NoItemFound from '../components/NoItemFound'
 
 const Liked = () => {
     // Shared State
-    const { likeKey } = useContext( DogContext )
-    const [ liked ] = likeKey
+    const { likeKey, chunkedKey } = useContext(DogContext)
+    const [liked] = likeKey
+    const [chunked] = chunkedKey
+
+    // debugger
 
     let message
-    if ( liked.length === 0 ) {
+    if (liked.length === 0) {
         message = <NoItemFound />
-    } 
+    }
+    console.log(chunked)
+
 
     return (
         <Layout flexCol>
@@ -23,16 +28,19 @@ const Liked = () => {
             <Wrapper>
                 <GoBack btnContent="Liked" />
                 {message}
-                <Pattern>
-                    {liked.map(dog => 
-                        <GridItem >
-                            <Img src={dog.url} width="300px" />
+                {chunked.map(tenDogs => <Pattern>
+                    {tenDogs.map((dog, index) =>
+                        <GridItem key={dog.id} index={index} >
+                            <Img src={dog.url} />
                         </GridItem>)}
-                </Pattern>
+                </Pattern>)
+                }
+
+
 
             </Wrapper>
-        </Layout> 
-    ) 
+        </Layout>
+    )
 }
 
 export default Liked
@@ -56,7 +64,11 @@ const Pattern = styled.div`
     grid-template-areas: 
         "one two three"
         "one four four"
-        "five four four";
+        "five four four"
+        "six seven eight"
+        "nine nine eight"
+        "nine nine ten";
+
     justify-content: space-evenly;
 `
 
@@ -65,41 +77,24 @@ const GridItem = styled.div`
     height: 100%;
     color: white;
     border-radius: 20px;
-    grid-area: ${props => props.one === 'one' && 'one'};
- 
 
-    grid-area: ${props => props.one && 'one'};
-    grid-area: ${props => props.two && 'two'};
-    grid-area: ${props => props.three && 'three'};
-    grid-area: ${props => props.four && 'four'};
-    grid-area: ${props => props.five && 'five'};
+    grid-area: ${props => props.index === 0 && 'one'};
+    grid-area: ${props => props.index === 1 && 'two'};
+    grid-area: ${props => props.index === 2 && 'three'};
+    grid-area: ${props => props.index === 3 && 'four'};
+    grid-area: ${props => props.index === 4 && 'five'};
+    grid-area: ${props => props.index === 5 && 'six'};
+    grid-area: ${props => props.index === 6 && 'seven'};
+    grid-area: ${props => props.index === 7 && 'eight'};
+    grid-area: ${props => props.index === 8 && 'nine'};
+    grid-area: ${props => props.index === 9 && 'ten'};
 `
 
 const Img = styled.img`
     width: 100%;
-    height: 140px;
-    /* height: ${props => props.sm && '140px'}; */
-    height: ${props => props.lg && '300px'};
+    height: 100%;
+    min-height: 120px;
+    height: ${props => props.index === 0 && '280px'};
     border-radius: 20px;
-`
-
-
-const Message = styled.div`
-    background-color: ${props => props.theme.bgMain};
-    width: 100%;
-    height: 60px;
-    border-radius: 10px;
-    padding: 0px 20px;
-    margin: 10px 0px;
-
-    display: ${props => props.displayNone ? 'none' : 'flex' };
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-
-
-    p {
-        color: ${props => props.theme.textSec};
-        padding: 0px 10px; 
-    }
+    object-fit: cover;
 `
