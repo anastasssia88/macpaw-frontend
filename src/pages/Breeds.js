@@ -13,15 +13,32 @@ import BreedsSort from '../components/BreedsSort'
 
 const Breeds = () => {
     // Shared context
-    const { chunkedKey, dogsKey } = useContext( DogContext )
+    const { dogsKey, currBreedKey, limitKey, breedsKey } = useContext( DogContext )
     const [dogs, setDogs] = dogsKey
-    const [chunked, setChunked] = chunkedKey
+    const [chunked, setChunked] = useState([])
+    
+    const [ breeds ] = breedsKey
+    const [ currBreed, setCurrBreed ] = currBreedKey
+    const [ limit , setLimit ] = limitKey
+
+
+    useEffect(() => {
+        const breedID = currBreed.id
+        const fetchData = async () => {
+            const response = await axios(`https://api.thedogapi.com/v1/images/search?limit=${limit}&breed_id=${breedID}&page=10`);
+            setDogs(response.data)
+            };
+        fetchData(dogs)
+    }, [limit, currBreed]);
 
  
     // displaying the dogs
     useEffect(() => {
         if (dogs.length > 0) {
-            const temporary = [...dogs];
+            
+            const filteredDogs = dogs.filter( dog => dog.breeds.length > 0)
+            const temporary = [...filteredDogs];
+            console.log(temporary)
             const result = []
             while (temporary.length > 0) {
                 result.push(temporary.splice(0, 10))
@@ -29,7 +46,6 @@ const Breeds = () => {
             setChunked(result)
         }
     }, [dogs]);
-
 
     return (
         <Layout flexCol>
@@ -39,15 +55,17 @@ const Breeds = () => {
                     <GoBack btnContent="Breeds" />
                     <BreedsSort />
                 </span>
-                {/* <Grid /> */}
                 <Masonry>
-                    {chunked.map(tenDogs => <Pattern key={Math.random()}>
-                        {tenDogs.map((dog, index) =>
-                            <GridItem key={dog.id} index={index} >
-                                <Img src={dog.url} />
-                            </GridItem>)}
-                    </Pattern>)
-                    }
+                    {chunked.map((tenDogs, index) => 
+                        <Pattern key={index}>
+                            {tenDogs.map((dog, index) => 
+                                <GridItem key={dog.id} index={index} >
+                                    <Img src={dog.url} />
+                                    <Label>{dog.breeds[0].name}</Label>
+                                </GridItem>
+                                )}
+                        </Pattern>
+                    )}
                 </Masonry>
             </Wrapper>
         </Layout> 
@@ -60,7 +78,7 @@ const Wrapper = styled.div`
     background: ${props => props.theme.bgBox};
     border-radius: 20px;
     width: 100%;
-    height: 100%;
+    height: auto;
     padding: 20px;
 
     span {
@@ -74,10 +92,9 @@ const Wrapper = styled.div`
 // Masonry layout
 
 const Masonry = styled.div`
-    background: ${props => props.theme.bgBox};
     border-radius: 20px;
     width: 100%;
-    height: 100%;
+    height: auto;
 `
 
 const Pattern = styled.div`
@@ -98,11 +115,67 @@ const Pattern = styled.div`
     justify-content: space-evenly;
 `
 
+const Img = styled.img`
+    width: 100%;
+    height: 100%;
+    min-height: 120px;
+    height: ${props => props.index === 0 && '280px'};
+    border-radius: 20px;
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+    
+    opacity: 1;
+    transition: all 0.4s ease;
+`
+
+const Label = styled.div`
+    display: none;
+`
+
 const GridItem = styled.div`
     width: 100%;
     height: 100%;
     color: white;
     border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    opacity: 1;
+    transition: all 0.3s ease;
+    
+    &:hover{
+        background-color: rgba(255, 134, 142, 0.6);
+    }
+
+    &:hover ${Label} {
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        text-align: center;
+
+        z-index: 100;
+        padding: 10px 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        
+        font-size: 20px;
+        text-align: center;
+        border-radius: 10px;
+        width: 93%;
+
+        justify-self: center;
+        background-color: ${props => props.theme.bgBreed};
+        color: #FF868E;
+    }
+
+    &:hover ${Img}{
+        opacity: 0.3;
+    }
 
     grid-area: ${props => props.index === 0 && 'one'};
     grid-area: ${props => props.index === 1 && 'two'};
@@ -116,11 +189,3 @@ const GridItem = styled.div`
     grid-area: ${props => props.index === 9 && 'ten'};
 `
 
-const Img = styled.img`
-    width: 100%;
-    height: 100%;
-    min-height: 120px;
-    height: ${props => props.index === 0 && '280px'};
-    border-radius: 20px;
-    object-fit: cover;
-`

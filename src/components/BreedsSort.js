@@ -1,16 +1,16 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { DogContext } from '../../src/DogContext'
 import styled from 'styled-components';
-import axios from 'axios'
 
 // import Dropdown from './Dropdown'
 
 const BreedsSort = () => {
-    // Shared state
-    const { breedsKey, currBreedKey, dogsKey } = useContext(DogContext)
-    const [dogs, setDogs] = dogsKey
+    // Shared state 
+    const { breedsKey, currBreedKey, limitKey } = useContext(DogContext)
     const [ breeds ] = breedsKey
     const [ currBreed, setCurrBreed ] = currBreedKey
+    const [ limit , setLimit ] = limitKey
+
 
     // Opening filters
     const [breedsOpen, setBrOpen] = useState(false);
@@ -25,21 +25,16 @@ const BreedsSort = () => {
         setBrOpen(false);
     }
 
-    // Filtering by breeds name
-    const [ activeFilter , setActive ] = useState(false)
+    // Filtering by breeds name and limit
     const filterByBreed = (breed) => {
-        setCurrBreed({id: breed.id, name: breed.name})
+        setCurrBreed({id: breed.id, name: breed.name});
+        setBrOpen(false);
     } 
 
-    useEffect(() => {
-        const breedID = currBreed.id
-        const fetchData = async () => {
-            const response = await axios(`https://api.thedogapi.com/v1/images/search?breed_id=${breedID}&limit=20`);
-            setDogs(response.data)
-            };
-        fetchData(dogs)
-    }, [currBreed]);
-
+    const handleLimit = (num) => {
+        setLimit(num)
+        setLimitOpen(false)
+    }
 
     return (
         <Wrapper> 
@@ -60,7 +55,7 @@ const BreedsSort = () => {
                     <DropDownList md >
                         <ListItem key="all breeds" >All breeds</ListItem>
                         {
-                            breeds.map( breed => <ListItem key={breed.id} onClick={() => filterByBreed(breed)} active={activeFilter} >{breed.name}</ListItem>)
+                            breeds.map( breed => <ListItem key={breed.id} onClick={() => filterByBreed(breed)} >{breed.name}</ListItem>)
                         }
                     </DropDownList>
                     </DropDownListContainer>
@@ -73,7 +68,7 @@ const BreedsSort = () => {
             <Main>
                 <DropDownContainer md >
                 <DropDownHeader onClick={toggleLimit}>
-                    <p>Limit: 10</p>
+                    <p>Limit: { limit }</p>
                     <svg viewBox="0 0 12 12"> 
                             <path d="M6.59406 9.17405L11.7538 4.01423C12.0821 3.68603 12.0821 3.15383 11.7538 2.82575C11.4256 2.49767 10.8935 2.49767 10.5655 2.82575L5.99993 7.39142L1.43458 2.82593C1.10635 2.49779 0.574264 2.49779 0.24617 2.82593C-0.0820567 3.15401 -0.0820567 3.68615 0.24617 4.01435L5.40591 9.17418C5.57003 9.33824 5.78492 9.42017 5.9999 9.42017C6.21498 9.42017 6.43002 9.33807 6.59406 9.17405Z"></path>
                         </svg>
@@ -81,10 +76,10 @@ const BreedsSort = () => {
                 {limitOpen && (
                     <DropDownListContainer>
                     <DropDownList md >
-                        <ListItem >Limit: 5</ListItem>
-                        <ListItem >Limit: 10</ListItem>
-                        <ListItem >Limit: 15</ListItem>
-                        <ListItem >Limit: 20</ListItem>
+                        <ListItem onClick={() => handleLimit(5)}>Limit: 5</ListItem>
+                        <ListItem onClick={() => handleLimit(10)}>Limit: 10</ListItem>
+                        <ListItem onClick={() => handleLimit(15)}>Limit: 15</ListItem>
+                        <ListItem onClick={() => handleLimit(20)}>Limit: 20</ListItem>
                     </DropDownList>
                     </DropDownListContainer>
                 )}
@@ -167,7 +162,7 @@ const Main = styled.div`
   height: auto;
   z-index: 99;
   transition: all 0.3s ease;
-`;
+`
 
 const DropDownContainer = styled.div`
   width: 100px;
@@ -175,7 +170,7 @@ const DropDownContainer = styled.div`
   min-width: ${props => props.lg && '200px'};
   max-width: ${props => props.md && '150px'};
   max-width: ${props => props.lg && '230px'};
-`;
+`
 
 const DropDownHeader = styled.div`
     height: 40px;
@@ -202,12 +197,12 @@ const DropDownHeader = styled.div`
     &:hover {
         border: 2px solid #FBE0DC;
     }
-`;
+`
 
-const DropDownListContainer = styled.div``;
+const DropDownListContainer = styled.div``
 
 const DropDownList = styled.ul`
-    position: sticky; 
+    position: fixed; 
     margin-top: 10px;
     margin-left: 10px;
     padding: 1px 20px;
@@ -229,7 +224,7 @@ const DropDownList = styled.ul`
   &:first-child {
     padding-top: 0.8em;
   }
-`;
+`
 
 const ListItem = styled.li`
   list-style: none;
@@ -238,4 +233,4 @@ const ListItem = styled.li`
   &:hover{
       color: #FF868E;
   }
-`;
+`

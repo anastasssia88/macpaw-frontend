@@ -28,7 +28,7 @@ const Liked = () => {
 
     // if there is no items liked
     let message
-    if (liked.length === 0) {
+    if (chunked.length === 0) {
         message = <NoItemFound />
     }
 

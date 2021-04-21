@@ -13,6 +13,7 @@ export const DogProvider = ({ children }) => {
     const [ dogs, setDogs ] = useState({})
     const [ breeds, setBreeds ] = useState({})
     const [ currBreed , setCurrBreed ] = useState({})
+    const [ limit , setLimit ] = useState(10)
     
     // Fetching dogs
     useEffect(() => {
@@ -40,7 +41,8 @@ export const DogProvider = ({ children }) => {
             chunkedKey: [chunked, setChunked],
             dogsKey: [dogs, setDogs],
             breedsKey: [ breeds, setBreeds ],
-            currBreedKey: [ currBreed, setCurrBreed ]
+            currBreedKey: [ currBreed, setCurrBreed ],
+            limitKey: [ limit, setLimit]
             }}> 
             { children }
         </DogContext.Provider>
