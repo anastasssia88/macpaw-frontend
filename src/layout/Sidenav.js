@@ -6,7 +6,7 @@ import {Link, useLocation}  from "react-router-dom";
 import votingImg from '../images/vote-table.svg'
 import breedsImg from '../images/pet-breeds.svg'
 import galleryImg from '../images/images-search.svg'
-import NavItem from '../components/NavItem'
+import NavItem from '../components/Shared/NavItem'
 
 
 

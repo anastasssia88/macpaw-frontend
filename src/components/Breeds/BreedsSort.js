@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { DogContext } from '../../src/DogContext'
+import { DogContext } from '../../DogContext'
 import styled from 'styled-components';
 
 // import Dropdown from './Dropdown'
@@ -80,7 +80,7 @@ const BreedsSort = () => {
                     {breedsOpen && (
                         <DropDownListContainer>
                         <DropDownList md onMouseLeave={handleMouseLeave}>
-                            <ListItem key="all breeds" onCLick={() => reset()} >All breeds</ListItem>
+                            <ListItem key="all breeds" onCLick={() => reset()} >None</ListItem>
                             {
                                 breeds.map( breed => <ListItem key={breed.id} onClick={() => filterByBreed(breed)} >{breed.name}</ListItem>)
                             }
@@ -103,15 +103,15 @@ const BreedsSort = () => {
                 {limitOpen && (
                     <DropDownListContainer>
                     <DropDownList md onMouseLeave={handleMouseLeave}>
-                        <ListItem onClick={() => handleLimit(5)}>Limit: 5</ListItem>
-                        <ListItem onClick={() => handleLimit(10)}>Limit: 10</ListItem>
-                        <ListItem onClick={() => handleLimit(15)}>Limit: 15</ListItem>
-                        <ListItem onClick={() => handleLimit(20)}>Limit: 20</ListItem>
+                        <ListItem onClick={() => handleLimit(5)}>5 items per page</ListItem>
+                        <ListItem onClick={() => handleLimit(10)}>10 items per page</ListItem>
+                        <ListItem onClick={() => handleLimit(15)}>15 items per page</ListItem>
+                        <ListItem onClick={() => handleLimit(20)}>20 items per page</ListItem>
                     </DropDownList>
                     </DropDownListContainer>
                 )}
                 </DropDownContainer>
-            </Main>
+            </Main> 
 
             
             

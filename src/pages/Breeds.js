@@ -1,14 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react'
 import {DogContext} from '../../src/DogContext'
-
 import styled from 'styled-components';
 import axios from 'axios'
 
-
 import Search from '../layout/Search' 
 import Layout from '../layout/Layout'
-import GoBack from '../components/GoBack'
-import BreedsSort from '../components/BreedsSort'
+import GoBack from '../components/Shared/GoBack'
+import BreedsSort from '../components/Breeds/BreedsSort'
 
 
 const Breeds = () => {
@@ -122,7 +120,7 @@ const Pattern = styled.div`
         "six seven eight"
         "nine nine eight"
         "nine nine ten";
-    justify-content: space-evenly;
+    justify-content: space-evenly; 
 `
 
 const Img = styled.img`

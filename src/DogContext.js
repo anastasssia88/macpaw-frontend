@@ -14,7 +14,7 @@ export const DogProvider = ({ children }) => {
     const [ breeds, setBreeds ] = useState({})
     const [ currBreed , setCurrBreed ] = useState({})
     const [ limit , setLimit ] = useState(10)
-    const [ order,  setOrder ] = useState('rand')
+    const [ order,  setOrder ] = useState('rand') 
     
     // Fetching dogs
     useEffect(() => {

@@ -4,9 +4,8 @@ import {useLocation}  from "react-router-dom";
 import styled from 'styled-components';
 
 // Components 
-import SearchBar from '../components/Searchbar'
-import Filter from '../components/Filter'
-// import Filters from '../components/Filters'
+import SearchBar from '../components/Shared/Searchbar'
+import Filter from '../components/Shared/Filter'
 
 
 const Search = () => {

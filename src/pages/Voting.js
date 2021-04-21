@@ -6,8 +6,8 @@ import {DogContext} from '../../src/DogContext'
 // Components
 import Search from '../layout/Search' 
 import Layout from '../layout/Layout'
-import GoBack from '../components/GoBack'
-import UserAction from '../components/UserAction'
+import GoBack from '../components/Shared/GoBack'
+import UserAction from '../components/Voting/UserAction'
 
 
 const Voting = ({ like, fav, disl }) => { 

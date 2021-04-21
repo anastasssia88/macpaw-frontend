@@ -4,8 +4,8 @@ import { DogContext } from '../../src/DogContext'
 import styled from 'styled-components';
 import Layout from '../layout/Layout'
 import Search from '../layout/Search'
-import GoBack from '../components/GoBack'
-import NoItemFound from '../components/NoItemFound'
+import GoBack from '../components/Shared/GoBack'
+import NoItemFound from '../components/Shared/NoItemFound'
 
 const Liked = () => {
     // Shared State
