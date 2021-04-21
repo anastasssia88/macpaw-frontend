@@ -14,9 +14,9 @@ const Filter = ({viewBox, d, url, path}) => {
     }, [url, path]) 
 
     return (
-        <Link to={url} active={active}>
-            <Icon active={active}>
-                <svg viewBox={viewBox} active={active} > 
+        <Link  to={url} active={active}>
+            <Icon active={active} >
+                <svg viewBox={viewBox} active={active}  > 
                     <path d={d}></path>
                 </svg>
             </Icon>
@@ -27,15 +27,16 @@ const Filter = ({viewBox, d, url, path}) => {
 export default Filter
 
 const Icon = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: 60px;
     height: 60px;
     margin-left: 10px;
     background: ${props => props.theme.bgBox};
     background-color: ${props => props.active && '#FF868E'};
     border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     transition: all 0.3s ease;
 

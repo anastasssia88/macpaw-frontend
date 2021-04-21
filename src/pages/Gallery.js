@@ -1,18 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react'
 import {DogContext} from '../../src/DogContext'
 import styled from 'styled-components';
-import {    Main,
-            DropDownContainer, 
-            DropDownHeader,  
-            DropDownListContainer, 
-            DropDownList, 
-            ListItem} from '../components/Shared/Dropdown'
-
 import axios from 'axios'
 
 import Search from '../layout/Search' 
 import Layout from '../layout/Layout'
 import GoBack from '../components/Shared/GoBack'
+import GallerySort from '../components/Gallery/GallerySort'
+
 
 const Gallery = () => {
 
@@ -23,14 +18,7 @@ const Gallery = () => {
     // Local context
     const [ dogs, setDogs ] = useState({})
     const [chunked, setChunked] = useState([])
-    const [ orderOpen, setOrderOpen ] = useState(false)
-
-    // Opening filters
-    const openFilter = (filter) => {
-        if (filter === 'order') {
-            setOrderOpen(!orderOpen)
-        }
-    }
+    
 
     // Fetching dogs
     useEffect(() => { 
@@ -70,48 +58,8 @@ const Gallery = () => {
                     </Upload> 
                 </Container>                
 
-                {/* GRID */}
-                <Flex>
-                    <Main>
-                        <DropDownContainer1 md onClick={ () => openFilter('order')}>
-                            <DropDownHeader1 gallery> 
-                                <p>Random</p>
-                                <svg viewBox="0 0 12 12"> 
-                                        <path d="M6.59406 9.17405L11.7538 4.01423C12.0821 3.68603 12.0821 3.15383 11.7538 2.82575C11.4256 2.49767 10.8935 2.49767 10.5655 2.82575L5.99993 7.39142L1.43458 2.82593C1.10635 2.49779 0.574264 2.49779 0.24617 2.82593C-0.0820567 3.15401 -0.0820567 3.68615 0.24617 4.01435L5.40591 9.17418C5.57003 9.33824 5.78492 9.42017 5.9999 9.42017C6.21498 9.42017 6.43002 9.33807 6.59406 9.17405Z"></path>
-                                    </svg>
-                            </DropDownHeader1>
-                            {orderOpen && (
-                                <DropDownListContainer>
-                                <DropDownList1 md >
-                                    <ListItem1 > Random</ListItem1>
-                                    <ListItem1 > Desc</ListItem1>
-                                    <ListItem1 > Asc</ListItem1>
-                                </DropDownList1>
-                                </DropDownListContainer>
-                            )}
-                        </DropDownContainer1>
-                    </Main>
-
-                    <Main>
-                        <DropDownContainer1 md onClick={ () => openFilter('order')}>
-                            <DropDownHeader1 gallery> 
-                                <p>Static</p>
-                                <svg viewBox="0 0 12 12"> 
-                                        <path d="M6.59406 9.17405L11.7538 4.01423C12.0821 3.68603 12.0821 3.15383 11.7538 2.82575C11.4256 2.49767 10.8935 2.49767 10.5655 2.82575L5.99993 7.39142L1.43458 2.82593C1.10635 2.49779 0.574264 2.49779 0.24617 2.82593C-0.0820567 3.15401 -0.0820567 3.68615 0.24617 4.01435L5.40591 9.17418C5.57003 9.33824 5.78492 9.42017 5.9999 9.42017C6.21498 9.42017 6.43002 9.33807 6.59406 9.17405Z"></path>
-                                    </svg>
-                            </DropDownHeader1>
-                            {orderOpen && (
-                                <DropDownListContainer>
-                                <DropDownList1 md >
-                                    <ListItem1 > Random</ListItem1>
-                                    <ListItem1 > Desc</ListItem1>
-                                    <ListItem1 > Asc</ListItem1>
-                                </DropDownList1>
-                                </DropDownListContainer>
-                            )}
-                        </DropDownContainer1>
-                    </Main>
-                </Flex>
+                {/* SORT */}
+                <GallerySort />
 
                 <Masonry>
                     {chunked.map(tenDogs => <Pattern>
@@ -140,7 +88,6 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
 `
 
 const Upload = styled.button`
@@ -186,24 +133,6 @@ const Flex = styled(Container)`
     background-color: #F8F8F7;
     border-radius: 20px;
     padding: 10px;
-`
-
-// Single Filter Item
-const DropDownContainer1 = styled(DropDownContainer)`
-  width: 100%;
-  grid-area: one;
-`
-const DropDownHeader1 = styled(DropDownHeader)`
-    background-color: ${props => props.theme.bgGaleryFilters};
-    color: ${props => props.theme.textPrim};
-`
-const DropDownList1 = styled(DropDownList)`
-    background-color: ${props => props.theme.bgGaleryFilters};
-`
-const ListItem1 = styled(ListItem)`
-  &:hover{
-      color: #FF868E;
-  }
 `
 
 // Masonry layout
