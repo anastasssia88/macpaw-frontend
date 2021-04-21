@@ -3,7 +3,6 @@ import {DogContext} from '../../src/DogContext'
 import styled from 'styled-components';
 import axios from 'axios'
 
-import Grid from '../layout/Grid'
 import Search from '../layout/Search' 
 import Layout from '../layout/Layout'
 import GoBack from '../components/GoBack'
@@ -18,7 +17,7 @@ const Gallery = () => {
     const [ dogs, setDogs ] = useState({})
 
     // Fetching dogs
-    useEffect(() => {
+    useEffect(() => { 
         const fetchData = async () => {
             const response = await axios('https://api.thedogapi.com/v1/images/search?limit=20');
             setDogs(response.data)
@@ -44,7 +43,17 @@ const Gallery = () => {
         <Layout flexCol> 
             <Search />
             <Wrapper>
-                <GoBack btnContent="Galery" />
+                <Container>
+                    <GoBack btnContent="Galery" /> 
+                    <Upload>
+                        <svg viewBox="0 0 16 16"> 
+                            <path d="M7.86601 0L12.2355 4.03339L11.4129 4.92452L8.48919 2.22567V12.3618H7.27645V2.30464L4.67336 4.90772L3.81583 4.05019L7.86601 0ZM1.21274 14.7873V7.51081H0V16H15.7656V7.51081H14.5529V14.7873H1.21274Z"></path>
+                        </svg>
+                        Upload
+                    </Upload> 
+                </Container>                
+
+
                 <Masonry>
                     {chunked.map(tenDogs => <Pattern>
                         {tenDogs.map((dog, index) =>
@@ -68,6 +77,46 @@ const Wrapper = styled.div`
     height: 100%;
     padding: 20px;
 `
+const Container = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+`
+
+const Upload = styled.button`
+    border-radius: 10px;
+    border: none;
+    height: 40px;
+    background: #FBE0DC;
+    color: #FF868E;
+    min-width: 143px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    transition: all 0.3s ease; 
+
+    &:hover {
+        background: #FF868E;
+        color: #FFFFFF;
+    }
+
+    svg {
+        fill: #FF868E;
+        width: 16px;
+        height: 16px; 
+        margin-right: 0.5rem;
+    }
+
+    &:hover svg {
+        fill: #FFFFFF;
+    }
+`
 
 // Masonry layout
 
@@ -75,8 +124,7 @@ const Masonry = styled.div`
     background: ${props => props.theme.bgBox};
     border-radius: 20px;
     width: 100%;
-    height: 100%;
-    padding: 20px;
+    height: auto;
 `
 
 const Pattern = styled.div`

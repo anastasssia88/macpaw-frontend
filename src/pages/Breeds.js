@@ -13,25 +13,35 @@ import BreedsSort from '../components/BreedsSort'
 
 const Breeds = () => {
     // Shared context
-    const { dogsKey, currBreedKey, limitKey, breedsKey } = useContext( DogContext )
+    const { dogsKey, currBreedKey, limitKey, breedsKey, orderKey } = useContext( DogContext )
     const [dogs, setDogs] = dogsKey
-    const [chunked, setChunked] = useState([])
-    
-    const [ breeds ] = breedsKey
     const [ currBreed, setCurrBreed ] = currBreedKey
     const [ limit , setLimit ] = limitKey
+    const [ breeds ] = breedsKey
+    const [ order , setOrder ] = orderKey
 
+    // Local context
+    const [chunked, setChunked] = useState([])
 
     useEffect(() => {
         const breedID = currBreed.id
         const fetchData = async () => {
-            const response = await axios(`https://api.thedogapi.com/v1/images/search?limit=${limit}&breed_id=${breedID}&page=10`);
+            const response = await axios(`https://api.thedogapi.com/v1/images/search?limit=${limit}&breed_id=${breedID}`);
             setDogs(response.data)
             };
         fetchData(dogs)
-    }, [limit, currBreed]);
+    }, [limit]);
 
- 
+    useEffect(() => {
+        const breedID = currBreed.id
+        const fetchData = async () => {
+            const response = await axios(`https://api.thedogapi.com/v1/images/search?limit=${limit}&breed_id=${breedID}`);
+            setDogs(response.data)
+            };
+        fetchData(dogs)
+    }, [currBreed]);
+
+
     // displaying the dogs
     useEffect(() => {
         if (dogs.length > 0) {

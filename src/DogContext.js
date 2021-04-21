@@ -14,6 +14,7 @@ export const DogProvider = ({ children }) => {
     const [ breeds, setBreeds ] = useState({})
     const [ currBreed , setCurrBreed ] = useState({})
     const [ limit , setLimit ] = useState(10)
+    const [ order,  setOrder ] = useState('rand')
     
     // Fetching dogs
     useEffect(() => {
@@ -35,14 +36,15 @@ export const DogProvider = ({ children }) => {
 
     return (
         <DogContext.Provider value={{ 
-            likeKey: [liked, addToLiked], 
-            favKey: [favorites, addToFav], 
-            disKey: [disliked, addToDisliked], 
-            chunkedKey: [chunked, setChunked],
-            dogsKey: [dogs, setDogs],
+            likeKey: [ liked, addToLiked ], 
+            favKey: [ favorites, addToFav ], 
+            disKey: [ disliked, addToDisliked ], 
+            chunkedKey: [ chunked, setChunked ],
+            dogsKey: [ dogs, setDogs ],
             breedsKey: [ breeds, setBreeds ],
             currBreedKey: [ currBreed, setCurrBreed ],
-            limitKey: [ limit, setLimit]
+            limitKey: [ limit, setLimit ],
+            orderKey: [ order, setOrder ]
             }}> 
             { children }
         </DogContext.Provider>
