@@ -1,21 +1,21 @@
 import React, { useEffect, useContext } from 'react'
-import {DogContext} from '../../src/DogContext'
+import { DogContext } from '../helpers/DogContext'
 
 import styled from 'styled-components';
-import Layout from '../layout/Layout'
-import Search from '../layout/Search' 
+import Layout from '../components/Shared/Layout'
+import Search from '../components/Searchbar/Search'
 import GoBack from '../components/Shared/GoBack'
 import NoItemFound from '../components/Shared/NoItemFound'
 
-
-const Dislikes = () => {
-    const { disKey, chunkedKey } = useContext( DogContext )
-    const [ disliked ] = disKey 
-    const [chunked, setChunked] = chunkedKey
+const Liked = () => {
+    // Shared State
+    const { likeKey, chunkedKey } = useContext(DogContext)
+    const [liked] = likeKey
+    const [chunked, setChunked] = chunkedKey 
 
     useEffect(() => {
-        if (disliked.length > 0) {
-            const temporary = [...disliked];
+        if (liked.length > 0) {
+            const temporary = [...liked];
             const result = []
             while (temporary.length > 0) {
                 result.push(temporary.splice(0, 10))
@@ -23,13 +23,15 @@ const Dislikes = () => {
             }
             setChunked(result)
         }
-    }, [disliked]);
+    }, [liked]);
 
-    // if there is no items disliked
+
+    // if there is no items liked
     let message
-    if ( disliked.length === 0 ) {
+    if (chunked.length === 0) {
         message = <NoItemFound />
-    }  
+    }
+
 
     return (
         <Layout flexCol>
@@ -49,7 +51,7 @@ const Dislikes = () => {
     )
 }
 
-export default Dislikes
+export default Liked
 
 const Wrapper = styled.div`
     background: ${props => props.theme.bgBox};

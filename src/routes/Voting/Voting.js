@@ -1,17 +1,17 @@
 import React, { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components';
 import axios from 'axios'
-import {DogContext} from '../../src/DogContext'
+import {DogContext} from '../../helpers/DogContext'
 
 // Components
-import Search from '../layout/Search' 
-import Layout from '../layout/Layout'
-import GoBack from '../components/Shared/GoBack'
-import UserAction from '../components/Voting/UserAction'
+import Search from '../../components/Searchbar/Search' 
+import Layout from '../../components/Shared/Layout'
+import GoBack from '../../components/Shared/GoBack'
+import UserAction from './UserAction' 
 
 
 const Voting = ({ like, fav, disl }) => { 
-    // Shared state
+    // Shared state 
     const { likeKey, favKey, disKey } = useContext( DogContext )
     const [ liked, addToLiked ] = likeKey
     const [ favorites, addToFav] = favKey

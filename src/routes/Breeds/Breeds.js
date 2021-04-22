@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react'
-import {DogContext} from '../../src/DogContext'
+import {DogContext} from '../../helpers/DogContext'
 import styled from 'styled-components';
 import axios from 'axios'
 
-import Search from '../layout/Search' 
-import Layout from '../layout/Layout'
-import GoBack from '../components/Shared/GoBack'
-import BreedsSort from '../components/Breeds/BreedsSort'
+import Search from '../../components/Searchbar/Search' 
+import Layout from '../../components/Shared/Layout'
+import GoBack from '../../components/Shared/GoBack'
+import BreedsSort from './BreedsSort'
 
 
 const Breeds = () => {
@@ -141,8 +141,8 @@ const Label = styled.div`
     display: none;
 `
 
-const GridItem = styled.div`
-    width: 100%;
+const GridItem = styled.div` 
+    width: 100%; 
     height: 100%;
     color: white;
     border-radius: 20px;

@@ -3,19 +3,19 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
 import { lightTheme } from "./theme/theme";
-import { DogProvider } from '../src/DogContext'
+import { DogProvider } from './helpers/DogContext' 
 
 // Components
-import Sidenav from './layout/Sidenav'
-import Home from './pages/Home'
-import Voting from './pages/Voting'
-import Breeds from './pages/Breeds'
-import Gallery from './pages/Gallery'
-import Liked from './pages/Liked'
-import Favorites from './pages/Favorites'
-import Disliked from './pages/Dislikes'
+import Sidenav from './components/Sidenav/Sidenav'
+import Home from './routes/Home/Home'
+import Voting from './routes/Voting/Voting'
+import Breeds from './routes/Breeds/Breeds'
+import Gallery from './routes/Gallery/Gallery'
+import Liked from './routes/Liked'
+import Favorites from './routes/Favorites'
+import Disliked from './routes/Dislikes'
 
-function App() {
+function App() { 
   return (
     <Router>
     <ThemeProvider theme = {lightTheme}>

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 
 const Searchbar = () => {
-    return (
+    return ( 
         <Div>
             <Input type="text" placeholder="Search for breeds by name" />
             <Icon>

@@ -90,5 +90,5 @@ const Wrapper = styled.div`
     &:hover ${Div} {
         border: 5px solid #FFFFFF;
         border: ${props => props.active && '5px solid #FBE0DC'};
-    }
+    } 
 `

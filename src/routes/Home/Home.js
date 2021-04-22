@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import HeroImg from '../images/girl-and-pet.svg'
+import HeroImg from '../../images/girl-and-pet.svg'
 
 const Home = () => {
     return (

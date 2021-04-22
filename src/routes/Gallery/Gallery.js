@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react'
-import {DogContext} from '../../src/DogContext'
+import {DogContext} from '../../helpers/DogContext'
 import styled from 'styled-components';
 import axios from 'axios'
 
-import Search from '../layout/Search' 
-import Layout from '../layout/Layout'
-import GoBack from '../components/Shared/GoBack'
-import GallerySort from '../components/Gallery/GallerySort'
+import Search from '../../components/Searchbar/Search' 
+import Layout from '../../components/Shared/Layout'
+import GoBack from '../../components/Shared/GoBack'
+import GallerySort from './GallerySort'
 
 
 const Gallery = () => {
@@ -58,7 +58,7 @@ const Gallery = () => {
                     </Upload> 
                 </Container>                
 
-                <GallerySort />
+                <GallerySort /> 
 
                 <Masonry>
                     {chunked.map(tenDogs => <Pattern>

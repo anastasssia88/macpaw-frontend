@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
-import logo from '../images/logo.svg'
+import logo from '../../images/logo.svg'
 import {Link, useLocation}  from "react-router-dom";
 
-import votingImg from '../images/vote-table.svg'
-import breedsImg from '../images/pet-breeds.svg'
-import galleryImg from '../images/images-search.svg'
-import NavItem from '../components/Shared/NavItem'
+import votingImg from '../../images/vote-table.svg'
+import breedsImg from '../../images/pet-breeds.svg'
+import galleryImg from '../../images/images-search.svg'
+import NavItem from './NavItem'
 
 
 

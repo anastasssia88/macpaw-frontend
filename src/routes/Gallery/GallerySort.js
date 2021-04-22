@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react'
-import { DogContext } from '../../DogContext'
+import { DogContext } from '../../helpers/DogContext'
 import styled from 'styled-components';
 import axios from 'axios'
-import Item from '../Shared/DropdownItem'
-import Filter from '../Shared/Filter'
+import Item from '../../components/Shared/DropdownItem'
+import Filter from '../../components/Searchbar/Filter'
 
 const GallerySort = () => {
     // LOGIC
@@ -18,7 +18,7 @@ const GallerySort = () => {
                     <Item label="type" title="Static" /> 
                 </GridItem>
                 <GridItem three >
-                    <Item label="breed" title="None" />
+                    <Item label="breed" title="None" /> 
                 </GridItem>
                 <GridItem four >
                     <ItemFlex>

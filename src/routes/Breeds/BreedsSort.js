@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { DogContext } from '../../DogContext'
+import { DogContext } from '../../helpers/DogContext'
 import styled from 'styled-components';
 
 // import Dropdown from './Dropdown'

@@ -13,7 +13,7 @@ const Filter = ({viewBox, d, url, path}) => {
         }
     }, [url, path]) 
 
-    return (
+    return ( 
         <Link  to={url} active={active}>
             <Icon active={active} >
                 <svg viewBox={viewBox} active={active}  > 
