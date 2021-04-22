@@ -6,6 +6,7 @@ import Item from '../Shared/DropdownItem'
 import Filter from '../Shared/Filter'
 
 const GallerySort = () => {
+    // LOGIC
 
     return (
         <Container>
@@ -63,6 +64,7 @@ const GridItem = styled.div`
     grid-area: ${props => props.three && 'three'};
     grid-area: ${props => props.four && 'four'};
 `
+
 
 const ItemFlex = styled.div`
     width: 100%;
