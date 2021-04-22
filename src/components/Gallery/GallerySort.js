@@ -6,7 +6,6 @@ import Item from '../Shared/DropdownItem'
 import Filter from '../Shared/Filter'
 
 const GallerySort = () => {
-    // LOGIC
 
     return (
         <Container>
@@ -55,8 +54,7 @@ const Grid = styled.div`
     grid-template-areas: 
         "one two"
         "three four";
-    /* justify-content: space-between; */
-    /* align-items: center; */
+
 `
 
 const GridItem = styled.div`
@@ -65,14 +63,6 @@ const GridItem = styled.div`
     grid-area: ${props => props.three && 'three'};
     grid-area: ${props => props.four && 'four'};
 `
-// const Flex = styled.div`
-    // width: 100%;
-    // display: flex;
-    // flex-direction: row;
-    // justify-content: space-between;
-    // align-items: flex-end;
-    // background-color: #F8F8F7;
-// `
 
 const ItemFlex = styled.div`
     width: 100%;

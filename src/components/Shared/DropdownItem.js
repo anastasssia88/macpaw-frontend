@@ -100,26 +100,34 @@ const DropDownHeader = styled.div`
     }
 `
 
-const DropDownListContainer = styled.div``
+const DropDownListContainer = styled.div`
+    position: relative;
+    z-index: 99;
+  `
 
 const DropDownList = styled.ul`
-    position: fixed;
     margin-top: 10px;
-    margin-left: 10px;
     padding: 1px 20px;
-    width: auto;
     max-height: 20rem;
-    overflow-y: scroll;
-    /* width: ${props => props.md && '200px'};
-    width: ${props => props.lg && '260px'}; */
+    /* overflow-y: scroll; */
     border-radius: 10px;
+    font-size: 16px;
     box-sizing: border-box;
     cursor: pointer;
+    box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.02);
 
-    font-size: 16px;
+    /* margin-left: 10px;
+    width: auto; */
+    /* width: ${props => props.md && '200px'};
+    width: ${props => props.lg && '260px'}; */
+    position: absolute;
+    min-width: 100%;
+    /* box-shadow: 0px 0px 8px 8px rgba(0, 0, 0, 0.25%) */
+
     /* background-color: ${props => props.theme.bgSort}; */
     background-color: ${props => props.theme.bgGaleryFilters};
     color: ${props => props.theme.textSec};
+
     
   &:first-child {
     padding-top: 0.8em;
