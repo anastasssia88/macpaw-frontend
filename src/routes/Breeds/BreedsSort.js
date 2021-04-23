@@ -22,7 +22,7 @@ const BreedsSort = () => {
     const [limitOpen, setLimitOpen] = limitOpenKey
 
 
-    // Handling filters
+    // Handling filters on click
     const toggleBreeds = () => {
         setBrOpen(!breedsOpen);
         setLimitOpen(false);
@@ -33,6 +33,7 @@ const BreedsSort = () => {
         setBrOpen(false);
     }
 
+    // Handling filters on mouce event
     const handleMouseOver = (filter) => {
         if (filter === 'breed') {
             setLimitOpen(false);
@@ -46,12 +47,10 @@ const BreedsSort = () => {
         setLimitOpen(false);
     }
 
-    // Filtering by breeds name and limit
+    // Filtering by breeds name, limit, reset, order
     const filterByBreed = (breed) => {
         setCurrBreed({id: breed.id, name: breed.name});
         setBrOpen(false);
-        // console.log("We clicked 'filter by breed'")
-        // console.log(currBreed)
     } 
 
     const handleLimit = (num) => {
@@ -62,13 +61,19 @@ const BreedsSort = () => {
 
     const reset = () => {
         setLimit(10)
+        setCurrBreed({id: '', name: ''});
     }
 
-    // Changing order
     const changeOrder = (value) => {
         setOrder(value)
     }
 
+    let label
+    if (currBreed.name === '' || currBreed.name === undefined) {
+        label = "All breeds"
+    } else {
+        label = currBreed.name
+    }
 
 
     return (
@@ -78,7 +83,7 @@ const BreedsSort = () => {
             <Main>
                 <DropDownContainer lg verticalScroll onMouseOver={() => handleMouseOver('breed')} > 
                     <DropDownHeader onClick={toggleBreeds}>
-                        <p>All breeds</p>
+                        <p>{label}</p>
                         <svg viewBox="0 0 12 12"> 
                                 <path d="M6.59406 9.17405L11.7538 4.01423C12.0821 3.68603 12.0821 3.15383 11.7538 2.82575C11.4256 2.49767 10.8935 2.49767 10.5655 2.82575L5.99993 7.39142L1.43458 2.82593C1.10635 2.49779 0.574264 2.49779 0.24617 2.82593C-0.0820567 3.15401 -0.0820567 3.68615 0.24617 4.01435L5.40591 9.17418C5.57003 9.33824 5.78492 9.42017 5.9999 9.42017C6.21498 9.42017 6.43002 9.33807 6.59406 9.17405Z"></path>
                             </svg>
@@ -86,7 +91,7 @@ const BreedsSort = () => {
                     {breedsOpen && (
                         <DropDownListContainer>
                         <DropDownList md onMouseLeave={handleMouseLeave}>
-                            <ListItem key="all breeds" onClick={() => reset()} >None</ListItem>
+                            <ListItem key="all breeds" onClick={() => reset()} > None</ListItem>
                             {
                                 breeds.map( breed => <ListItem key={breed.id} onClick={() => filterByBreed(breed)} >{breed.name}</ListItem>)
                             }
