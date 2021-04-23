@@ -23,7 +23,7 @@ const Section = styled.section`
     padding: 1.8rem;
 
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     /* align-items: center; */
     align-items: flex-start;
 

@@ -2,8 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
-import { lightTheme } from "./theme/theme";
+import { lightTheme, darkTheme } from "./theme/theme";
 import { DogProvider } from './helpers/DogContext' 
+import { BreedsProvider } from './helpers/BreedsContext'
+
 
 // Components
 import Sidenav from './components/Sidenav/Sidenav'
@@ -15,7 +17,9 @@ import Liked from './routes/Liked'
 import Favorites from './routes/Favorites'
 import Disliked from './routes/Dislikes'
 
+
 function App() { 
+
   return (
     <Router>
     <ThemeProvider theme = {lightTheme}>
@@ -28,7 +32,9 @@ function App() {
                     <Voting />
                 </Route>
                 <Route exact path="/breeds" >
+                  <BreedsProvider>
                     <Breeds />
+                  </BreedsProvider>
                 </Route>
                 <Route exact path="/gallery" >
                     <Gallery />

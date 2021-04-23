@@ -1,28 +1,36 @@
 import React, { useState, useContext } from 'react'
+import axios from 'axios'
 import { DogContext } from '../../helpers/DogContext'
+import { BreedsContext } from '../../helpers/BreedsContext'
+
 import styled from 'styled-components';
 
 // import Dropdown from './Dropdown'
 
 const BreedsSort = () => {
     // Shared state 
-    const { dogsKey, breedsKey, currBreedKey, limitKey, orderKey } = useContext(DogContext)
-    const [dogs, setDogs] = dogsKey
-
+    const { breedsKey } = useContext(DogContext)
     const [ breeds ] = breedsKey
+
+    // Breeds context
+    const { chunkedKey, currBreedKey, limitKey, orderKey, dogsKey, breedsOpenKey, limitOpenKey } = useContext( BreedsContext )
+    const [chunked, setChunked] = chunkedKey
     const [ currBreed, setCurrBreed ] = currBreedKey
     const [ limit , setLimit ] = limitKey
     const [ order , setOrder ] = orderKey
+    const [dogs, setDogs] = dogsKey
+
+    // Managing dropdowns
+    const [breedsOpen, setBrOpen] = breedsOpenKey
+    const [limitOpen, setLimitOpen] = limitOpenKey
 
 
-    // Opening filters
-    const [breedsOpen, setBrOpen] = useState(false);
+    // Handling filters
     const toggleBreeds = () => {
         setBrOpen(!breedsOpen);
         setLimitOpen(false);
     }
 
-    const [limitOpen, setLimitOpen] = useState(false);
     const toggleLimit = () => {
         setLimitOpen(!limitOpen);
         setBrOpen(false);
@@ -45,10 +53,13 @@ const BreedsSort = () => {
     const filterByBreed = (breed) => {
         setCurrBreed({id: breed.id, name: breed.name});
         setBrOpen(false);
+        // console.log("We clicked 'filter by breed'")
+        // console.log(currBreed)
     } 
 
     const handleLimit = (num) => {
         setLimit(num)
+        console.log(limit)
         setLimitOpen(false)
     }
 
@@ -80,7 +91,7 @@ const BreedsSort = () => {
                     {breedsOpen && (
                         <DropDownListContainer>
                         <DropDownList md onMouseLeave={handleMouseLeave}>
-                            <ListItem key="all breeds" onCLick={() => reset()} >None</ListItem>
+                            <ListItem key="all breeds" onClick={() => reset()} >None</ListItem>
                             {
                                 breeds.map( breed => <ListItem key={breed.id} onClick={() => filterByBreed(breed)} >{breed.name}</ListItem>)
                             }

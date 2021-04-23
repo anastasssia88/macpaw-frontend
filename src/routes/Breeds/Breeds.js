@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
-import {DogContext} from '../../helpers/DogContext'
+import { DogContext } from '../../helpers/DogContext'
+import { BreedsContext } from '../../helpers/BreedsContext'
+
 import styled from 'styled-components';
 import axios from 'axios'
 
@@ -10,34 +12,26 @@ import BreedsSort from './BreedsSort'
 
 
 const Breeds = () => {
-    // Shared context
-    const { dogsKey, currBreedKey, limitKey, breedsKey, orderKey } = useContext( DogContext )
-    const [dogs, setDogs] = dogsKey
+    const { breedsKey } = useContext( DogContext )
+    const [ breeds ] = breedsKey
+
+    const { chunkedKey, currBreedKey, limitKey, orderKey, dogsKey } = useContext( BreedsContext )
+    const [chunked, setChunked] = chunkedKey
     const [ currBreed, setCurrBreed ] = currBreedKey
     const [ limit , setLimit ] = limitKey
-    const [ breeds ] = breedsKey
     const [ order , setOrder ] = orderKey
+    const [dogs, setDogs] = dogsKey    
 
-    // Local context
-    const [chunked, setChunked] = useState([])
-
-    useEffect(() => {
-        const breedID = currBreed.id
-        const fetchData = async () => {
-            const response = await axios(`https://api.thedogapi.com/v1/images/search?limit=${limit}&breed_id=${breedID}`);
-            setDogs(response.data)
-            };
-        fetchData(dogs)
-    }, [limit]);
 
     useEffect(() => {
         const breedID = currBreed.id
         const fetchData = async () => {
-            const response = await axios(`https://api.thedogapi.com/v1/images/search?limit=${limit}&breed_id=${breedID}`);
+            const response = await axios(`https://api.thedogapi.com/v1/images/search?limit=${limit}&breed_id=${breedID ? breedID : ''}`);
             setDogs(response.data)
             };
         fetchData(dogs)
-    }, [currBreed]);
+    }, [limit, currBreed]);
+    
 
 
     // displaying the dogs
@@ -57,25 +51,25 @@ const Breeds = () => {
 
     return (
         <Layout flexCol>
-            <Search />
-            <Wrapper>
-                <span>
-                    <GoBack btnContent="Breeds" />
-                    <BreedsSort />
-                </span>
-                <Masonry>
-                    {chunked.map((tenDogs, index) => 
-                        <Pattern key={index}>
-                            {tenDogs.map((dog, index) => 
-                                <GridItem key={dog.id} index={index} >
-                                    <Img src={dog.url} />
-                                    <Label>{dog.breeds[0].name}</Label>
-                                </GridItem>
-                                )}
-                        </Pattern>
-                    )}
-                </Masonry>
-            </Wrapper>
+                <Search />
+                <Wrapper>
+                    <span>
+                        <GoBack btnContent="Breeds" /> 
+                        <BreedsSort />
+                    </span>
+                    <Masonry>
+                        {chunked.map((tenDogs, index) => 
+                            <Pattern key={index}>
+                                {tenDogs.map((dog, index) => 
+                                    <GridItem key={dog.id} index={index} >
+                                        <Img src={dog.url} />
+                                        <Label>{dog.breeds[0].name}</Label>
+                                    </GridItem>
+                                    )}
+                            </Pattern>
+                        )}
+                    </Masonry>
+                </Wrapper>
         </Layout> 
     )
 }
@@ -86,7 +80,7 @@ const Wrapper = styled.div`
     background: ${props => props.theme.bgBox};
     border-radius: 20px;
     width: 100%;
-    height: auto;
+    height: 100%;
     padding: 20px;
 
     span {
@@ -141,7 +135,7 @@ const Label = styled.div`
     display: none;
 `
 
-const GridItem = styled.div` 
+const GridItem = styled.div`  
     width: 100%; 
     height: 100%;
     color: white;
