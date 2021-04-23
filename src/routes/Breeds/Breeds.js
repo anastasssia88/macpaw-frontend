@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from 'react'
-import { DogContext } from '../../helpers/DogContext'
 import { BreedsContext } from '../../helpers/BreedsContext'
 
 import styled from 'styled-components';
@@ -12,8 +11,6 @@ import BreedsSort from './BreedsSort'
 
 
 const Breeds = () => {
-    // const { breedsKey } = useContext( DogContext )
-
     const { chunkedKey, currBreedKey, limitKey, orderKey, dogsKey } = useContext( BreedsContext )
     const [chunked, setChunked] = chunkedKey
     const [ currBreed ] = currBreedKey

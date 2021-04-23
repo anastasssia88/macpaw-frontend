@@ -2,33 +2,47 @@ import React, { useState } from 'react'
 import styled from 'styled-components';
 
 
-const DropdownItem = ({label, title, sm }) => {
-    // LOGIC
-    const [ orderOpen, setOrderOpen ] = useState(false)
+const DropdownItem = ({label, title, sm, content }) => {
+    const [ isOpen, setIsOpen ] = useState(false)
+    // const [ typeOpen, setTypeOpen ] = useState(false)
+    // const [ breedOpen, setBreedOpen ] = useState(false)
+    // const [ limitOpen, setLimitOpen ] = useState(false)
 
     // Opening filters
-    const openFilter = (filter) => {
-        if (filter === 'order') {
-            setOrderOpen(!orderOpen)
-        }
+    const openFilter = () => {
+        setIsOpen(!isOpen)
+    }
+
+    const handleMouseLeave = () => {
+        setIsOpen(false);
+    }
+
+    const handleMouseOver = () => {
+        setIsOpen(false);
+    }
+
+    let firstChild
+    if (label === 'breed') {
+        firstChild = <ListItem>None</ListItem>
     }
 
     return (
                 <Main sm={sm}>
-                    <DropDownContainer md onClick={ () => openFilter('order')}>
+                    <DropDownContainer md onClick={ openFilter } onMouseIn={ handleMouseOver }>
                         <span>{label}</span>
-                        <DropDownHeader > 
+                        <DropDownHeader onMouseOver={ handleMouseOver }> 
                             <p>{title}</p>
                             <svg viewBox="0 0 12 12"> 
                                 <path d="M6.59406 9.17405L11.7538 4.01423C12.0821 3.68603 12.0821 3.15383 11.7538 2.82575C11.4256 2.49767 10.8935 2.49767 10.5655 2.82575L5.99993 7.39142L1.43458 2.82593C1.10635 2.49779 0.574264 2.49779 0.24617 2.82593C-0.0820567 3.15401 -0.0820567 3.68615 0.24617 4.01435L5.40591 9.17418C5.57003 9.33824 5.78492 9.42017 5.9999 9.42017C6.21498 9.42017 6.43002 9.33807 6.59406 9.17405Z"></path>
                             </svg>
                         </DropDownHeader>
-                        {orderOpen && (
+                        {isOpen && (
                             <DropDownListContainer>
-                            <DropDownList md >
-                                <ListItem > Random</ListItem>
-                                <ListItem > Desc</ListItem>
-                                <ListItem > Asc</ListItem>
+                            <DropDownList md onMouseLeave={handleMouseLeave} >
+                                {firstChild}
+                                {   
+                                    content.map( item => <ListItem key={item.id} >{item.name}</ListItem>)
+                                }
                             </DropDownList>
                             </DropDownListContainer>
                         )}
@@ -70,9 +84,6 @@ const DropDownHeader = styled.div`
     background-color: ${props => props.theme.bgGaleryFilters};
     color: ${props => props.theme.textPrim};
     margin-left: 0px;
-
-    /* margin-left: 10px;
-    color: ${props => props.theme.textSec}; */
     color: ${props => props.theme.textPrim};
 
 
@@ -107,22 +118,15 @@ const DropDownList = styled.ul`
     margin-top: 10px;
     padding: 1px 20px;
     max-height: 20rem;
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
     border-radius: 10px;
     font-size: 16px;
     box-sizing: border-box;
     cursor: pointer;
     box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.02);
 
-    /* margin-left: 10px;
-    width: auto; */
-    /* width: ${props => props.md && '200px'};
-    width: ${props => props.lg && '260px'}; */
     position: absolute;
     min-width: 100%;
-    /* box-shadow: 0px 0px 8px 8px rgba(0, 0, 0, 0.25%) */
-
-    /* background-color: ${props => props.theme.bgSort}; */
     background-color: ${props => props.theme.bgGaleryFilters};
     color: ${props => props.theme.textSec};
 

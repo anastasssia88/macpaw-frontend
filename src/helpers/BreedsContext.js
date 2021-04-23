@@ -12,7 +12,7 @@ export const BreedsProvider = ({ children }) => {
     // managing dropdowns
     const [breedsOpen, setBrOpen] = useState(false);
     const [limitOpen, setLimitOpen] = useState(false); 
-
+ 
 
     // Fetching dogs
     // useEffect(() => {
