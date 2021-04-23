@@ -9,6 +9,8 @@ export const DogProvider = ({ children }) => {
     const [favorites, addToFav] = useState([]); 
     const [disliked, addToDisliked] = useState([]); 
     const [chunked, setChunked ] = useState([]);
+    const [ log, setLog ] = useState([]) 
+
 
     const [ dogs, setDogs ] = useState({})
     const [ breeds, setBreeds ] = useState({})
@@ -32,7 +34,7 @@ export const DogProvider = ({ children }) => {
             setBreeds(response.data)
             };
         fetchData(breeds)
-    }, []);
+    }, [breeds]);
 
     return (
         <DogContext.Provider value={{ 
@@ -44,7 +46,8 @@ export const DogProvider = ({ children }) => {
             breedsKey: [ breeds, setBreeds ],
             currBreedKey: [ currBreed, setCurrBreed ],
             limitKey: [ limit, setLimit ],
-            orderKey: [ order, setOrder ]
+            orderKey: [ order, setOrder ],
+            logKey: [ log, setLog ]
             }}> 
             { children }
         </DogContext.Provider>

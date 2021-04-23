@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
-import {DogContext} from '../../helpers/DogContext'
+import { GalleryContext } from '../../helpers/GalleryContext'
 import styled from 'styled-components';
 import axios from 'axios'
 
@@ -10,20 +10,16 @@ import GallerySort from './GallerySort'
 
 
 const Gallery = () => {
+    const { dogsKey, chunkedKey } = useContext( GalleryContext )
 
-    // Shared context
-    // const { chunkedKey } = useContext( DogContext )
-
-
-    // Local context
-    const [ dogs, setDogs ] = useState({})
-    const [chunked, setChunked] = useState([])
+    const [dogs, setDogs] = dogsKey    
+    const [chunked, setChunked] = chunkedKey
     
 
     // Fetching dogs
     useEffect(() => { 
         const fetchData = async () => {
-            const response = await axios('https://api.thedogapi.com/v1/images/search?limit=20');
+            const response = await axios('https://api.thedogapi.com/v1/images/search?limit=10');
             setDogs(response.data)
             };
         fetchData(dogs)
@@ -41,8 +37,6 @@ const Gallery = () => {
             setChunked(result)
         }
     }, [dogs]);
-
-
 
     return (
         <Layout flexCol> 

@@ -1,5 +1,4 @@
-import React, { useState, useEffect, createContext} from 'react'
-import axios from 'axios'
+import React, { useState, createContext} from 'react'
 
 export const BreedsContext = createContext()
 

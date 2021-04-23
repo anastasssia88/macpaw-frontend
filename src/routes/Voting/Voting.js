@@ -12,16 +12,16 @@ import UserAction from './UserAction'
 
 const Voting = ({ like, fav, disl }) => { 
     // Shared state 
-    const { likeKey, favKey, disKey } = useContext( DogContext )
+    const { likeKey, favKey, disKey, logKey } = useContext( DogContext )
     const [ liked, addToLiked ] = likeKey
     const [ favorites, addToFav] = favKey
     const [ disliked, addToDisliked ] = disKey
+    const [ log, setLog ] = logKey 
+
 
     // Local state with data from dog's api
     const [ randomDog, setRandomDog ] = useState({})
     const [ active, setActive ] = useState(false)
-    const [ log, setLog ] = useState([]) 
-
 
     // Fetching data from dogapi on changes in state liked, disliked
     useEffect(() => {

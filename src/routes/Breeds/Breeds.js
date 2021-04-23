@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { DogContext } from '../../helpers/DogContext'
 import { BreedsContext } from '../../helpers/BreedsContext'
 
@@ -12,14 +12,13 @@ import BreedsSort from './BreedsSort'
 
 
 const Breeds = () => {
-    const { breedsKey } = useContext( DogContext )
-    const [ breeds ] = breedsKey
+    // const { breedsKey } = useContext( DogContext )
 
     const { chunkedKey, currBreedKey, limitKey, orderKey, dogsKey } = useContext( BreedsContext )
     const [chunked, setChunked] = chunkedKey
-    const [ currBreed, setCurrBreed ] = currBreedKey
-    const [ limit , setLimit ] = limitKey
-    const [ order , setOrder ] = orderKey
+    const [ currBreed ] = currBreedKey
+    const [ limit ] = limitKey
+    // const [ order , setOrder ] = orderKey
     const [dogs, setDogs] = dogsKey    
 
 
@@ -32,20 +31,19 @@ const Breeds = () => {
         fetchData(dogs)
     }, [limit, currBreed]);
     
-
-
+     
     // displaying the dogs
     useEffect(() => {
         if (dogs.length > 0) {
-            
             const filteredDogs = dogs.filter( dog => dog.breeds.length > 0)
             const temporary = [...filteredDogs];
             console.log(temporary)
             const result = []
             while (temporary.length > 0) {
                 result.push(temporary.splice(0, 10))
+                // debugger
             }
-            setChunked(result)
+            setChunked(result) 
         }
     }, [dogs]);
 

@@ -1,5 +1,4 @@
-import React, { useState, useContext } from 'react'
-import axios from 'axios'
+import React, { useContext } from 'react'
 import { DogContext } from '../../helpers/DogContext'
 import { BreedsContext } from '../../helpers/BreedsContext'
 
@@ -13,12 +12,10 @@ const BreedsSort = () => {
     const [ breeds ] = breedsKey
 
     // Breeds context
-    const { chunkedKey, currBreedKey, limitKey, orderKey, dogsKey, breedsOpenKey, limitOpenKey } = useContext( BreedsContext )
-    const [chunked, setChunked] = chunkedKey
+    const { currBreedKey, limitKey, orderKey, dogsKey, breedsOpenKey, limitOpenKey } = useContext( BreedsContext )
     const [ currBreed, setCurrBreed ] = currBreedKey
     const [ limit , setLimit ] = limitKey
     const [ order , setOrder ] = orderKey
-    const [dogs, setDogs] = dogsKey
 
     // Managing dropdowns
     const [breedsOpen, setBrOpen] = breedsOpenKey
@@ -78,8 +75,6 @@ const BreedsSort = () => {
         <Wrapper> 
 
             {/* All breeds */}
-            {/* <Dropdown lg header="All breeds" /> */}
-
             <Main>
                 <DropDownContainer lg verticalScroll onMouseOver={() => handleMouseOver('breed')} > 
                     <DropDownHeader onClick={toggleBreeds}>
@@ -102,7 +97,6 @@ const BreedsSort = () => {
             </Main>
 
             {/* Limit */}
-            {/* <Dropdown md header="Limit: 10" /> */}
             <Main>
                 <DropDownContainer md onMouseOver={() => handleMouseOver('limit')}>
                 <DropDownHeader onClick={toggleLimit}>
