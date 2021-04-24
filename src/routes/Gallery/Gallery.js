@@ -7,14 +7,14 @@ import Search from '../../components/Searchbar/Search'
 import Layout from '../../components/Shared/Layout'
 import GoBack from '../../components/Shared/GoBack'
 import GallerySort from './GallerySort'
+import UploadModal from './UploadModal'
 
 
 const Gallery = () => {
     const { dogsKey, chunkedKey } = useContext( GalleryContext )
-
     const [dogs, setDogs] = dogsKey    
     const [chunked, setChunked] = chunkedKey
-    
+    const [uploadOpen, setUploadOpen] = useState(false)
 
     // Fetching dogs
     useEffect(() => { 
@@ -39,22 +39,26 @@ const Gallery = () => {
     }, [dogs]); 
 
     return (
-        <Layout flexCol> 
+        <Layout flexCol uploadOpen={uploadOpen} > 
             <Search />
             <Wrapper>
                 <Container>
                     <GoBack btnContent="Galery" /> 
-                    <Upload>
+                    <Upload onClick={() => setUploadOpen(true)}>
                         <svg viewBox="0 0 16 16"> 
                             <path d="M7.86601 0L12.2355 4.03339L11.4129 4.92452L8.48919 2.22567V12.3618H7.27645V2.30464L4.67336 4.90772L3.81583 4.05019L7.86601 0ZM1.21274 14.7873V7.51081H0V16H15.7656V7.51081H14.5529V14.7873H1.21274Z"></path>
                         </svg>
                         Upload
                     </Upload> 
-                </Container>                
+                </Container>   
+
+                <UploadModal open={uploadOpen} onClose={() => setUploadOpen(false)}>
+                    This is my popup
+                </UploadModal>             
 
                 <GallerySort /> 
 
-                <Masonry>
+                <Masonry uploadOpen={uploadOpen}>
                     {chunked.map(tenDogs => <Pattern key={Math.random()}>
                         {tenDogs.map((dog, index) =>
                             <GridItem key={dog.id} index={index} >
@@ -139,6 +143,8 @@ const Masonry = styled.div`
     border-radius: 20px;
     width: 100%;
     height: auto;
+    display: ${props => props.uploadOpen && 'none'};
+
 `
 
 const Pattern = styled.div`

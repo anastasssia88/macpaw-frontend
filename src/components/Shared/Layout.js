@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from "styled-components";
 
-const Layout = ({children, flex, flexCol, maxH100}) => {
+const Layout = ({children, flex, flexCol, maxH100, uploadOpen}) => {
     return (
-        <Section flex={flex} flexCol={flexCol} maxH100={maxH100} >
+        <Section flex={flex} flexCol={flexCol} maxH100={maxH100} uploadOpen={uploadOpen}>
             {children}
         </Section> 
     )
@@ -18,14 +18,16 @@ const Section = styled.section`
     min-height: 100vh;
     max-height: ${props => props.maxH100 && '100vh'};
     height: ${props => props.maxH100 && '100vh'};
+    /* max-height: ${props => props.uploadOpen && '100vh'}; */
+    height: ${props => props.uploadOpen && '80vh'};
+    overflow: ${props => props.uploadOpen && 'hidden'};
 
     width: 50%;
     padding: 1.8rem;
-
     display: flex;
     justify-content: flex-start;
-    /* align-items: center; */
     align-items: flex-start;
 
     flex-direction: ${props => props.flexCol ? 'column' : 'row'};
+
 `

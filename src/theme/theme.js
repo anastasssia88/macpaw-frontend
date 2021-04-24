@@ -12,6 +12,7 @@ export const lightTheme = {
     bgBreed: "#FFFFFF",
 
     bgGaleryFilters: "#FFFFFF",
+    bgPopup: "#F8F8F7",
 
 
   };
@@ -30,6 +31,6 @@ export const darkTheme = {
     bgBreed: "rgba(40, 40, 40, 1)",
 
     bgGaleryFilters: "#1D1D1D",
-
+    bgPopup: "282828",
 }
   
