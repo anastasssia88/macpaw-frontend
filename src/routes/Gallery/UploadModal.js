@@ -1,14 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import ReactDom from 'react-dom'
 import UploadPic from '../../images/upload.jpeg'
-import DashedBorder from '../../images/dashed-border.jpeg'
+import { useDropzone } from 'react-dropzone'
+import Btn from '../../components/Shared/Button'
 
 
 
 const UploadModal = ({open, onClose}) => {
-    if(!open) return null
+    const [ files, setFiles ] = useState([])
+    const [ hidden, setHidden ] = useState(false)
 
+    const { getRootProps, getInputProps } = useDropzone({
+        accept: "image/*",
+        onDrop: (acceptedFiles) => {
+            setFiles(
+                acceptedFiles.map( file => Object.assign(file, {
+                    preview: URL.createObjectURL(file)
+                })),
+            setHidden(true)
+            )
+        }
+    })
+
+    const images = files.map( file => (
+        <div key={file.name}>
+            <img src={file.preview} style={{ maxHeight: '280px', borderRadius: '10px', objectFit: 'contain' }} />
+        </div>
+    ))
+
+    let message
+    if (files.length === 0) {
+        message = 'No item selected'
+    } else {
+        message = `Image File Name: ${files[0].name}`
+    }
+    
+
+    if(!open) return null
     return ReactDom.createPortal(
         <>
             <Overlay />
@@ -18,14 +47,18 @@ const UploadModal = ({open, onClose}) => {
                         <path d="M8.05691 8.99997L0.52832 1.47137L1.47113 0.528564L8.99972 8.05716L16.5283 0.528564L17.4711 1.47137L9.94253 8.99997L17.4711 16.5286L16.5283 17.4714L8.99972 9.94278L1.47113 17.4714L0.52832 16.5286L8.05691 8.99997Z"></path>
                     </svg>
                 </CloseBtn>
+
                 <h1>Upload a .jpg or .png Dog Image</h1>
                 <p>Any uploads must comply with the <a href="https://www.thedogapi.com/privacy" target="_blank" >upload guidelines</a> or face deletion.</p>
-                <DropArea>
+                <DropArea {...getRootProps()}>
                     <div>
-                        <p><span>Drag here</span> your file or <span>Click here</span> to upload</p>
+                        <input {...getInputProps()} />
+                        <p hidden={hidden}><span>Drag here</span> your file or <span>Click here</span> to upload</p>
+                        {images}
                     </div>
                 </DropArea>
-                <p>No file selected</p>
+                <p>{ message }</p>
+                <Btn btnContent="Upload photo" hidden={!hidden} />
             </Section>
         </>,
         document.getElementById('portal')
@@ -70,7 +103,8 @@ const Section = styled.section`
     p {
         font-size: 18px;
         line-height: 3;
-        color: ${ props => props.theme.textSec}
+        color: ${ props => props.theme.textSec};
+        display:  ${ props => props.hidden && 'none'};
     }
 
     a {
@@ -80,8 +114,8 @@ const Section = styled.section`
 
 const DropArea = styled.div`
     background-color: ${ props => props.theme.bgDroparea};  
-    margin: 0px 20px;   
-    height: 320px;
+    margin: 0px 20px; 
+    min-height: 320px;
     width: 100%;
     border-radius: 20px;
     border: 2px dashed #FBE0DC;
@@ -98,6 +132,7 @@ const DropArea = styled.div`
         width: auto;
 
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
     }

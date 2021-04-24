@@ -99,6 +99,7 @@ const Upload = styled.button`
     min-width: 143px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    cursor: pointer;
 
     display: flex;
     flex-direction: row;
