@@ -52,9 +52,7 @@ const Gallery = () => {
                     </Upload> 
                 </Container>   
 
-                <UploadModal open={uploadOpen} onClose={() => setUploadOpen(false)}>
-                    This is my popup
-                </UploadModal>             
+                <UploadModal open={uploadOpen} onClose={() => setUploadOpen(false)} />          
 
                 <GallerySort /> 
 

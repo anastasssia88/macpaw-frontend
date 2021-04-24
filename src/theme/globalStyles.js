@@ -153,6 +153,11 @@ p {
 }
 
 h1 {
+    font-size: 36px;
+    font-weight: 500; 
+}
+
+h2 {
     font-size: 44px;
     font-weight: 500; 
 }
