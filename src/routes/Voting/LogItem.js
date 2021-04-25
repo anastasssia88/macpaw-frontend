@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 
-const UserAction = ({id, content, type, time }) => {
+const LogItem = ({id, content, type, time }) => {
     let path
     let viewBox
     if (type === "like") {
@@ -28,7 +28,7 @@ const UserAction = ({id, content, type, time }) => {
     )
 }
 
-export default UserAction
+export default LogItem
 
 
 const Wrapper = styled.div`

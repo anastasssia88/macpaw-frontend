@@ -6,12 +6,16 @@ import Layout from '../components/Shared/Layout'
 import Search from '../components/Searchbar/Search' 
 import GoBack from '../components/Shared/GoBack'
 import NoItemFound from '../components/Shared/NoItemFound' 
+import LogItem from './Voting/LogItem' 
+
 
 
 const Favorites = () => {
-    const { favKey, chunkedKey } = useContext( DogContext )
+    const { favKey, logKey } = useContext( DogContext )
     const [ favorites, addToFav ] = favKey 
     const [chunked, setChunked] = useState([])  
+    const [ log, setLog ] = logKey 
+
 
     const removeFromFavorites = (index) => {
         let newFav = [...favorites]
@@ -55,6 +59,15 @@ const Favorites = () => {
                         </GridItem>)}
                 </Pattern>)
                 }
+                <ActionLog>
+                        { log.map( (item, index) => <LogItem 
+                            key={index}
+                            id={item.id} 
+                            content={item.content} 
+                            type={item.type} 
+                            time={item.time} 
+                        />) }
+                    </ActionLog>
             </Wrapper>
         </Layout>
     )
@@ -160,3 +173,7 @@ const GridItem = styled.div`
     grid-area: ${props => props.index === 9 && 'ten'};
 `
 
+const ActionLog = styled.div`
+    margin: 10px 0px;
+    width: 100%;
+`
