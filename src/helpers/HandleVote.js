@@ -40,7 +40,7 @@ const HandleVote = () => {
         }
     }
     
-    return {handleClick}
+    return {handleClick, getTime}
 }
 
 export default HandleVote

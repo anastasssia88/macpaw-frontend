@@ -14,7 +14,7 @@ const Gallery = () => {
     const { dogsKey, chunkedKey, favKey } = useContext( GalleryContext )
     const [dogs, setDogs] = dogsKey     
     const [chunked, setChunked] = chunkedKey
-    const [favorites, addToFav] = favKey 
+    // const [favorites, addToFav] = favKey 
     const [uploadOpen, setUploadOpen] = useState(false)
 
     // Fetching dogs
