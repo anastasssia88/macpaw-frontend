@@ -57,7 +57,7 @@ const Gallery = () => {
                 <GallerySort /> 
 
                 <Masonry uploadOpen={uploadOpen}>
-                    {chunked.map(tenDogs => <Pattern key={Math.random()}>
+                    {chunked.map((tenDogs, index) => <Pattern key={index}>
                         {tenDogs.map((dog, index) =>
                             <GridItem key={dog.id} index={index} >
                                 <Img key={dog.id} src={dog.url} />
@@ -172,7 +172,7 @@ const Img = styled.img`
     object-fit: cover;
 
     position: relative;
-    z-index: 1;
+    z-index: 1; 
 
     opacity: 1;
     transition: all 0.4s ease;
@@ -203,9 +203,11 @@ const GridItem = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+
         position: absolute;
-        top: 40%;
-        left: 40%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         width: 40px;
         height: 40px;
         z-index: 100;

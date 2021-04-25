@@ -71,7 +71,7 @@ const Voting = ({ like, fav, disl }) => {
             } else {
                 setActive(false)
                 favorites.pop()
-                setLog(prevLog => [...prevLog, { id: randomDog.id, content: "was removed from Favourites", type: "", time: time}])
+                setLog(prevLog => [...prevLog, { id: randomDog.id, content: "was removed from Favourites", type: "", time: time}]) 
             }
         }
     }
@@ -105,8 +105,8 @@ const Voting = ({ like, fav, disl }) => {
                     </Actions>
                     
                     <ActionLog>
-                        { log.map( item => <UserAction 
-                            key={item.id} 
+                        { log.map( (item, index) => <UserAction 
+                            key={index}
                             id={item.id} 
                             content={item.content} 
                             type={item.type} 

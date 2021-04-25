@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { DogContext } from '../helpers/DogContext'
 
 import styled from 'styled-components';
@@ -11,7 +11,7 @@ const Liked = () => {
     // Shared State
     const { likeKey, chunkedKey } = useContext(DogContext)
     const [liked] = likeKey
-    const [chunked, setChunked] = chunkedKey 
+    const [chunked, setChunked] = useState([])  
 
     useEffect(() => {
         if (liked.length > 0) {
@@ -39,10 +39,10 @@ const Liked = () => {
             <Wrapper>
                 <GoBack btnContent="Liked" />
                 {message}
-                {chunked.map(tenDogs => <Pattern>
+                {chunked.map((tenDogs, index) => <Pattern key={index}>
                     {tenDogs.map((dog, index) =>
                         <GridItem key={dog.id} index={index} >
-                            <Img src={dog.url} />
+                            <Img src={dog.url} /> 
                         </GridItem>)}
                 </Pattern>)
                 }

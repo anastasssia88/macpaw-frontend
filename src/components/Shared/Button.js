@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components';
 
-const Button = ({btnContent, hidden}) => {
+const Button = ({btnContent, hidden, onClick}) => {
     return (
         <Div hidden={hidden}>
-            <Btn>{btnContent}</Btn>
+            <Btn onClick={onClick} >{btnContent}</Btn>
         </Div>
     )
 }

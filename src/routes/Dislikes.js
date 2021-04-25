@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import {DogContext} from '../helpers/DogContext'
 
 import styled from 'styled-components';
@@ -11,7 +11,7 @@ import NoItemFound from '../components/Shared/NoItemFound'
 const Dislikes = () => {
     const { disKey, chunkedKey } = useContext( DogContext )
     const [ disliked ] = disKey 
-    const [chunked, setChunked] = chunkedKey 
+    const [chunked, setChunked] = useState([])  
 
     useEffect(() => {
         if (disliked.length > 0) {
@@ -35,9 +35,9 @@ const Dislikes = () => {
         <Layout flexCol>
             <Search />
             <Wrapper>
-                <GoBack btnContent="Liked" />
+                <GoBack btnContent="Disliked" />
                 {message}
-                {chunked.map(tenDogs => <Pattern>
+                {chunked.map((tenDogs, index) => <Pattern key={index}>
                     {tenDogs.map((dog, index) =>
                         <GridItem key={dog.id} index={index} >
                             <Img src={dog.url} />

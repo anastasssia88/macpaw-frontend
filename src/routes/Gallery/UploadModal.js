@@ -4,6 +4,7 @@ import ReactDom from 'react-dom'
 import UploadPic from '../../images/upload.jpeg'
 import { useDropzone } from 'react-dropzone'
 import Btn from '../../components/Shared/Button'
+import axios from 'axios'
 
 
 
@@ -35,7 +36,66 @@ const UploadModal = ({open, onClose}) => {
     } else {
         message = `Image File Name: ${files[0].name}`
     }
+
+
+    // const handleUpload = () => {
+    //     const headers = {
+    //         'Content-Type': 'multipart/form-data',
+    //         'x-api-key': '220e3104-105e-4131-96f6-194253068792'
+    //       }
+    //     const fd = new FormData();
+    //     fd.append(files[0], files[0].name)
+    //     console.log(files[0])
+    //     axios.post('https://api.thedogapi.com/v1/images/upload', fd, {
+    //         headers: headers
+    //     }).then( res => {
+    //             console.log(res)
+    //         });
+    // }
+
+    const handleUpload = () => {
+        const config = { headers: { 'Content-Type': 'multipart/form-data', 'x-api-key': '220e3104-105e-4131-96f6-194253068792' } };
+        let fd = new FormData();
+
+        files.map((file) => {
+        fd.append('File[]',file);
+        });
+
+        axios.post('https://api.thedogapi.com/v1/images/upload', fd, config)
+        .then((response) => {
+            console.log(response);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
+
+
+    // const handleUpload = () => {
+    //     const data = {
+    //         file: files[0],
+    //         sub_id: files[0].name
+    //     }
+    //     console.log(data.file)
+    //     console.log(data.file.path)
+    //     axios.post("https://api.thedogapi.com/v1/images/upload", data, {headers: {
+    //         "Content-Type": "multipart/form-data",
+    //         "x-api-key": "220e3104-105e-4131-96f6-194253068792"
+    //     }})
+    //         .then(function (response) {
+    //         console.log(response);
+    //         })
+    //         .catch(function (error) {
+    //         console.log(error);
+    //         });
+    // }
+
+
+
     
+
+    
+
 
     if(!open) return null
     return ReactDom.createPortal(
@@ -58,7 +118,7 @@ const UploadModal = ({open, onClose}) => {
                     </div>
                 </DropArea>
                 <p>{ message }</p>
-                <Btn btnContent="Upload photo" hidden={!hidden} />
+                <Btn btnContent="Upload photo" hidden={!hidden} onClick={handleUpload} />
             </Section>
         </>,
         document.getElementById('portal')
