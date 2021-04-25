@@ -10,6 +10,7 @@ export const DogProvider = ({ children }) => {
     const [disliked, addToDisliked] = useState([]); 
     const [chunked, setChunked ] = useState([]);
     const [ log, setLog ] = useState([]) 
+    const [ active, setActive ] = useState(false) 
 
 
     const [ dogs, setDogs ] = useState({})
@@ -47,7 +48,8 @@ export const DogProvider = ({ children }) => {
             currBreedKey: [ currBreed, setCurrBreed ],
             limitKey: [ limit, setLimit ],
             orderKey: [ order, setOrder ],
-            logKey: [ log, setLog ]
+            logKey: [ log, setLog ],
+            activeKey: [ active, setActive ] 
             }}> 
             { children }
         </DogContext.Provider>
