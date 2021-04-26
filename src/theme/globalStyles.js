@@ -1,4 +1,4 @@
-import { createGlobalStyle} from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 html,
@@ -166,6 +166,6 @@ h3 {
     font-size: 20px;
     font-weight: 500; 
 }
-` 
+`;
 
 export default GlobalStyle;
