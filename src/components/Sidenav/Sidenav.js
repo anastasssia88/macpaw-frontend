@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import logo from "../../images/logo.svg";
 import { Link, useLocation } from "react-router-dom";
-import { lightTheme, darkTheme } from "../../theme/theme";
 
 import votingImg from "../../images/vote-table.svg";
 import breedsImg from "../../images/pet-breeds.svg";
 import galleryImg from "../../images/images-search.svg";
 import NavItem from "./NavItem";
+import ModeToggle from './ModeToggle'
 
 const Sidenav = ({ theme , setTheme }) => {
   let location = useLocation();
@@ -17,23 +17,21 @@ const Sidenav = ({ theme , setTheme }) => {
     setPath(location.pathname);
   }, [location.pathname]);
 
-  const toggleTheme = () => {
-    setTheme(theme === lightTheme ? darkTheme : lightTheme)
-  }
+
 
   return (
     <Section> 
       <div>
         <Wrapper>
+
           <Link to="/"> 
             <Logo src={logo} alt="pets paw" />
           </Link>
-          <Toggle>
-            <StyledInput type="checkbox" name="checkbox" onChange={() => toggleTheme()}/>
-          </Toggle>
+          <ModeToggle theme={theme} setTheme={setTheme} />
+      
           <div>
-            <h1>Hi Intern!</h1>
-            <p>Welcome to MSI 2021 Front-end test</p>
+            <h1>Hi MacPaw!</h1>
+            <p>Welcome to MSI 2021 Front-end test completed by Anastasia</p>
             <h3>Lets start using The Dogs API</h3>
             <Nav>
               <NavItem
@@ -113,39 +111,39 @@ const Nav = styled.nav`
 
 // Mode toggle 
 
-const Toggle = styled.div`
+// const Toggle = styled.div`
     
-`
-const StyledInput = styled.input`
-    position: relative;
-    width: 44px;
-    height: 24px;
-    appearance: none;
-    -webkit-appearance: none;
+// `
+// const StyledInput = styled.input`
+//     position: relative;
+//     width: 44px;
+//     height: 24px;
+//     appearance: none;
+//     -webkit-appearance: none;
 
-    outline: none;
-    background: #FBE0DC;
-    border-radius: 20px;
-    display: flex;
-    -webkit-transition: all 0.3s ease;  
-    -moz-transition: all 0.3s ease;  
-    -o-transition: all 0.3s ease; 
-    transition: all 0.3s ease;  
+//     outline: none;
+//     background: #FBE0DC;
+//     border-radius: 20px;
+//     display: flex;
+//     -webkit-transition: all 0.3s ease;  
+//     -moz-transition: all 0.3s ease;  
+//     -o-transition: all 0.3s ease; 
+//     transition: all 0.3s ease;  
     
-    &:checked {
-        background: rgba(255, 134, 142, 0.2);
-    }
+//     &:checked {
+//         background: rgba(255, 134, 142, 0.2);
+//     }
 
-    &:before {
-        content: '';
-        position: absolute; 
-        width: 16px;
-        height: 16px;
-        right: ${ props => props.theme.beforePosition };
-        border-radius: 20px;
-        background-color: #FF868E;
-        transition: 2s;
-        align-self: center;
-        transition: all 0.3s ease-in; 
-    }
-`
+//     &:before {
+//         content: '';
+//         position: absolute; 
+//         width: 16px;
+//         height: 16px;
+//         right: ${ props => props.theme.beforePosition };
+//         border-radius: 20px;
+//         background-color: #FF868E;
+//         transition: 2s;
+//         align-self: center;
+//         transition: all 0.3s ease-in; 
+//     }
+// `
