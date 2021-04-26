@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { DogContext } from './DogContext'
+import { GalleryContext } from './GalleryContext'
 
 
 const HandleVote = () => {
@@ -44,25 +45,17 @@ const HandleVote = () => {
 
     const favFromGallery = (dog) => {
         if (favorites.indexOf(dog) === -1) {
+            setActive(true)
             addToFav(prevFavorites => [...prevFavorites, dog])
             console.log("Added to Favs")
         } else {
+            setActive(false)
             let index = favorites.indexOf(dog)
             let newFav = [...favorites]
             newFav.splice(index, 1);
             addToFav(newFav)
             console.log("Removed from Favs")
         }
-
-        // if (favorites.indexOf(dog) === -1) {
-        //     addToFav(prevFavorites => [...prevFavorites, dog])
-        // } else {
-        //     let index = favorites.indexOf(dog)
-        //     let newFav = [...favorites]
-        //     newFav.splice(index, 1);
-        //     addToFav(newFav)
-        // }
-        
     }
     
     return {handleClick, getTime, favFromGallery}
