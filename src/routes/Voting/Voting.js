@@ -14,15 +14,14 @@ import ActionBtn from './ActionBtn'
 
 const Voting = ({ like, fav, disl }) => { 
     
-    const { likeKey, favKey, disKey, logKey, activeKey } = useContext( DogContext )
-    const [ liked, addToLiked ] = likeKey
-    const [ favorites, addToFav] = favKey
-    const [ disliked, addToDisliked ] = disKey
-    const [ log, setLog ] = logKey 
+    const { likeKey, disKey, logKey, activeKey } = useContext( DogContext )
+    const [ liked ] = likeKey
+    const [ disliked ] = disKey
+    const [ log ] = logKey 
     const [ active, setActive ] = activeKey
-
-    const { handleClick } = HandleVote()
     const [ randomDog, setRandomDog ] = useState({})
+    const { handleClick } = HandleVote()
+
 
     // Fetching data from dogapi on changes in state liked, disliked
     useEffect(() => {
@@ -35,7 +34,6 @@ const Voting = ({ like, fav, disl }) => {
     }, [liked, disliked]);
 
     const url = randomDog.url
-    const id = randomDog.id
 
     let activePath
     if (active) { 

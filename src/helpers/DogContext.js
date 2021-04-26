@@ -12,7 +12,6 @@ export const DogProvider = ({ children }) => {
     const [ log, setLog ] = useState([]) 
     const [ active, setActive ] = useState(false) 
 
-
     const [ dogs, setDogs ] = useState({})
     const [ breeds, setBreeds ] = useState({})
     const [ currBreed , setCurrBreed ] = useState({})

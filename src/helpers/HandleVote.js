@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { DogContext } from './DogContext'
 
+
 const HandleVote = () => {
     
     const getTime = () => {
@@ -18,6 +19,7 @@ const HandleVote = () => {
     const [ disliked, addToDisliked ] = disKey
     const [ log, setLog ] = logKey 
     const [ active, setActive ] = activeKey
+
 
     const handleClick = (type, randomDog) => {
         let time = getTime() 
@@ -39,8 +41,31 @@ const HandleVote = () => {
             }
         }
     }
+
+    const favFromGallery = (dog) => {
+        if (favorites.indexOf(dog) === -1) {
+            addToFav(prevFavorites => [...prevFavorites, dog])
+            console.log("Added to Favs")
+        } else {
+            let index = favorites.indexOf(dog)
+            let newFav = [...favorites]
+            newFav.splice(index, 1);
+            addToFav(newFav)
+            console.log("Removed from Favs")
+        }
+
+        // if (favorites.indexOf(dog) === -1) {
+        //     addToFav(prevFavorites => [...prevFavorites, dog])
+        // } else {
+        //     let index = favorites.indexOf(dog)
+        //     let newFav = [...favorites]
+        //     newFav.splice(index, 1);
+        //     addToFav(newFav)
+        // }
+        
+    }
     
-    return {handleClick, getTime}
+    return {handleClick, getTime, favFromGallery}
 }
 
 export default HandleVote

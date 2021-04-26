@@ -8,10 +8,7 @@ export const GalleryProvider = ({ children }) => {
     const [ order,  setOrder ] = useState('rand') 
     const [ type,  setType ] = useState('rand') 
     const [ currBreed , setCurrBreed ] = useState({})
-    const [ limit , setLimit ] = useState(10)
-
-    // managing dropdowns 
-    
+    const [ limit , setLimit ] = useState(10)    
 
 
     return (
@@ -21,7 +18,7 @@ export const GalleryProvider = ({ children }) => {
             limitKey: [ limit, setLimit ],
             orderKey: [ order, setOrder ],
             dogsKey: [ dogs, setDogs ],
-            typeKey: [ type,  setType ]
+            typeKey: [ type,  setType ],
             }}> 
             { children }
         </GalleryContext.Provider>

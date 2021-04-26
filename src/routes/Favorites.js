@@ -22,7 +22,6 @@ const Favorites = () => {
     const { getTime } = HandleVote()
 
 
-
     const removeFromFavorites = (id, index) => {
         let newFav = [...favorites]
         newFav.splice(index, 1);
