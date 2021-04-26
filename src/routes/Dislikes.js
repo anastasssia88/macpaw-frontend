@@ -9,7 +9,7 @@ import NoItemFound from "../components/Shared/NoItemFound";
 import Loader from "../components/Shared/Loader";
 
 const Dislikes = () => {
-  const { disKey, chunkedKey } = useContext(DogContext);
+  const { disKey } = useContext(DogContext);
   const [disliked] = disKey;
   const [chunked, setChunked] = useState([]);
   const [ loading, setLoading ] = useState();

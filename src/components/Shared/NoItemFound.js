@@ -12,7 +12,7 @@ const NoItemFound = ({ children }) => {
 export default NoItemFound;
 
 const Wrapper = styled.div`
-  background-color: ${(props) => props.theme.bgMain};
+  background-color: ${(props) => props.theme.bgSort};
   width: 100%;
   height: 60px;
   border-radius: 10px;

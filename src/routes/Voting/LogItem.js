@@ -46,7 +46,7 @@ const LogItem = ({ id, content, type, time }) => {
 export default LogItem;
 
 const Wrapper = styled.div`
-  background-color: ${(props) => props.theme.bgMain};
+  background-color: ${(props) => props.theme.bgSort};
   width: 100%;
   height: 60px;
   border-radius: 10px;
@@ -76,7 +76,8 @@ const Wrapper = styled.div`
 `;
 
 const Time = styled.span`
-  background-color: white;
+  background-color: ${ props => props.theme.bgGaleryFilters};
+  color: ${(props) => props.theme.textPrim};
   width: auto;
   height: 30px;
   border-radius: 5px;

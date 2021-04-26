@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import logo from "../../images/logo.svg";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import votingImg from "../../images/vote-table.svg";
 import breedsImg from "../../images/pet-breeds.svg";
 import galleryImg from "../../images/images-search.svg";
 import NavItem from "./NavItem";
-import ModeToggle from './ModeToggle'
+import ModeToggle from "./ModeToggle";
+import NavLogo from './Logo'
 
 const Sidenav = ({ theme , setTheme }) => {
   let location = useLocation();
@@ -23,18 +23,16 @@ const Sidenav = ({ theme , setTheme }) => {
     <Section> 
       <div>
         <Wrapper>
-
-          <Link to="/"> 
-            <Logo src={logo} alt="pets paw" />
-          </Link>
-          <ModeToggle theme={theme} setTheme={setTheme} />
-      
+          <Flex>
+            <NavLogo theme={theme} />
+            <ModeToggle theme={theme} setTheme={setTheme} />
+          </Flex>
           <div>
             <h1>Hi MacPaw!</h1>
             <p>Welcome to MSI 2021 Front-end test completed by Anastasia</p>
             <h3>Lets start using The Dogs API</h3>
             <Nav>
-              <NavItem
+              <NavItem 
                 btnContent="Voting"
                 imgSrc={votingImg}
                 url="/voting"
@@ -76,7 +74,7 @@ const Section = styled.section`
 `;
 
 const Wrapper = styled.div`
-  width: 450px;
+  width: 455px;
   margin: 2rem 8rem;
   position: fixed;
   background: ${(props) => props.theme.bgMain};
@@ -97,11 +95,6 @@ const Wrapper = styled.div`
   }
 `;
 
-const Logo = styled.img`
-  width: 7rem;
-  height: auto;
-`;
-
 const Nav = styled.nav`
   margin: 1.5rem 0rem;
   display: flex;
@@ -109,41 +102,9 @@ const Nav = styled.nav`
   justify-content: space-between;
 `;
 
-// Mode toggle 
-
-// const Toggle = styled.div`
-    
-// `
-// const StyledInput = styled.input`
-//     position: relative;
-//     width: 44px;
-//     height: 24px;
-//     appearance: none;
-//     -webkit-appearance: none;
-
-//     outline: none;
-//     background: #FBE0DC;
-//     border-radius: 20px;
-//     display: flex;
-//     -webkit-transition: all 0.3s ease;  
-//     -moz-transition: all 0.3s ease;  
-//     -o-transition: all 0.3s ease; 
-//     transition: all 0.3s ease;  
-    
-//     &:checked {
-//         background: rgba(255, 134, 142, 0.2);
-//     }
-
-//     &:before {
-//         content: '';
-//         position: absolute; 
-//         width: 16px;
-//         height: 16px;
-//         right: ${ props => props.theme.beforePosition };
-//         border-radius: 20px;
-//         background-color: #FF868E;
-//         transition: 2s;
-//         align-self: center;
-//         transition: all 0.3s ease-in; 
-//     }
-// `
+const Flex = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;

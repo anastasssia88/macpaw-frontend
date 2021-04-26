@@ -8,14 +8,12 @@ import Search from "../components/Searchbar/Search";
 import GoBack from "../components/Shared/GoBack";
 import NoItemFound from "../components/Shared/NoItemFound";
 import LogItem from "./Voting/LogItem";
-import Loader from "../components/Shared/Loader";
 
 
 const Favorites = () => {
-  const { favKey, logKey } = useContext(DogContext);
+  const { favKey } = useContext(DogContext);
   const [favorites, addToFav] = favKey;
   const [chunked, setChunked] = useState([]);
-  const [log, setLog] = logKey;
 
   const [favoritesLog, setFavoritesLog] = useState([]);
   const { getTime } = HandleVote();

@@ -24,7 +24,7 @@ const Btn = styled.button`
   width: 80px;
   height: 80px;
   border: none;
-  margin: ${(props) => props.fav && "0px 3px"};
+  margin: ${(props) => props.fav && "0px 4px"};
 
   background: ${(props) => props.like && "#97EAB9"};
   background: ${(props) => props.fav && "#FF868E"};

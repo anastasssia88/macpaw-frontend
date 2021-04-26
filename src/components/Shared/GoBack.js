@@ -27,7 +27,7 @@ const Div = styled.div`
 const BtnBack = styled.button`
   width: 40px;
   height: 40px;
-  background: #fbe0dc;
+  background: ${ props => props.theme.pinkBtn};
   border-radius: 10px;
   border: none;
   display: flex;

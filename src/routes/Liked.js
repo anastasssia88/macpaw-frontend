@@ -9,7 +9,7 @@ import NoItemFound from "../components/Shared/NoItemFound";
 
 const Liked = () => {
   // Shared State
-  const { likeKey, chunkedKey } = useContext(DogContext);
+  const { likeKey } = useContext(DogContext);
   const [liked] = likeKey;
   const [chunked, setChunked] = useState([]);
 

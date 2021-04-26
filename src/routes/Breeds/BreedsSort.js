@@ -16,13 +16,12 @@ const BreedsSort = () => {
     currBreedKey,
     limitKey,
     orderKey,
-    dogsKey,
     breedsOpenKey,
     limitOpenKey,
   } = useContext(BreedsContext);
   const [currBreed, setCurrBreed] = currBreedKey;
   const [limit, setLimit] = limitKey;
-  const [order, setOrder] = orderKey;
+  const [ setOrder] = orderKey;
 
   // Managing dropdowns
   const [breedsOpen, setBrOpen] = breedsOpenKey;

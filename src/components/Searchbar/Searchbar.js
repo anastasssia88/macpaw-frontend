@@ -56,7 +56,8 @@ const Div = styled.div`
 const Icon = styled.div`
   width: 40px;
   height: 40px;
-  background: #fbe0dc;
+  /* background: #fbe0dc; */
+  background: ${ props => props.theme.pinkBtn};
   border-radius: 10px;
   display: flex;
   justify-content: center;

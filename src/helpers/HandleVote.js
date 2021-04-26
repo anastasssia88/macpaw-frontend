@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { DogContext } from "./DogContext";
-import { GalleryContext } from "./GalleryContext";
 
 const HandleVote = () => {
   const getTime = () => {
@@ -13,11 +12,11 @@ const HandleVote = () => {
   };
 
   const { likeKey, favKey, disKey, logKey, activeKey } = useContext(DogContext);
-  const [liked, addToLiked] = likeKey;
+  const [ addToLiked] = likeKey;
   const [favorites, addToFav] = favKey;
-  const [disliked, addToDisliked] = disKey;
-  const [log, setLog] = logKey;
-  const [active, setActive] = activeKey;
+  const [ addToDisliked] = disKey;
+  const [ setLog] = logKey;
+  const [ setActive] = activeKey;
 
   const handleClick = (type, randomDog) => {
     let time = getTime();

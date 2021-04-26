@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import ReactDom from "react-dom";
 import UploadPic from "../../images/upload.jpeg";
+
 import { useDropzone } from "react-dropzone";
 import Btn from "../../components/Shared/Button";
 import axios from "axios";
@@ -27,6 +28,7 @@ const UploadModal = ({ open, onClose }) => {
   const images = files.map((file) => (
     <div key={file.name}>
       <img
+        alt={file.name} 
         src={file.preview}
         style={{
           maxHeight: "280px",
@@ -44,20 +46,6 @@ const UploadModal = ({ open, onClose }) => {
     message = `Image File Name: ${files[0].name}`;
   }
 
-  // const handleUpload = () => {
-  //     const headers = {
-  //         'Content-Type': 'multipart/form-data',
-  //         'x-api-key': '220e3104-105e-4131-96f6-194253068792'
-  //       }
-  //     const fd = new FormData();
-  //     fd.append(files[0], files[0].name)
-  //     console.log(files[0])
-  //     axios.post('https://api.thedogapi.com/v1/images/upload', fd, {
-  //         headers: headers
-  //     }).then( res => {
-  //             console.log(res)
-  //         });
-  // }
 
   const handleUpload = () => {
     const config = {
@@ -115,7 +103,7 @@ const UploadModal = ({ open, onClose }) => {
         <h1>Upload a .jpg or .png Dog Image</h1>
         <p>
           Any uploads must comply with the{" "}
-          <a href="https://www.thedogapi.com/privacy" target="_blank">
+          <a href="https://www.thedogapi.com/privacy" target="_blank" rel="noreferrer">
             upload guidelines
           </a>{" "}
           or face deletion.
@@ -203,7 +191,7 @@ const DropArea = styled.div`
   align-items: center;
 
   div {
-    background: url(${UploadPic}) no-repeat center;
+    background: url(${UploadPic}) no-repeat center; 
     height: 200px;
     width: auto;
 

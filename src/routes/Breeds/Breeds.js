@@ -10,13 +10,12 @@ import GoBack from "../../components/Shared/GoBack";
 import BreedsSort from "./BreedsSort";
 
 const Breeds = () => {
-  const { chunkedKey, currBreedKey, limitKey, orderKey, dogsKey } = useContext(
+  const { chunkedKey, currBreedKey, limitKey, dogsKey } = useContext(
     BreedsContext
   );
   const [chunked, setChunked] = chunkedKey;
   const [currBreed] = currBreedKey;
   const [limit] = limitKey;
-  // const [ order , setOrder ] = orderKey
   const [dogs, setDogs] = dogsKey;
   const [ loading, setLoading ] = useState();
 

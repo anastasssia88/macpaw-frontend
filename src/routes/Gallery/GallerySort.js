@@ -1,9 +1,7 @@
 import React, { useContext } from "react";
 import { DogContext } from "../../helpers/DogContext";
 import styled from "styled-components";
-import axios from "axios";
 import Item from "../../components/Shared/DropdownItem";
-import Filter from "../../components/Searchbar/Filter";
 
 const GallerySort = () => {
   const { breedsKey } = useContext(DogContext);
@@ -75,7 +73,7 @@ const GallerySort = () => {
 export default GallerySort;
 
 const Container = styled.section`
-  background-color: #f8f8f7;
+  background-color: ${ props => props.theme.bgSort};
   border-radius: 20px;
   padding: 20px;
   margin-bottom: 10px;
@@ -107,8 +105,7 @@ const ItemFlex = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
-  background-color: #f8f8f7;
-`;
+  `;
 
 const ResetBtn = styled.div`
   display: flex;

@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "./theme/theme";
+import { lightTheme } from "./theme/theme";
 import { DogProvider } from "./helpers/DogContext";
 import { BreedsProvider } from "./helpers/BreedsContext";
 import { GalleryProvider } from "./helpers/GalleryContext";
