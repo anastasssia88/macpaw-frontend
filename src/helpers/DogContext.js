@@ -27,13 +27,14 @@ export const DogProvider = ({ children }) => {
   // }, []);
 
   // Fetching breed names
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios("https://api.thedogapi.com/v1/breeds");
       setBreeds(response.data);
     };
-    fetchData(breeds);
-  }, [breeds]);
+    fetchData();
+  }, []);
 
   return (
     <DogContext.Provider
