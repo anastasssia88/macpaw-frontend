@@ -68,7 +68,7 @@ const Gallery = () => {
 
         <UploadModal open={uploadOpen} onClose={() => setUploadOpen(false)} />
 
-        { loading ? (
+        { loading ? ( 
             <Loader />
         ) : (
           <>

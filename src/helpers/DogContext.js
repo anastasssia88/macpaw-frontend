@@ -17,17 +17,6 @@ export const DogProvider = ({ children }) => {
   const [limit, setLimit] = useState(10);
   const [order, setOrder] = useState("rand");
 
-  // Fetching dogs
-  // useEffect(() => {
-  //     const fetchData = async () => {
-  //         const response = await axios('https://api.thedogapi.com/v1/images/search?limit=20');
-  //         setDogs(response.data)
-  //         };
-  //     fetchData(dogs)
-  // }, []);
-
-  // Fetching breed names
-
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios("https://api.thedogapi.com/v1/breeds");

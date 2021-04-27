@@ -15,7 +15,7 @@ import Breeds from "./routes/Breeds/Breeds";
 import Gallery from "./routes/Gallery/Gallery";
 import Liked from "./routes/Liked";
 import Favorites from "./routes/Favorites";
-import Disliked from "./routes/Dislikes";
+import Disliked from "./routes/Dislikes"; 
 
 
 function App() {

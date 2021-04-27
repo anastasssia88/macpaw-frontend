@@ -11,7 +11,7 @@ const GallerySort = () => {
   // const breedContent = [breeds]
   // const limitContent = ['5 items per page', '10 items per page', '15 items per page', '20 items per page']
 
-  const orderContent = [
+  const orderContent = [ 
     { id: 1, name: "Random" },
     { id: 2, name: "Desc" },
     { id: 3, name: "Asc" },
@@ -24,9 +24,9 @@ const GallerySort = () => {
   const breedContent = breeds;
   const limitContent = [
     { id: 1, name: "5 items per page" },
-    { id: 1, name: "10 items per page" },
-    { id: 1, name: "15 items per page" },
-    { id: 1, name: "20 items per page" },
+    { id: 2, name: "10 items per page" },
+    { id: 3, name: "15 items per page" },
+    { id: 4, name: "20 items per page" },
   ];
 
   // const orderContent = {{id: 1, name: 'Random'} 'Random', 2: 'Desc', 3: 'Asc'}
