@@ -76,6 +76,9 @@ export default DropdownItem;
 
 const Main = styled.div`
   margin: 5px 10px;
+  -webkit-transition: all 0.3s ease;  
+  -moz-transition: all 0.3s ease;  
+  -o-transition: all 0.3s ease; 
   transition: all 0.3s ease;
   width: 100%;
   width: ${(props) => props.sm && "100%"};
@@ -84,13 +87,7 @@ const Main = styled.div`
 `;
 
 const DropDownContainer = styled.div`
-  /* min-width: ${(props) => props.md && "120px"};
-  min-width: ${(props) => props.lg && "200px"};
-  max-width: ${(props) => props.md && "150px"};
-  max-width: ${(props) => props.lg && "230px"}; */
-
   min-width: 100%;
-  /* width: 100px; */
 
   span {
     color: #8c8c8c;
@@ -171,6 +168,9 @@ const DropDownList = styled.ul`
 const ListItem = styled.li`
   list-style: none;
   margin-bottom: 1em;
+  -webkit-transition: all 0.3s ease;  
+  -moz-transition: all 0.3s ease;  
+  -o-transition: all 0.3s ease; 
   transition: all 0.3s ease;
   &:hover {
     color: #ff868e;

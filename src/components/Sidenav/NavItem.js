@@ -47,6 +47,9 @@ const Div = styled.div`
   border-radius: 20px;
   border: 5px solid rgba(255, 255, 255, 0.6);
   border: ${(props) => props.active && "5px solid #FBE0DC"};
+  -webkit-transition: all 0.3s ease;  
+  -moz-transition: all 0.3s ease;  
+  -o-transition: all 0.3s ease; 
   transition: all 0.3s ease;
 
   display: flex;
@@ -69,6 +72,9 @@ const A = styled.div`
   text-transform: uppercase;
   text-align: center;
   border-radius: 10px;
+  -webkit-transition: all 0.3s ease;  
+  -moz-transition: all 0.3s ease;  
+  -o-transition: all 0.3s ease; 
   transition: all 0.3s ease;
 `;
 

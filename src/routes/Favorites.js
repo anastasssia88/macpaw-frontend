@@ -127,7 +127,10 @@ const Img = styled.img`
   z-index: 1;
 
   opacity: 1;
-  transition: all 0.4s ease;
+  -webkit-transition: all 0.3s ease;  
+  -moz-transition: all 0.3s ease;  
+  -o-transition: all 0.3s ease; 
+  transition: all 0.3s ease;
 `;
 
 const Label = styled.div`

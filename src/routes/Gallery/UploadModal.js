@@ -274,6 +274,9 @@ const CloseBtn = styled.button`
   align-items: center;
   cursor: pointer;
 
+  -webkit-transition: all 0.3s ease;  
+  -moz-transition: all 0.3s ease;  
+  -o-transition: all 0.3s ease; 
   transition: all 0.3s ease;
 
   svg {

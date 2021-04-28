@@ -109,6 +109,9 @@ const ResetBtn = styled.div`
   border-radius: 10px;
   margin: 5px 10px;
 
+  -webkit-transition: all 0.3s ease;  
+  -moz-transition: all 0.3s ease;  
+  -o-transition: all 0.3s ease; 
   transition: all 0.3s ease;
 
   svg {
