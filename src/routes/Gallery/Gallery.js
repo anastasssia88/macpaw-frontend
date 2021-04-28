@@ -16,9 +16,20 @@ import Loader from "../../components/Shared/Loader";
 const Gallery = () => {
   const { favKey } = useContext(DogContext);
   const [favorites] = favKey;
-  const { dogsKey, chunkedKey } = useContext(GalleryContext);
+  const { 
+    dogsKey, 
+    chunkedKey,
+    orderKey,
+    typeKey,
+    currBreedKey,
+    limitKey
+  } = useContext( GalleryContext );
   const [dogs, setDogs] = dogsKey;
   const [chunked, setChunked] = chunkedKey; 
+  const [order, setOrder] = orderKey;
+  const [type, setType] = typeKey
+  const [currBreed, setCurrBreed] = currBreedKey
+  const [limit, setLimit] = limitKey
 
   const [uploadOpen, setUploadOpen] = useState(false);
   const [ loading, setLoading ] = useState();
@@ -37,6 +48,23 @@ const Gallery = () => {
     fetchData();
   }, []);
 
+  // reloading with filters
+  const handleReload = () => {
+    const breedID = currBreed.id;
+    const fetchData = async () => {
+      setLoading(true);
+      const response = await axios(
+          `https://api.thedogapi.com/v1/images/search?limit=${limit}&order=${order}&mime_types=${type}&breed_id=${
+          breedID ? breedID : ""
+          }`
+      );
+      setDogs(response.data);
+      setLoading(false);
+      };
+    fetchData(); 
+  }
+  
+
   // displaying the dogs
   useEffect(() => {
     if (dogs.length > 0) {
@@ -51,6 +79,8 @@ const Gallery = () => {
 
     }
   }, [dogs]);
+
+  
 
   return (
     <Layout flexCol uploadOpen={uploadOpen}>
@@ -72,7 +102,7 @@ const Gallery = () => {
             <Loader />
         ) : (
           <>
-          <GallerySort />
+          <GallerySort handleReload={handleReload}/>
           <Masonry uploadOpen={uploadOpen}>
             {chunked.map((tenDogs, index) => (
               <Pattern key={index}>

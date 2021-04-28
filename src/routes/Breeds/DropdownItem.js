@@ -91,13 +91,7 @@ const Main = styled.div`
 `;
 
 const DropDownContainer = styled.div`
-  /* min-width: ${(props) => props.md && "120px"};
-  min-width: ${(props) => props.lg && "200px"};
-  max-width: ${(props) => props.md && "150px"};
-  max-width: ${(props) => props.lg && "230px"}; */
-
-  min-width: 100%;
-  /* width: 100px; */
+min-width: 100%;
 
   span {
     color: #8c8c8c;
@@ -112,8 +106,6 @@ const DropDownHeader = styled.div`
   height: 40px;
   margin-left: 0px;
 
-  background-color: ${(props) => props.theme.bgGaleryFilters};
-  color: ${(props) => props.theme.textPrim};
 
   background-color: ${(props) => props.gray && "#F8F8F7"};
   color: ${(props) => props.gray && "#8C8C8C"};

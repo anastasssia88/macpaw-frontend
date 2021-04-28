@@ -47,7 +47,7 @@ const BreedsSort = () => {
           scroll
           title="All breeds"
           content={breedContent}
-          setState={setCurrBreed}
+          setState={setCurrBreed} 
           
         />
         <Item
