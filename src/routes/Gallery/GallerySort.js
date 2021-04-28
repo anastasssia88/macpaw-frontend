@@ -1,20 +1,17 @@
 import React, { useContext } from "react";
 import { DogContext } from "../../helpers/DogContext";
 import styled from "styled-components";
-import Item from "../../components/Shared/DropdownItem";
+import Item from "./DropdownItem";
 
 const GallerySort = () => {
   const { breedsKey } = useContext(DogContext);
   const [breeds] = breedsKey;
-  // const orderContent = ['Random', 'Desc', 'Asc']
-  // const typeContent = ['All', 'Static', 'Animated']
-  // const breedContent = [breeds]
-  // const limitContent = ['5 items per page', '10 items per page', '15 items per page', '20 items per page']
+
 
   const orderContent = [ 
     { id: 1, name: "Random" },
     { id: 2, name: "Desc" },
-    { id: 3, name: "Asc" },
+    { id: 3, name: "Asc" }, 
   ];
   const typeContent = [
     { id: 1, name: "All" },
@@ -28,11 +25,6 @@ const GallerySort = () => {
     { id: 3, name: "15 items per page" },
     { id: 4, name: "20 items per page" },
   ];
-
-  // const orderContent = {{id: 1, name: 'Random'} 'Random', 2: 'Desc', 3: 'Asc'}
-  // const typeContent = {1: 'All', 2: 'Static', 3: 'Animated'}
-  // const breedContent = [...breeds]
-  // const limitContent = {1: '5 items per page', 2: '10 items per page', 3: '15 items per page', 4: '20 items per page'}
 
   return (
     <Container>

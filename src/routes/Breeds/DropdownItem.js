@@ -1,12 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
 import { lightTheme, darkTheme } from "../../theme/theme"
-import FilterItems from "../../helpers/FilterItems";
+import { BreedsContext } from "../../helpers/BreedsContext"
+import FilterItems from "../../helpers/FilterItemsBreeds";
 
 
 const DropdownItem = ({ label, title, xs, sm, content, gray, ml, setState }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { handleFilterClick } = FilterItems();
+  
+  const {
+    currBreedKey,
+    limitKey,
+    breedTitleKey,
+    limitTitleKey, 
+  } = useContext(BreedsContext); 
+  const [currBreed, setCurrBreed] = currBreedKey;
+  const [limit, setLimit] = limitKey;
+  // Titles
+  const [breedTitle, setBreedTitle] = breedTitleKey;
+  const [limitTitle, setLimitTitle] = limitTitleKey;
+
+  
 
   // Opening filters
   const openFilter = () => {
@@ -21,24 +36,28 @@ const DropdownItem = ({ label, title, xs, sm, content, gray, ml, setState }) => 
     setIsOpen(false);
   };
 
-  // Handling Click
-  const handleClick = (stateFunction, item) => {
-    console.log(stateFunction)
-    console.log(item)
-    console.log(item)
-  }
+
+
+  // Logic for "breeds" filter
+  const reset = () => { 
+    setLimit(10);
+    setCurrBreed({ id: "", name: "" });
+  };
 
   let firstChild;
   if (title === "All breeds") {
-    firstChild = <ListItem>None</ListItem>;
+    firstChild = <ListItem onClick={reset} >None</ListItem>;
   }
+
+
 
   return (
     <Main sm={sm} xs={xs} ml={ml}>
       <DropDownContainer md onClick={openFilter} gray={gray}>
         <span>{label}</span>
         <DropDownHeader gray={gray} >
-          <p>{title}</p>
+          { title === "All breeds" && <p>{breedTitle}</p>}
+          { title === "Limit: 10" && <p>Limit: {limitTitle}</p>}
           <svg viewBox="0 0 12 12">
             <path d="M6.59406 9.17405L11.7538 4.01423C12.0821 3.68603 12.0821 3.15383 11.7538 2.82575C11.4256 2.49767 10.8935 2.49767 10.5655 2.82575L5.99993 7.39142L1.43458 2.82593C1.10635 2.49779 0.574264 2.49779 0.24617 2.82593C-0.0820567 3.15401 -0.0820567 3.68615 0.24617 4.01435L5.40591 9.17418C5.57003 9.33824 5.78492 9.42017 5.9999 9.42017C6.21498 9.42017 6.43002 9.33807 6.59406 9.17405Z"></path>
           </svg>

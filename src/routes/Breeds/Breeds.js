@@ -10,21 +10,22 @@ import GoBack from "../../components/Shared/GoBack";
 import BreedsSort from "./BreedsSort";
 
 const Breeds = () => {
-  const { chunkedKey, currBreedKey, limitKey, dogsKey } = useContext(
+  const { chunkedKey, currBreedKey, limitKey, dogsKey, orderKey } = useContext(
     BreedsContext
   );
   const [chunked, setChunked] = chunkedKey;
   const [currBreed] = currBreedKey;
   const [limit] = limitKey;
   const [dogs, setDogs] = dogsKey;
+  const [order] = orderKey;
   const [ loading, setLoading ] = useState();
 
-useEffect(() => {
+useEffect(() => { 
     const breedID = currBreed.id;
     const fetchData = async () => {
         setLoading(true);
         const response = await axios(
-            `https://api.thedogapi.com/v1/images/search?limit=${limit}&breed_id=${
+            `https://api.thedogapi.com/v1/images/search?limit=${limit}&order=${order}&breed_id=${
             breedID ? breedID : ""
             }`
         );
@@ -32,15 +33,14 @@ useEffect(() => {
         setLoading(false);
         };
     fetchData(); 
-  }, [limit, currBreed]);
+  }, [limit, currBreed, order]);
 
 
   // displaying the dogs
   useEffect(() => {
     if (dogs.length > 0) {
         setLoading(true);
-        const filteredDogs = dogs.filter((dog) => dog.breeds.length > 0);
-        const temporary = [...filteredDogs];
+        const temporary = [...dogs];
         const result = [];
         while (temporary.length > 0) {
             result.push(temporary.splice(0, 10));
@@ -69,7 +69,12 @@ useEffect(() => {
                     {tenDogs.map((dog, index) => (
                         <GridItem key={dog.id} index={index}>
                         <Img src={dog.url} />
-                        <Label>{dog.breeds[0].name}</Label>
+
+                        { dog.breeds.length > 0 ? (
+                          <Label>{dog.breeds[0].name}</Label>
+                        ) : (
+                          <Label>No name provided</Label>
+                        ) }
                         </GridItem>
                     ))}
                     </Pattern>
@@ -128,7 +133,6 @@ const Img = styled.img`
   width: 100%;
   height: 100%;
   min-height: 120px;
-  height: ${(props) => props.index === 0 && "280px"};
   border-radius: 20px;
   object-fit: cover;
   position: relative;
@@ -144,7 +148,12 @@ const Label = styled.div`
 
 const GridItem = styled.div`
   width: 100%;
-  height: 100%;
+  max-height: 100%;
+  max-height: ${(props) => props.index === 0 && "300px"};
+  max-height: ${(props) => props.index === 3 && "300px"};
+  max-height: ${(props) => props.index === 7 && "300px"};
+  max-height: ${(props) => props.index === 8 && "300px"};
+  
   color: white;
   border-radius: 20px;
 

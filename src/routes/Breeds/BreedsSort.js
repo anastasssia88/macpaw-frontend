@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { DogContext } from "../../helpers/DogContext";
 import { BreedsContext } from "../../helpers/BreedsContext";
-import Item from "../../components/Shared/DropdownItem";
+import Item from "./DropdownItem";
+import FilterItems from "../../helpers/FilterItemsBreeds";
 
 
 const BreedsSort = () => {
@@ -11,25 +12,15 @@ const BreedsSort = () => {
     currBreedKey,
     limitKey,
     orderKey,
-    breedsOpenKey,
-    limitOpenKey,
     breedsKey
   } = useContext(BreedsContext);
 
   const [currBreed, setCurrBreed] = currBreedKey;
   const [limit, setLimit] = limitKey;
-  const [ setOrder] = orderKey;
+  const [ order, setOrder] = orderKey;
   const [breeds, setBreeds] = breedsKey;
+  const { handleFilterClick, changeOrder } = FilterItems();
 
-  // Managing dropdowns
-  const [breedsOpen, setBrOpen] = breedsOpenKey;
-  const [limitOpen, setLimitOpen] = limitOpenKey;
-
-
-
-  const changeOrder = (value) => {
-    setOrder(value);
-  };
 
   let label;
   if (currBreed.name === "" || currBreed.name === undefined) {
@@ -70,7 +61,7 @@ const BreedsSort = () => {
 
 
       {/* Sorting from Z to A */}
-      <SortBtn sort onClick={() => changeOrder("ASC")}>
+      <SortBtn sort onClick={() => changeOrder("ASC")} asc={order} >
         <svg viewBox="0 0 20 20">
           <path
             fillRule="evenodd"
@@ -81,7 +72,7 @@ const BreedsSort = () => {
       </SortBtn>
 
       {/* Sorting from A to Z */}
-      <SortBtn sort onClick={() => changeOrder("DESC")}>
+      <SortBtn sort onClick={() => changeOrder("DESC")} desc={order}>
         <svg viewBox="0 0 20 20">
           <path
             fillRule="evenodd"
@@ -110,12 +101,12 @@ const SortBtn = styled.div`
   color: ${(props) => props.theme.textSec};
   min-height: 40px;
   min-width: 40px;
-  /* width: ${(props) => props.w100 && "110px"};
-    width: ${(props) => props.wMax && "100%"}; */
   padding: 0px 10px;
   margin-left: 10px;
   border-radius: 10px;
-  border: 2px solid rgba(255, 134, 142, 0);
+  /* border: 2px solid rgba(255, 134, 142, 0); */
+  border: ${ props => props.asc === "asc" ? "2px solid #fbe0dc" : "2px solid rgba(255, 134, 142, 0)"};
+  border: ${ props => props.desc === "desc" && "2px solid #fbe0dc"};
 
   display: flex;
   justify-content: space-between;
@@ -139,6 +130,8 @@ const SortBtn = styled.div`
     fill: #8c8c8c;
     width: ${(props) => props.sort && "18px"};
     height: ${(props) => props.sort && "20px"};
+    fill: ${ props => props.asc === "asc" && "#ff868e"};
+    fill: ${ props => props.desc === "desc" && "#ff868e"};
     align-self: center;
   }
 `;

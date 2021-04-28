@@ -14,7 +14,10 @@ export const BreedsProvider = ({ children }) => {
   // managing dropdowns
   const [breedsOpen, setBrOpen] = useState(false);
   const [limitOpen, setLimitOpen] = useState(false);
-  const [title, setTitle] = useState("No title")
+
+  // dynamic titles
+  const [breedTitle, setBreedTitle] = useState("All breeds")
+  const [limitTitle, setLimitTitle] = useState(10)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +38,9 @@ export const BreedsProvider = ({ children }) => {
         breedsOpenKey: [breedsOpen, setBrOpen],
         limitOpenKey: [limitOpen, setLimitOpen],
         breedsKey: [breeds, setBreeds],
+
+        breedTitleKey: [breedTitle, setBreedTitle],
+        limitTitleKey: [limitTitle, setLimitTitle],
       }}
     >
       {children}
