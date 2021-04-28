@@ -16,6 +16,7 @@ import Gallery from "./routes/Gallery/Gallery";
 import Liked from "./routes/Liked";
 import Favorites from "./routes/Favorites";
 import Disliked from "./routes/Dislikes"; 
+import Selected from "./routes/Selected/Selected"
 
 
 function App() {
@@ -28,29 +29,39 @@ console.log(theme)
           <Sidenav theme={theme} setTheme={setTheme} />
           <DogProvider>
             <Switch>
+
               <Route exact path="/" component={Home} />
+
               <Route exact path="/voting">
                 <Voting />
               </Route>
+
               <Route exact path="/breeds">
                 <BreedsProvider>
                   <Breeds />
                 </BreedsProvider>
               </Route>
+
+              <Route exact path="/breeds/selected" component={Selected} />
+
               <Route exact path="/gallery">
                 <GalleryProvider>
                   <Gallery />
                 </GalleryProvider>
               </Route>
+
               <Route exact path="/liked">
                 <Liked />
               </Route>
+
               <Route exact path="/favorites">
                 <Favorites />
               </Route>
+
               <Route exact path="/disliked">
                 <Disliked />
               </Route>
+
             </Switch>
           </DogProvider>
         </DocumentBody>

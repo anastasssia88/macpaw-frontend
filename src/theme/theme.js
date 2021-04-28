@@ -18,6 +18,7 @@ export const lightTheme = {
   bgDroparea: "#FFFFFF",
 
   beforePosition: "10%",
+  bgSelected: "#FFFFFF",
 };
 
 export const darkTheme = {
@@ -27,7 +28,7 @@ export const darkTheme = {
   bgMain: "#1D1D1D;",
   bgSide: "rgba(255, 255, 255, 0.05)",
   bgPink: "rgba(255, 255, 255, 0.05)",
-  bgBox: "rgba(255, 255, 255, 0.1)",
+  bgBox: "rgba(255, 255, 255, 0.05)",
   actionBtn: "#282828",
   pinkBtn: "rgba(255, 134, 142, 0.2)",
 
@@ -40,4 +41,5 @@ export const darkTheme = {
   bgDroparea: "rgba(255, 255, 255, 0.05)",
 
   beforePosition: "55%",
+  bgSelected: "#282828",
 };

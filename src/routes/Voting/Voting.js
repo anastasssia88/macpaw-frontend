@@ -55,7 +55,7 @@ const Voting = ({ like, fav, disl }) => {
         { loading ? (
             <Loader />
         ) : (
-           <Img src={url} alt="this is dog" />
+           <Img src={url} alt={randomDog.name} />
         ) }
 
         <Flexbox>
@@ -122,7 +122,7 @@ const Flexbox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; 
 `;
 
 const Actions = styled.div` 
