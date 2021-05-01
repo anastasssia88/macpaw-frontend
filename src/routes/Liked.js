@@ -33,7 +33,6 @@ const Liked = () => {
   }
 
   return (
-    <Layout flexCol>
       <Wrapper>
         <GoBack btnContent="Liked" />
         {message}
@@ -47,7 +46,6 @@ const Liked = () => {
           </Pattern>
         ))}
       </Wrapper>
-    </Layout>
   );
 };
 

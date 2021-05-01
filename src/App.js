@@ -78,7 +78,7 @@ function App() {
                   {searchTerm !== "Search for breeds by name" && (
                     <Redirect push to="/search" />
                   )}
-                  
+                   
           </StyledSection>
 
 
@@ -133,14 +133,10 @@ const DocumentBody = styled.div`
 `;
 
 const StyledSection = styled.div`
- background: ${(props) => props.theme.bgMain};
+  background: ${(props) => props.theme.bgMain};
   height: auto;
   min-height: 100vh;
-  max-height: ${(props) => props.maxH100 && "100vh"};
-  height: ${(props) => props.maxH100 && "100vh"};
-  /* max-height: ${(props) => props.uploadOpen && "100vh"}; */
-  height: ${(props) => props.uploadOpen && "80vh"};
-  overflow: ${(props) => props.uploadOpen && "hidden"};
+  max-height: auto;
 
   width: 50%;
   padding: 1.8rem;

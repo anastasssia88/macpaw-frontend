@@ -36,7 +36,6 @@ const Dislikes = () => {
   }
 
   return (
-    <Layout flexCol>
       <Wrapper>
         <GoBack btnContent="Disliked" />
         {message}
@@ -58,7 +57,6 @@ const Dislikes = () => {
         ) }
 
       </Wrapper>
-    </Layout>
   );
 };
 

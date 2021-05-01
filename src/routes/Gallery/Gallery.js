@@ -84,7 +84,6 @@ const Gallery = () => {
   
 
   return (
-    <Layout flexCol uploadOpen={uploadOpen}>
       <Wrapper>
         <Container>
           <GoBack btnContent="Gallery" /> 
@@ -128,7 +127,6 @@ const Gallery = () => {
           </>
         ) }
       </Wrapper>
-    </Layout>
   );
 };
 

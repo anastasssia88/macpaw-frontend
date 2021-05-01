@@ -52,7 +52,6 @@ const Favorites = () => {
   }
 
   return (
-    <Layout flexCol>
       <Wrapper>
         <GoBack btnContent="Favorites" />
         {message}
@@ -82,7 +81,6 @@ const Favorites = () => {
           ))}
         </ActionLog>
       </Wrapper>
-    </Layout>
   );
 };
 

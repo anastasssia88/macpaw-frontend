@@ -49,7 +49,6 @@ const Voting = ({ like, fav, disl }) => {
   }
 
   return (
-    <Layout flexCol>
       <Wrapper>
         <GoBack btnContent="Voting" />
         { loading ? (
@@ -97,7 +96,6 @@ const Voting = ({ like, fav, disl }) => {
           </ActionLog>
         </Flexbox>
       </Wrapper>
-    </Layout>
   );
 };
 

@@ -8,7 +8,6 @@ import Select from "../../helpers/Select";
 import Loader from "../../components/Shared/Loader";
 import Wrapper from "../../components/Shared/Wrapper"
 
-import Search from "../../components/Searchbar/Search";
 import Layout from "../../components/Shared/Layout";
 import GoBack from "../../components/Shared/GoBack";
 import BreedsSort from "./BreedsSort";
@@ -28,7 +27,7 @@ const Breeds = () => {
 
 useEffect(() => { 
     const breedID = currBreed.id;
-    const fetchData = async () => {
+    const fetchData = async () => { 
         setLoading(true);
         const response = await axios(
             `https://api.thedogapi.com/v1/images/search?limit=${limit}&order=${order}&breed_id=${
@@ -58,8 +57,6 @@ useEffect(() => {
   }, [dogs]);
 
   return (
-    <Layout flexCol>
-      {/* <Search /> */}
       <Wrapper>
         <Span>
           <GoBack btnContent="Breeds" />
@@ -90,7 +87,6 @@ useEffect(() => {
             </Masonry>
         ) }
       </Wrapper>
-    </Layout>
   );
 };
 

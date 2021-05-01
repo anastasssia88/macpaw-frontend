@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-const Layout = ({ children, flex, flexCol, maxH100, uploadOpen }) => {
+const Layout = ({ children, flex, flexCol, maxH100, uploadOpen, h100 }) => {
   return (
     <Section
       flex={flex}
       flexCol={flexCol}
       maxH100={maxH100}
+      h100={h100}
       uploadOpen={uploadOpen}
     >
       {children}
@@ -22,12 +23,12 @@ const Section = styled.section`
   min-height: 100vh;
   max-height: ${(props) => props.maxH100 && "100vh"};
   height: ${(props) => props.maxH100 && "100vh"};
+
+  height: ${(props) => props.h100 && "100px"};
+
   /* max-height: ${(props) => props.uploadOpen && "100vh"}; */
   height: ${(props) => props.uploadOpen && "80vh"};
   overflow: ${(props) => props.uploadOpen && "hidden"};
-/* 
-  width: 50%;
-  padding: 1.8rem; */ 
 
   width: 100%;
   display: flex; 

@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { DogContext } from "../../helpers/DogContext";
-import { Redirect } from "react-router-dom";
 
 
 const Searchbar = () => {
@@ -11,9 +10,13 @@ const Searchbar = () => {
   const handleEnterKey = (event) => {
     if (event.charCode === 13) {
       setSearchTerm(event.target.value)
-      console.log(searchTerm)
     }
   }
+
+  // useEffect(() => { 
+
+  // }, [searchTerm]);
+
 
   return (
     <Div>
