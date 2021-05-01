@@ -1,4 +1,4 @@
-## Welcome! 👋
+## Welcome! 👋🏼
 Are you a dog lover? PetsPaw is the perfect place to explore breeds, to save your favorite pics and to share pictures of your four-legged friend.
 
 PetsPaw app is a test task built by Anastasia Titova for MSI 2021 application.
