@@ -32,6 +32,7 @@ export const darkTheme = {
   actionBtn: "#282828",
   pinkBtn: "rgba(255, 134, 142, 0.2)",
 
+
   bgSearch: "rgba(140, 140, 140, 0)",
   bgSort: "rgba(255, 255, 255, 0.05)",
   bgBreed: "rgba(40, 40, 40, 1)",

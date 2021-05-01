@@ -1,42 +1,53 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from "styled-components";
 import Border from "../../images/selected-border.svg"
 import Dog from "../../images/dog-voting.png"
 
 import Layout from "../../components/Shared/Layout";
+import Wrapper from "../../components/Shared/Wrapper";
 import Search from "../../components/Searchbar/Search";
 import GoBack from "../../components/Shared/GoBack";
 import Button from "../../components/Shared/Button";
 import Loader from "../../components/Shared/Loader";
+import { DogContext } from  "../../helpers/DogContext";
+import Select from "../../helpers/Select";
+
 
 const Selected = () => {
+    const { handleSelectedClick } = Select();
+    const { selectedKey } = useContext( DogContext );
+    const [ selected, setSelected ] = selectedKey
+
+
+    console.log(selected)
     return (
         <Layout flexCol >
-             <Search />
             <Wrapper>
                 <Container>
                     <GoBack btnContent="Breeds" notActive /> 
                     <Button btnContent="28" bgText noHover />
                 </Container>
-                <Img src={Dog} alr="selected dog" />
+                <Img src={selected.url} alr="selected dog" />
+               
                 <BreedFor>
-                    <h2>Basenji</h2>
-                    <p>Family companion dog</p>
-                   <BreedDesc>
+                    <h2>{selected.breeds[0].name}</h2>
+                    <p>{selected.breeds[0].bred_for}</p>
+                <BreedDesc>
                         <div>
-                            <p><span>Description:</span><br/>
-                            Affectionate, Energetic, Alert, Curious, Playful, Intelligent
+                            <p><span>Temperament:</span><br/>
+                            {selected.breeds[0].temperament}
                             </p>
                             
                         </div>
                         <div>
-                            <p><span>Height:</span> 41 - 43 cm at the withers</p>
-                            <p><span>Weight:</span> 10 - 11 kgs</p>
+                            <p><span>Height:</span> {selected.breeds[0].height.metric} at the withers</p>
+                            <p><span>Weight:</span> {selected.breeds[0].weight.metric} kgs</p>
                             
-                            <p><span>Life span</span> 10 - 12 years</p>
+                            <p><span>Life span</span> {selected.breeds[0].life_span} years</p>
                         </div>
-                   </BreedDesc>
+                </BreedDesc>
                 </BreedFor>
+                
             </Wrapper>
         </Layout>
     )
@@ -44,13 +55,8 @@ const Selected = () => {
 
 export default Selected
 
-const Wrapper = styled.div`
-  background: ${(props) => props.theme.bgBox};
-  border-radius: 20px;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-`;
+
+
 const Container = styled.div`
   display: flex;
   flex-direction: row;

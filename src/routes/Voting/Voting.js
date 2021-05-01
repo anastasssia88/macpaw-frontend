@@ -7,6 +7,7 @@ import HandleVote from "../../helpers/HandleVote";
 // Components
 import Search from "../../components/Searchbar/Search";
 import Layout from "../../components/Shared/Layout";
+import Wrapper from "../../components/Shared/Wrapper";
 import GoBack from "../../components/Shared/GoBack";
 import LogItem from "./LogItem";
 import ActionBtn from "./ActionBtn";
@@ -49,7 +50,6 @@ const Voting = ({ like, fav, disl }) => {
 
   return (
     <Layout flexCol>
-      <Search />
       <Wrapper>
         <GoBack btnContent="Voting" />
         { loading ? (
@@ -103,13 +103,6 @@ const Voting = ({ like, fav, disl }) => {
 
 export default Voting;
 
-const Wrapper = styled.div`
-  background: ${(props) => props.theme.bgBox};
-  border-radius: 20px;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-`;
 
 const Img = styled.img`
   border-radius: 20px;

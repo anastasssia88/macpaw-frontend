@@ -25,10 +25,12 @@ const Section = styled.section`
   /* max-height: ${(props) => props.uploadOpen && "100vh"}; */
   height: ${(props) => props.uploadOpen && "80vh"};
   overflow: ${(props) => props.uploadOpen && "hidden"};
-
+/* 
   width: 50%;
-  padding: 1.8rem;
-  display: flex;
+  padding: 1.8rem; */ 
+
+  width: 100%;
+  display: flex; 
   justify-content: flex-start;
   align-items: flex-start;
 

@@ -17,6 +17,9 @@ export const DogProvider = ({ children }) => {
   const [limit, setLimit] = useState(10);
   const [order, setOrder] = useState("rand");
 
+  const [ selected , setSelected ] = useState({})
+  const [ searchTerm , setSearchTerm ] = useState("Search for breeds by name")
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios("https://api.thedogapi.com/v1/breeds");
@@ -24,6 +27,7 @@ export const DogProvider = ({ children }) => {
     };
     fetchData();
   }, []);
+
 
   return (
     <DogContext.Provider
@@ -39,6 +43,8 @@ export const DogProvider = ({ children }) => {
         orderKey: [order, setOrder],
         logKey: [log, setLog],
         activeKey: [active, setActive],
+        selectedKey: [ selected, setSelected ],
+        searchTermKey: [ searchTerm , setSearchTerm ]
       }}
     >
       {children}

@@ -9,7 +9,7 @@ const Button = ({ btnContent, hidden, onClick, bgText, noHover }) => {
   );
 };
 
-export default Button;
+export default Button; 
 
 const Div = styled.div`
   width: auto;

@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { DogContext } from "../../helpers/DogContext"
 
 const NavItem = ({ imgSrc, btnContent, url, green, yellow, alt, path }) => {
   const [active, setActive] = useState(false);
+  const { searchTermKey } = useContext(DogContext);
+  const [searchTerm , setSearchTerm ] = searchTermKey;
 
   useEffect(() => {
     if (url === path) {
@@ -22,6 +25,7 @@ const NavItem = ({ imgSrc, btnContent, url, green, yellow, alt, path }) => {
       yellow={yellow}
       alt={alt}
       active={active}
+      onClick={() => setSearchTerm("Search for breeds by name")}
     >
       <Link to={url}>
         <Div green={green} yellow={yellow} active={active}>

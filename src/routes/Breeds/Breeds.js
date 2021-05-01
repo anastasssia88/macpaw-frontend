@@ -1,8 +1,12 @@
 import React, { useEffect, useContext, useState } from "react";
-import { BreedsContext } from "../../helpers/BreedsContext";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
+
+import { BreedsContext } from "../../helpers/BreedsContext";
+import Select from "../../helpers/Select";
 import Loader from "../../components/Shared/Loader";
+import Wrapper from "../../components/Shared/Wrapper"
 
 import Search from "../../components/Searchbar/Search";
 import Layout from "../../components/Shared/Layout";
@@ -19,6 +23,8 @@ const Breeds = () => {
   const [dogs, setDogs] = dogsKey;
   const [order] = orderKey;
   const [ loading, setLoading ] = useState();
+  const { selected, handleSelectedClick } = Select();
+
 
 useEffect(() => { 
     const breedID = currBreed.id;
@@ -53,29 +59,31 @@ useEffect(() => {
 
   return (
     <Layout flexCol>
-      <Search />
+      {/* <Search /> */}
       <Wrapper>
-        <span>
+        <Span>
           <GoBack btnContent="Breeds" />
           <BreedsSort />
-        </span>
+        </Span>
         
-        { loading ? (
+        { loading ? ( 
             <Loader />
         ) : (
             <Masonry>
                 {chunked.map((tenDogs, index) => (
                     <Pattern key={index}>
                     {tenDogs.map((dog, index) => (
-                        <GridItem key={dog.id} index={index}>
-                        <Img src={dog.url} />
 
-                        { dog.breeds.length > 0 ? (
-                          <Label>{dog.breeds[0].name}</Label>
-                        ) : (
-                          <Label>No name provided</Label>
-                        ) }
+                        <GridItem key={dog.id} index={index}>
+                          <Img src={dog.url} />
+
+                          { dog.breeds.length > 0 ? (
+                              <Label><StyledLink to="/breeds/selected" onClick={() => handleSelectedClick(dog)}>{dog.breeds[0].name}</StyledLink></Label>
+                          ) : (
+                            <Label>No name provided</Label>
+                          ) }
                         </GridItem>
+
                     ))}
                     </Pattern>
                 ))}
@@ -88,20 +96,16 @@ useEffect(() => {
 
 export default Breeds;
 
-const Wrapper = styled.div`
-  background: ${(props) => props.theme.bgBox};
-  border-radius: 20px;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
+const StyledLink = styled(Link)`
+color: #FF868E; 
+`
 
-  span {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-  }
-`;
+const Span = styled.span`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+`
 
 // Masonry layout
 
@@ -165,6 +169,7 @@ const GridItem = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  cursor: pointer;
 
   opacity: 1;
   -webkit-transition: all 0.3s ease;  

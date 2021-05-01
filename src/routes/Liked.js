@@ -3,6 +3,7 @@ import { DogContext } from "../helpers/DogContext";
 
 import styled from "styled-components";
 import Layout from "../components/Shared/Layout";
+import Wrapper from "../components/Shared/Wrapper";
 import Search from "../components/Searchbar/Search";
 import GoBack from "../components/Shared/GoBack";
 import NoItemFound from "../components/Shared/NoItemFound";
@@ -33,7 +34,6 @@ const Liked = () => {
 
   return (
     <Layout flexCol>
-      <Search />
       <Wrapper>
         <GoBack btnContent="Liked" />
         {message}
@@ -53,13 +53,6 @@ const Liked = () => {
 
 export default Liked;
 
-const Wrapper = styled.div`
-  background: ${(props) => props.theme.bgBox};
-  border-radius: 20px;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-`;
 
 const Pattern = styled.div`
   padding: 10px;

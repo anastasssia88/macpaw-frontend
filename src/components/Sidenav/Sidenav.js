@@ -15,7 +15,8 @@ const Sidenav = ({ theme , setTheme }) => {
 
   useEffect(() => {
     setPath(location.pathname);
-  }, [location.pathname]);
+    console.log(location.pathname)
+  }, [location.pathname]); 
 
 
 

@@ -9,7 +9,7 @@ import FilterItems from "../../helpers/FilterItemsBreeds";
 const BreedsSort = () => {
 
   const {
-    currBreedKey,
+    currBreedKey, 
     limitKey,
     orderKey,
     breedsKey
@@ -19,7 +19,7 @@ const BreedsSort = () => {
   const [limit, setLimit] = limitKey;
   const [ order, setOrder] = orderKey;
   const [breeds, setBreeds] = breedsKey;
-  const { handleFilterClick, changeOrder } = FilterItems();
+  const { handleFilterClick, changeOrder } = FilterItems(); 
 
 
   let label;

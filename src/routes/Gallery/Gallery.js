@@ -7,6 +7,7 @@ import HandleVote from "../../helpers/HandleVote";
 
 import Search from "../../components/Searchbar/Search";
 import Layout from "../../components/Shared/Layout";
+import Wrapper from "../../components/Shared/Wrapper"
 import GoBack from "../../components/Shared/GoBack";
 import GallerySort from "./GallerySort";
 import UploadModal from "./UploadModal";
@@ -84,7 +85,6 @@ const Gallery = () => {
 
   return (
     <Layout flexCol uploadOpen={uploadOpen}>
-      <Search />
       <Wrapper>
         <Container>
           <GoBack btnContent="Gallery" /> 
@@ -134,13 +134,7 @@ const Gallery = () => {
 
 export default Gallery;
 
-const Wrapper = styled.div`
-  background: ${(props) => props.theme.bgBox};
-  border-radius: 20px;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-`;
+
 const Container = styled.div`
   display: flex;
   flex-direction: row;

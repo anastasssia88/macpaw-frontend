@@ -1,13 +1,15 @@
-import React, {useState} from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, {useState, useContext } from "react";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
 import { lightTheme } from "./theme/theme";
 import { DogProvider } from "./helpers/DogContext";
+import { DogContext } from "./helpers/DogContext";
 import { BreedsProvider } from "./helpers/BreedsContext";
 import { GalleryProvider } from "./helpers/GalleryContext";
 
 // Components
+import Main from "./components/Searchbar/Main"
 import Sidenav from "./components/Sidenav/Sidenav";
 import Home from "./routes/Home/Home";
 import Voting from "./routes/Voting/Voting";
@@ -16,22 +18,74 @@ import Gallery from "./routes/Gallery/Gallery";
 import Liked from "./routes/Liked";
 import Favorites from "./routes/Favorites";
 import Disliked from "./routes/Dislikes"; 
-import Selected from "./routes/Selected/Selected"
+import Selected from "./routes/Selected/Selected";
+import SearchResult from "./routes/Search/SearchResult";
+import Search from "./components/Searchbar/Search"
+
 
 
 function App() {
   const [ theme, setTheme ] = useState(lightTheme)
-console.log(theme)
+  const { searchTermKey } = useContext(DogContext)
+  const [ searchTerm , setSearchTerm ] = searchTermKey
+
   return (
     <Router>
       <ThemeProvider theme={theme}>
         <DocumentBody>
           <Sidenav theme={theme} setTheme={setTheme} />
-          <DogProvider>
+
+          <StyledSection flexCol>
+            <Search />              
+                  <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/voting">
+                      <Voting />
+                    </Route>
+      
+                    <Route exact path="/breeds">
+                      <BreedsProvider>
+                        <Breeds />
+                      </BreedsProvider>
+                    </Route>
+      
+                    <Route exact path="/breeds/selected" component={Selected} />
+      
+                    <Route exact path="/gallery">
+                      <GalleryProvider>
+                        <Gallery />
+                      </GalleryProvider>
+                    </Route>
+      
+                    <Route exact path="/liked">
+                      <Liked />
+                    </Route>
+      
+                    <Route exact path="/favorites">
+                      <Favorites />
+                    </Route>
+      
+                    <Route exact path="/disliked">
+                      <Disliked />
+                    </Route>
+
+                    <Route exact path="/search">
+                      <SearchResult />
+                    </Route>
+
+                  </Switch>
+
+                  {searchTerm !== "Search for breeds by name" && (
+                    <Redirect push to="/search" />
+                  )}
+                  
+          </StyledSection>
+
+
+            {/* <Search />
             <Switch>
-
               <Route exact path="/" component={Home} />
-
+              <Route exact path="/search" component={SearchResult} />
               <Route exact path="/voting">
                 <Voting />
               </Route>
@@ -61,10 +115,10 @@ console.log(theme)
               <Route exact path="/disliked">
                 <Disliked />
               </Route>
+            </Switch> */}
 
-            </Switch>
-          </DogProvider>
         </DocumentBody>
+
       </ThemeProvider>
     </Router>
   );
@@ -77,3 +131,22 @@ const DocumentBody = styled.div`
   flex-direction: row;
   height: auto;
 `;
+
+const StyledSection = styled.div`
+ background: ${(props) => props.theme.bgMain};
+  height: auto;
+  min-height: 100vh;
+  max-height: ${(props) => props.maxH100 && "100vh"};
+  height: ${(props) => props.maxH100 && "100vh"};
+  /* max-height: ${(props) => props.uploadOpen && "100vh"}; */
+  height: ${(props) => props.uploadOpen && "80vh"};
+  overflow: ${(props) => props.uploadOpen && "hidden"};
+
+  width: 50%;
+  padding: 1.8rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  flex-direction: ${(props) => (props.flexCol ? "column" : "row")};
+`
