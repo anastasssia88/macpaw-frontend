@@ -27,7 +27,7 @@ const Sidenav = ({ theme , setTheme }) => {
           </Flex>
           <div>
             <h1>Hi MacPaw!</h1>
-            <p>Welcome to MSI 2021 Front-end test completed by Anastasia</p>
+            <p>Welcome to MSI 2021 Front-end test completed by Anastasia Titova</p>
             <h3>Lets start using The Dogs API</h3>
             <Nav>
               <NavItem 
