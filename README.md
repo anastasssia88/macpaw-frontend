@@ -12,7 +12,9 @@ This aplication was built using React.js, Styled Components, and is based on The
 ![App preview for the PetsPaw test task built by Anastasia](./src/images/app.png)
 
 ## Personal Opinion 🙋🏼‍♀️
-I'd like to thank MacPaw team for such an intereseting test task! I had a lot of fun while building it and, to be honest, a lot of frustration & struggle as I had to deliver functionality I've never built before. Anyways, this experience is exactly what I needed to enhance my frontend skills and to gain confidence. Whoever you decide to choose for the Intern Position, I'm very grateful to you. Thank you!
+I'd like to thank MacPaw team for such an intereseting test task! I had a lot of fun while building it and, to be honest, a lot of frustration & struggle as I had to deliver functionality I've never built before. Which is awesome. I was able to understand concepts I couldn't grasp before.
+
+This experience is exactly what I needed to enhance my frontend skills and to gain confidence. Whoever you decide to choose for the Intern Position, I'm very grateful to you. Thank you!
 
 <!-- ## Available Scripts
 
