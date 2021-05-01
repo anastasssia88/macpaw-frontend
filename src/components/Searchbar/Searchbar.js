@@ -13,10 +13,6 @@ const Searchbar = () => {
     }
   }
 
-  // useEffect(() => { 
-
-  // }, [searchTerm]);
-
 
   return (
     <Div>
@@ -35,52 +31,50 @@ const Searchbar = () => {
 
 export default Searchbar;
 
-const Input = styled.input`
-  background: ${(props) => props.theme.bgSearch};
-  width: 300px;
-  height: 40px;
-  padding: 0.8rem 0rem;
-  max-width: 300px;
-  outline: none;
-  border: none;
-
-  &:focus::placeholder {
-    color: transparent;
-  }
-`;
-
 const Div = styled.div`
-  background: ${(props) => props.theme.bgBox};
-  border: none;
-  border-radius: 20px;
-  width: 470px;
-  height: 60px;
-  padding: 0px 10px 0px 20px;
-  border: 2px solid rgba(255, 134, 142, 0);
-
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+`;
+
+const Input = styled.input`
+  background: ${(props) => props.theme.bgBox};
+  color: ${(props) => props.theme.textPrim};
+  height: 60px;
+  width: 100%;
+  padding: 0.8rem 0rem;
+  padding: 0px 10px 0px 20px;
+  
+  outline: none;
+  border: 2px solid rgba(255, 134, 142, 0);
+  border-radius: 20px;
 
   &:hover {
     border: 2px solid #fbe0dc;
   }
 
-  ${Input}:focus & {
-    border: 2px solid black;
+  &:focus::placeholder {
+    color: transparent;
+  }
+  &:focus {
+    border: 2px solid #FF868E;
   }
 `;
 
 const Icon = styled.div`
   width: 40px;
   height: 40px;
-  /* background: #fbe0dc; */
   background: ${ props => props.theme.pinkBtn};
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  position: absolute;
+  right: 10px;
 
   svg {
     width: 20px;

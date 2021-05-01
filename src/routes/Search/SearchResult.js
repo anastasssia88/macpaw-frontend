@@ -1,4 +1,5 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { DogContext } from "../../helpers/DogContext";
 import styled from "styled-components";
 import axios from "axios"
@@ -15,18 +16,35 @@ const SearchResult = () => {
 
     const [ loading, setLoading ] = useState(false);
     const [ dogs, setDogs ] = useState({});
+    const [ chunked, setChunked ] = useState({});
     
+
     useEffect(() => { 
         const fetchData = async () => {
             setLoading(true);
             const response = await axios(
-                `https://api.thedogapi.com/v1/images/search?limit=20&breed_id=${searchTerm}`
+                `https://api.thedogapi.com/v1/images/search?breed_ids=${searchTerm}`
             );
             setDogs(response.data);
             setLoading(false);
+            console.log(dogs)
+            console.log(response.data)
             };
         fetchData(); 
-      }, []);
+      }, [searchTerm]);
+      
+
+      useEffect(() => {
+        if (dogs.length > 0) {
+            const temporary = [...dogs];
+            const result = [];
+            while (temporary.length > 0) {
+                result.push(temporary.splice(0, 10));
+            }
+            
+            setChunked(result);
+            }
+      }, [dogs]);
  
 
     return (
@@ -43,6 +61,10 @@ const SearchResult = () => {
                     <Wrapper> 
                         <GoBack btnContent="search" />
                         <SearchInfo>Search results for: <span>{searchTerm}</span></SearchInfo>
+
+                        { loading ? (<Loader />) : (
+                            <p>not loading</p>
+                        )}
                     </Wrapper>
                 </Layout>
             )}
@@ -58,6 +80,10 @@ const SearchInfo = styled.p`
     span {
         color: ${ props => props.theme.textPrim};
     }
+`
+
+const StyledLink = styled(Link)`
+color: #FF868E; 
 `
 
 // Masonry layout
