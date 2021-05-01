@@ -34,52 +34,53 @@ function App() {
       <ThemeProvider theme={theme}>
         <DocumentBody>
           <Sidenav theme={theme} setTheme={setTheme} />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <StyledSection flexCol>
+                <Search />         
+                <Route exact path="/voting">
+                  <Voting />
+                </Route>
+  
+                <Route exact path="/breeds">
+                  <BreedsProvider>
+                    <Breeds />
+                  </BreedsProvider>
+                </Route>
+  
+                <Route exact path="/breeds/selected" component={Selected} />
+  
+                <Route exact path="/gallery">
+                  <GalleryProvider>
+                    <Gallery />
+                  </GalleryProvider>
+                </Route>
+  
+                <Route exact path="/liked">
+                  <Liked />
+                </Route>
+  
+                <Route exact path="/favorites">
+                  <Favorites />
+                </Route>
+  
+                <Route exact path="/disliked">
+                  <Disliked />
+                </Route>
 
-          <StyledSection flexCol>
-            <Search />              
-                  <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/voting">
-                      <Voting />
-                    </Route>
-      
-                    <Route exact path="/breeds">
-                      <BreedsProvider>
-                        <Breeds />
-                      </BreedsProvider>
-                    </Route>
-      
-                    <Route exact path="/breeds/selected" component={Selected} />
-      
-                    <Route exact path="/gallery">
-                      <GalleryProvider>
-                        <Gallery />
-                      </GalleryProvider>
-                    </Route>
-      
-                    <Route exact path="/liked">
-                      <Liked />
-                    </Route>
-      
-                    <Route exact path="/favorites">
-                      <Favorites />
-                    </Route>
-      
-                    <Route exact path="/disliked">
-                      <Disliked />
-                    </Route>
+                <Route exact path="/search">
+                  <SearchResult />
+                </Route>
 
-                    <Route exact path="/search">
-                      <SearchResult />
-                    </Route>
+              </StyledSection>
 
-                  </Switch>
+            </Switch>
 
-                  {searchTerm !== "Search for breeds by name" && (
-                    <Redirect push to="/search" />
-                  )}
+            {searchTerm !== "Search for breeds by name" && (
+              <Redirect push to="/search" />
+            )}
                    
-          </StyledSection>
+          
 
 
             {/* <Search />

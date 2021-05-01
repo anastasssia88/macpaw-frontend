@@ -21,35 +21,33 @@ const Selected = () => {
 
     console.log(selected)
     return (
-        <Layout flexCol >
-            <Wrapper>
-                <Container>
-                    <GoBack btnContent="Breeds" notActive /> 
-                    <Button btnContent="28" bgText noHover />
-                </Container>
-                <Img src={selected.url} alr="selected dog" />
-               
-                <BreedFor>
-                    <h2>{selected.breeds[0].name}</h2>
-                    <p>{selected.breeds[0].bred_for}</p>
-                <BreedDesc>
-                        <div>
-                            <p><span>Temperament:</span><br/>
-                            {selected.breeds[0].temperament}
-                            </p>
-                            
-                        </div>
-                        <div>
-                            <p><span>Height:</span> {selected.breeds[0].height.metric} at the withers</p>
-                            <p><span>Weight:</span> {selected.breeds[0].weight.metric} kgs</p>
-                            
-                            <p><span>Life span</span> {selected.breeds[0].life_span} years</p>
-                        </div>
-                </BreedDesc>
-                </BreedFor>
-                
-            </Wrapper>
-        </Layout>
+        <Wrapper> 
+            <Container>
+                <GoBack btnContent="Breeds" notActive /> 
+                <Button btnContent="28" bgText noHover />
+            </Container>
+            <Img src={selected.url} alr="selected dog" />
+            
+            <BreedFor>
+                <h2>{selected.breeds[0].name}</h2>
+                <p>{selected.breeds[0].bred_for}</p>
+            <BreedDesc>
+                    <div>
+                        <p><span>Temperament:</span><br/>
+                        {selected.breeds[0].temperament}
+                        </p>
+                        
+                    </div>
+                    <div>
+                        <p><span>Height:</span> {selected.breeds[0].height.metric} at the withers</p>
+                        <p><span>Weight:</span> {selected.breeds[0].weight.metric} kgs</p>
+                        
+                        <p><span>Life span</span> {selected.breeds[0].life_span} years</p>
+                    </div>
+            </BreedDesc>
+            </BreedFor>
+            
+        </Wrapper>
     )
 }
 

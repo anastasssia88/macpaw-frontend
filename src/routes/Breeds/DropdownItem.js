@@ -79,9 +79,10 @@ const DropdownItem = ({ label, title, xs, sm, content, gray, ml, setState }) => 
   );
 };
 
-export default DropdownItem;
+export default DropdownItem; 
 
 const Main = styled.div`
+  /* align-self: center; */
   margin: 5px 10px;
   transition: all 0.3s ease;
   width: 100%;

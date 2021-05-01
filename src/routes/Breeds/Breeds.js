@@ -30,7 +30,7 @@ useEffect(() => {
     const fetchData = async () => { 
         setLoading(true);
         const response = await axios(
-            `https://api.thedogapi.com/v1/images/search?limit=${limit}&order=${order}&breed_id=${
+            `https://api.thedogapi.com/v1/images/search?limit=${limit}&order=${order}&has_breeds=true&size=med&breed_id=${
             breedID ? breedID : ""
             }`
         );

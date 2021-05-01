@@ -15,10 +15,7 @@ const Sidenav = ({ theme , setTheme }) => {
 
   useEffect(() => {
     setPath(location.pathname);
-    console.log(location.pathname)
   }, [location.pathname]); 
-
-
 
   return (
     <Section> 
