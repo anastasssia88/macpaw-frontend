@@ -12,9 +12,9 @@ This aplication was built using React.js, Styled Components, and is based on The
 ![App preview for the PetsPaw test task built by Anastasia](./src/images/app.png)
 
 ## Personal Opinion 🙋🏼‍♀️
-I want to thank MacPaw team for such an intereseting test task! I had a lot of fun while building it and, to be honest, a lot of frustration & struggle as I had to deliver functionality I've never built before. Anyways, this experience is and will be very important for me as a frontend developer. Thank you!
+I'd like to thank MacPaw team for such an intereseting test task! I had a lot of fun while building it and, to be honest, a lot of frustration & struggle as I had to deliver functionality I've never built before. Anyways, this experience is and will be very important for me as a frontend developer. Thank you!
 
-## Available Scripts
+<!-- ## Available Scripts
 
 In the project directory, you can run:
 
@@ -41,4 +41,4 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-
+ -->
