@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import ReactDom from "react-dom";
 import UploadPic from "../../images/upload.jpeg";
+import UploadDarkMode from "../../images/uploadDarkMode.png";
+
 
 import { useDropzone } from "react-dropzone";
 import Btn from "../../components/Shared/Button";
 import axios from "axios";
+import { lightTheme } from "../../theme/theme";
 
 const UploadModal = ({ open, onClose }) => {
   const [files, setFiles] = useState([]);
@@ -47,46 +50,7 @@ const UploadModal = ({ open, onClose }) => {
     message = `Image File Name: ${files[0].name}`;
   }
 
-  // NICKS IDEAS
-// const handleUpload = async () => {
-//   console.log(files[0])
-//   await fetch("https://api.thedogapi.com/v1/images/upload", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": files[0].type,
-//       "x-api-key": "220e3104-105e-4131-96f6-194253068792",
-//     },
-//     body: files[0] 
-//   })
-//     .then((R) => R.json())
-//     .then((R) => {
-//       console.dir(R);
-//     })
-//     .catch((e) => {
-//       console.error(e);
-//     });
-// }
-  // const uploadItem = async (e) => {
-  //   console.dir(e.target.files);
-  //   const file = e.target.files[0];
-  //   await fetch("https://api.thedogapi.com/v1/images/upload", {
-  //     method: "POST",
-  //     headers: {
-  //       "x-api-key": "220e3104-105e-4131-96f6-194253068792",
-  //       "Content-Type": file.type,
-  //     },
-  //     body: JSON.stringify({file: file, sub_id: 12}),
-  //   })
-  //     .then((R) => R.json())
-  //     .then((R) => {
-  //       console.dir(R);
-  //     })
-  //     .catch((e) => {
-  //       console.error(e);
-  //     });
-  // };
 
-// MY OLD IDEAS
   const handleUpload = () => {
     const config = {
       headers: {
@@ -95,7 +59,6 @@ const UploadModal = ({ open, onClose }) => {
       },
     };
     let fd = new FormData();
-    // fd.append("file", files[0])
 
     files.map((file) => {
       fd.append("file", file);
@@ -113,27 +76,7 @@ const UploadModal = ({ open, onClose }) => {
       console.log(files)
   };
 
-  // const f = () => {
-  //     const data = {
-  //         file: files[0],
-  //         sub_id: files[0].name
-  //     }
-  //     console.log(data.file)
-  //     console.log(data.file.path)
-  //     axios.post("https://api.thedogapi.com/v1/images/upload", data, {headers: {
-  //         "Content-Type": "multipart/form-data",
-  //         "x-api-key": "220e3104-105e-4131-96f6-194253068792"
-  //     }})
-  //         .then(function (response) {
-  //         console.log(response);
-  //         })
-  //         .catch(function (error) {
-  //         console.log(error);
-  //         });
-  // }
-
-  // NEW IDEAS
-
+  
 
   if (!open) return null;
   return ReactDom.createPortal(
@@ -240,7 +183,10 @@ const DropArea = styled.div`
   align-items: center;
 
   div {
-    background: url(${UploadPic}) no-repeat center; 
+    background: url(${UploadPic}) no-repeat center;
+    background: ${ props => props.theme !== lightTheme && `url(${UploadDarkMode})`}; 
+    background-position: center;
+    background-repeat: no-repeat;
     height: 200px;
     width: auto;
 
