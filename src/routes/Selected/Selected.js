@@ -1,14 +1,9 @@
 import React, { useContext } from 'react'
 import styled from "styled-components";
-import Border from "../../images/selected-border.svg"
-import Dog from "../../images/dog-voting.png"
 
-import Layout from "../../components/Shared/Layout";
 import Wrapper from "../../components/Shared/Wrapper";
-import Search from "../../components/Searchbar/Search";
 import GoBack from "../../components/Shared/GoBack";
 import Button from "../../components/Shared/Button";
-import Loader from "../../components/Shared/Loader";
 import { DogContext } from  "../../helpers/DogContext";
 import Select from "../../helpers/Select";
 

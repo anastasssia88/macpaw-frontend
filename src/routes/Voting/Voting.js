@@ -5,8 +5,6 @@ import { DogContext } from "../../helpers/DogContext";
 import HandleVote from "../../helpers/HandleVote";
 
 // Components
-import Search from "../../components/Searchbar/Search";
-import Layout from "../../components/Shared/Layout";
 import Wrapper from "../../components/Shared/Wrapper";
 import GoBack from "../../components/Shared/GoBack";
 import LogItem from "./LogItem";

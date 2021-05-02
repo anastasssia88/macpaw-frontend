@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { DogContext } from "../../helpers/DogContext";
 import { BreedsContext } from "../../helpers/BreedsContext";
 import Item from "./DropdownItem";
 import FilterItems from "../../helpers/FilterItemsBreeds";

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
-import { lightTheme, darkTheme } from "../../theme/theme"
+import { darkTheme } from "../../theme/theme"
 import { BreedsContext } from "../../helpers/BreedsContext"
 import FilterItems from "../../helpers/FilterItemsBreeds";
 

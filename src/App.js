@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
 import { lightTheme } from "./theme/theme";
-import { DogProvider } from "./helpers/DogContext";
 import { DogContext } from "./helpers/DogContext";
 import { BreedsProvider } from "./helpers/BreedsContext";
 import { GalleryProvider } from "./helpers/GalleryContext";
@@ -41,25 +40,20 @@ function App() {
                 <Route exact path="/voting">
                   <Voting />
                 </Route>
-  
                 <Route exact path="/breeds">
                   <BreedsProvider>
                     <Breeds />
                   </BreedsProvider>
                 </Route>
-  
                 <Route exact path="/breeds/selected" component={Selected} />
-  
                 <Route exact path="/gallery">
                   <GalleryProvider>
                     <Gallery />
                   </GalleryProvider>
                 </Route>
-  
                 <Route exact path="/liked">
                   <Liked />
                 </Route>
-  
                 <Route exact path="/favorites">
                   <Favorites />
                 </Route>
@@ -79,47 +73,7 @@ function App() {
             {searchTerm !== "Search for breeds by name" && (
               <Redirect push to="/search" />
             )}
-                   
-          
-
-
-            {/* <Search />
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/search" component={SearchResult} />
-              <Route exact path="/voting">
-                <Voting />
-              </Route>
-
-              <Route exact path="/breeds">
-                <BreedsProvider>
-                  <Breeds />
-                </BreedsProvider>
-              </Route>
-
-              <Route exact path="/breeds/selected" component={Selected} />
-
-              <Route exact path="/gallery">
-                <GalleryProvider>
-                  <Gallery />
-                </GalleryProvider>
-              </Route>
-
-              <Route exact path="/liked">
-                <Liked />
-              </Route>
-
-              <Route exact path="/favorites">
-                <Favorites />
-              </Route>
-
-              <Route exact path="/disliked">
-                <Disliked />
-              </Route>
-            </Switch> */}
-
         </DocumentBody>
-
       </ThemeProvider>
     </Router>
   );

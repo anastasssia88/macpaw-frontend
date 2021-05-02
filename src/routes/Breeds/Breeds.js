@@ -8,7 +8,6 @@ import Select from "../../helpers/Select";
 import Loader from "../../components/Shared/Loader";
 import Wrapper from "../../components/Shared/Wrapper"
 
-import Layout from "../../components/Shared/Layout";
 import GoBack from "../../components/Shared/GoBack";
 import BreedsSort from "./BreedsSort";
 

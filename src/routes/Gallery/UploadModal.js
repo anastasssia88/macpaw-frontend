@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ReactDom from "react-dom";
 import UploadPic from "../../images/upload.jpeg";
 import UploadDarkMode from "../../images/uploadDarkMode.png";
+import UploadStatus from "./UploadStatus"
 
 
 import { useDropzone } from "react-dropzone";
@@ -91,14 +92,9 @@ const UploadModal = ({ open, onClose }) => {
 
         <h1>Upload a .jpg or .png Dog Image</h1>
         <p>
-          Any uploads must comply with the{" "}
-          <a href="https://www.thedogapi.com/privacy" target="_blank" rel="noreferrer">
-            upload guidelines
-          </a>{" "}
-          or face deletion.
+          Any uploads must comply with the <a href="https://www.thedogapi.com/privacy" target="_blank" rel="noreferrer">
+            upload guidelines </a> or face deletion.
         </p>
-
-
 
         <DropArea {...getRootProps()}>
           <div>
@@ -111,11 +107,16 @@ const UploadModal = ({ open, onClose }) => {
           </div>
         </DropArea>
         <p>{message}</p>
+
         <Btn
           btnContent="Upload photo"
           hidden={!hidden}
           onClick={handleUpload}
         />
+
+        <UploadStatus status="failure" />
+        <UploadStatus status="success" />
+
       </Section>
     </>,
     document.getElementById("portal")

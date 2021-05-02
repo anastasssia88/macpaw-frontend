@@ -7,7 +7,6 @@ import Select from "../../helpers/Select";
 
 
 import Loader from "../../components/Shared/Loader";
-import Layout from "../../components/Shared/Layout"
 import Wrapper from "../../components/Shared/Wrapper"
 import GoBack from "../../components/Shared/GoBack";
 
