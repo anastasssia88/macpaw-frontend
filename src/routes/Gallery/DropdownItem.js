@@ -1,11 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
-import { lightTheme, darkTheme } from "../../theme/theme"
 import { GalleryContext } from "../../helpers/GalleryContext"
 import FilterItems from "../../helpers/FilterItemsGallery";
 
 
-const DropdownItem = ({ label, title, xs, sm, content, gray, ml, setState }) => {
+const DropdownItem = ({ label, title, xs, sm, content, gray, ml }) => {
 
   const {
     orderTitleKey,
@@ -15,10 +14,10 @@ const DropdownItem = ({ label, title, xs, sm, content, gray, ml, setState }) => 
     currBreedKey
   } = useContext( GalleryContext );
 
-  const [orderTitle, setOrderTitle] = orderTitleKey
-  const [typeTitle, setTypeTitle] = typeTitleKey
+  const [orderTitle] = orderTitleKey
+  const [typeTitle] = typeTitleKey
   const [currBreedTitle, setCurrBreedTitle] = currBreedTitleKey
-  const [limitTitle, setLimitTitle] = limitTitleKey
+  const [limitTitle] = limitTitleKey
   const [currBreed, setCurrBreed] = currBreedKey
 
   const [isOpen, setIsOpen] = useState(false);
@@ -32,11 +31,6 @@ const DropdownItem = ({ label, title, xs, sm, content, gray, ml, setState }) => 
   const handleMouseLeave = () => {
     setIsOpen(false); 
   };
-
-  const handleMouseOver = () => {
-    setIsOpen(false);
-  };
-
 
   let firstChild;
   if (label === "breed") {
@@ -82,7 +76,6 @@ const DropdownItem = ({ label, title, xs, sm, content, gray, ml, setState }) => 
 export default DropdownItem;
 
 const Main = styled.div`
-  /* margin: 5px 10px; */
   -webkit-transition: all 0.3s ease;  
   -moz-transition: all 0.3s ease;  
   -o-transition: all 0.3s ease; 

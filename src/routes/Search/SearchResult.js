@@ -5,7 +5,6 @@ import styled from "styled-components";
 import axios from "axios"
 import Select from "../../helpers/Select";
 
-
 import Loader from "../../components/Shared/Loader";
 import Wrapper from "../../components/Shared/Wrapper"
 import GoBack from "../../components/Shared/GoBack";
@@ -13,8 +12,8 @@ import GoBack from "../../components/Shared/GoBack";
 
 const SearchResult = () => {
     const { searchTermKey } = useContext(DogContext);
-    const [ searchTerm , setSearchTerm ] = searchTermKey;
-    const [ foundBreeds, setFoundBreeds ] = useState({});
+    const [ searchTerm ] = searchTermKey;
+    // const [ foundBreeds, setFoundBreeds ] = useState({});
 
     const [ loading, setLoading ] = useState(false);
     const [ dogs, setDogs ] = useState({});
@@ -59,7 +58,7 @@ const SearchResult = () => {
 
     return (
             <>
-            { searchTerm == "Search for breeds by name" || !searchTerm ? (
+            { searchTerm === "Search for breeds by name" || !searchTerm ? (
                     <Wrapper> 
                         <GoBack btnContent="search" />
                         <SearchInfo>No search term found. Feel free to browser dogs by typing a breed name above :)</SearchInfo>

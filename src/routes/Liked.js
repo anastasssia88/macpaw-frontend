@@ -7,7 +7,6 @@ import GoBack from "../components/Shared/GoBack";
 import NoItemFound from "../components/Shared/NoItemFound";
 
 const Liked = () => {
-  // Shared State
   const { likeKey } = useContext(DogContext);
   const [liked] = likeKey;
   const [chunked, setChunked] = useState([]);
@@ -18,7 +17,6 @@ const Liked = () => {
       const result = [];
       while (temporary.length > 0) {
         result.push(temporary.splice(0, 10));
-        // debugger
       }
       setChunked(result);
     }

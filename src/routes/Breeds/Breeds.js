@@ -7,7 +7,6 @@ import { BreedsContext } from "../../helpers/BreedsContext";
 import Select from "../../helpers/Select";
 import Loader from "../../components/Shared/Loader";
 import Wrapper from "../../components/Shared/Wrapper"
-
 import GoBack from "../../components/Shared/GoBack";
 import BreedsSort from "./BreedsSort";
 

@@ -5,13 +5,11 @@ import Wrapper from "../../components/Shared/Wrapper";
 import GoBack from "../../components/Shared/GoBack";
 import Button from "../../components/Shared/Button";
 import { DogContext } from  "../../helpers/DogContext";
-import Select from "../../helpers/Select";
 
 
 const Selected = () => {
-    const { handleSelectedClick } = Select();
     const { selectedKey } = useContext( DogContext );
-    const [ selected, setSelected ] = selectedKey
+    const [ selected ] = selectedKey
 
 
     console.log(selected)

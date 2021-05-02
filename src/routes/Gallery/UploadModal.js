@@ -5,7 +5,6 @@ import UploadPic from "../../images/upload.jpeg";
 import UploadDarkMode from "../../images/uploadDarkMode.png";
 import UploadStatus from "./UploadStatus"
 
-
 import { useDropzone } from "react-dropzone";
 import Btn from "../../components/Shared/Button";
 import axios from "axios";
@@ -14,6 +13,7 @@ import { lightTheme } from "../../theme/theme";
 const UploadModal = ({ open, onClose }) => {
   const [files, setFiles] = useState([]);
   const [hidden, setHidden] = useState(false);
+  const [ responseStatus, setResponseStatus ] = useState(0);
 
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -44,12 +44,6 @@ const UploadModal = ({ open, onClose }) => {
     </div>
   ));
 
-  let message;
-  if (files.length === 0) {
-    message = "No item selected";
-  } else {
-    message = `Image File Name: ${files[0].name}`;
-  }
 
 
   const handleUpload = () => {
@@ -60,23 +54,29 @@ const UploadModal = ({ open, onClose }) => {
       },
     };
     let fd = new FormData();
-
     files.map((file) => {
       fd.append("file", file);
     });
-
     axios
       .post("https://api.thedogapi.com/v1/images/upload", fd, config)
       .then((response) => {
-        console.log(response);
+        setResponseStatus(response.status)
+        setHidden(false);
+        setFiles([]);
       })
       .catch((error) => {
+        setResponseStatus(400)
         console.log(error);
       });
-      console.log(fd)
-      console.log(files)
   };
 
+
+  let message;
+  if (files.length === 0 || responseStatus === 201) {
+    message = "No item selected";
+  } else {
+    message = `Image File Name: ${files[0].name}`;
+  }
   
 
   if (!open) return null;
@@ -96,7 +96,8 @@ const UploadModal = ({ open, onClose }) => {
             upload guidelines </a> or face deletion.
         </p>
 
-        <DropArea {...getRootProps()}>
+
+        <DropArea {...getRootProps()} responseStatus={responseStatus} >
           <div>
             <input {...getInputProps()} />
             <p hidden={hidden}>
@@ -110,12 +111,16 @@ const UploadModal = ({ open, onClose }) => {
 
         <Btn
           btnContent="Upload photo"
-          hidden={!hidden}
-          onClick={handleUpload}
+          hidden={ !hidden }
+          resStatus={ responseStatus }
+          onClick={ handleUpload }
+          responseStatus={ responseStatus }
         />
 
-        <UploadStatus status="failure" />
-        <UploadStatus status="success" />
+      { responseStatus === 201 && <UploadStatus status="success" /> }
+      { responseStatus === 400 && <UploadStatus status="failure" /> }
+        
+        
 
       </Section>
     </>,
@@ -170,13 +175,16 @@ const Section = styled.section`
 `;
 
 const DropArea = styled.div`
-  background-color: ${(props) => props.theme.bgDroparea};
-  margin: 0px 20px;
+  
   min-height: 320px;
   width: 100%;
+  margin: 30px 0px 10px 0px;
   border-radius: 20px;
   border: 2px dashed #fbe0dc;
-  margin: 30px 0px 10px 0px;
+  background-color: ${(props) => props.theme.bgDroparea};
+
+  border: ${props => props.responseStatus === 400 && "2px dashed #FF868E"};
+  background-color: ${props => props.responseStatus === 400 && "#FBE0DC"};
 
   display: flex;
   flex-direction: column;

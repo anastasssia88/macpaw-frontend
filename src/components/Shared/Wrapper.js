@@ -18,5 +18,3 @@ const Div = styled.div`
   height: 100%;
   padding: 20px;
 `;
-
-// import Wrapper from "../../components/Shared/Wrapper";

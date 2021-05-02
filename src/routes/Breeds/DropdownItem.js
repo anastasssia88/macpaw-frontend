@@ -18,10 +18,9 @@ const DropdownItem = ({ label, title, xs, sm, content, gray, ml, setState }) => 
   const [currBreed, setCurrBreed] = currBreedKey;
   const [limit, setLimit] = limitKey;
   // Titles
-  const [breedTitle, setBreedTitle] = breedTitleKey;
-  const [limitTitle, setLimitTitle] = limitTitleKey;
+  const [breedTitle ] = breedTitleKey;
+  const [limitTitle ] = limitTitleKey;
 
-  
 
   // Opening filters
   const openFilter = () => {
@@ -35,8 +34,6 @@ const DropdownItem = ({ label, title, xs, sm, content, gray, ml, setState }) => 
   const handleMouseOver = () => {
     setIsOpen(false);
   };
-
-
 
   // Logic for "breeds" filter
   const reset = () => { 

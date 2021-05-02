@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const Button = ({ btnContent, hidden, onClick, bgText, noHover }) => {
+const Button = ({ btnContent, hidden, onClick, bgText, noHover, responseStatus }) => {
   return (
-    <Div hidden={hidden}>
+    <Div hidden={hidden} responseStatus={responseStatus} >
       <Btn bgText={bgText} noHover={noHover} onClick={onClick}>{btnContent}</Btn>
     </Div>
   );
@@ -19,6 +19,8 @@ const Div = styled.div`
   margin-bottom: 20px;
 
   display: ${(props) => props.hidden && "none"};
+  display: ${(props) => props.responseStatus === 400 && "none"};
+  display: ${(props) => props.responseStatus === 201 && "none"};
 `;
 
 const Btn = styled.button` 

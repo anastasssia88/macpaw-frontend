@@ -13,7 +13,6 @@ const Searchbar = () => {
     }
   }
 
-
   return (
     <Div>
       <Input 

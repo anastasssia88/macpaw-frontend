@@ -8,7 +8,6 @@ import { BreedsProvider } from "./helpers/BreedsContext";
 import { GalleryProvider } from "./helpers/GalleryContext";
 
 // Components
-import Main from "./components/Searchbar/Main"
 import Sidenav from "./components/Sidenav/Sidenav";
 import Home from "./routes/Home/Home";
 import Voting from "./routes/Voting/Voting";

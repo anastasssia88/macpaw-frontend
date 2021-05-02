@@ -5,8 +5,6 @@ import styled from "styled-components";
 import axios from "axios";
 import HandleVote from "../../helpers/HandleVote";
 
-import Search from "../../components/Searchbar/Search";
-import Layout from "../../components/Shared/Layout";
 import Wrapper from "../../components/Shared/Wrapper"
 import GoBack from "../../components/Shared/GoBack";
 import GallerySort from "./GallerySort";
@@ -27,10 +25,10 @@ const Gallery = () => {
   } = useContext( GalleryContext );
   const [dogs, setDogs] = dogsKey;
   const [chunked, setChunked] = chunkedKey; 
-  const [order, setOrder] = orderKey;
-  const [type, setType] = typeKey
-  const [currBreed, setCurrBreed] = currBreedKey
-  const [limit, setLimit] = limitKey
+  const [order] = orderKey;
+  const [type] = typeKey
+  const [currBreed] = currBreedKey
+  const [limit] = limitKey
 
   const [uploadOpen, setUploadOpen] = useState(false);
   const [ loading, setLoading ] = useState();

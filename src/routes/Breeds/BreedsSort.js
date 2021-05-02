@@ -15,9 +15,8 @@ const BreedsSort = () => {
   } = useContext(BreedsContext);
 
   const [currBreed, setCurrBreed] = currBreedKey;
-  const [limit, setLimit] = limitKey;
-  const [ order, setOrder] = orderKey;
-  const [breeds, setBreeds] = breedsKey;
+  const [ order ] = orderKey;
+  const [ breeds ] = breedsKey;
   const { handleFilterClick, changeOrder } = FilterItems(); 
 
 

@@ -25,8 +25,6 @@ const Section = styled.section`
   height: ${(props) => props.maxH100 && "100vh"};
 
   height: ${(props) => props.h100 && "100px"};
-
-  /* max-height: ${(props) => props.uploadOpen && "100vh"}; */
   height: ${(props) => props.uploadOpen && "80vh"};
   overflow: ${(props) => props.uploadOpen && "hidden"};
 

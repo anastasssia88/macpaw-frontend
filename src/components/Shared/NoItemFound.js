@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const NoItemFound = ({ children }) => {
+const NoItemFound = () => {
   return (
     <Wrapper>
       <p>No item found</p>

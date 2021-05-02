@@ -3,9 +3,7 @@ import { DogContext } from "../helpers/DogContext";
 import HandleVote from "../helpers/HandleVote";
 
 import styled from "styled-components";
-import Layout from "../components/Shared/Layout";
 import Wrapper from "../components/Shared/Wrapper";
-import Search from "../components/Searchbar/Search";
 import GoBack from "../components/Shared/GoBack";
 import NoItemFound from "../components/Shared/NoItemFound";
 import LogItem from "./Voting/LogItem";

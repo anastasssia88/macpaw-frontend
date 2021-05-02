@@ -2,14 +2,11 @@ import React, { useContext } from "react";
 import { DogContext } from "../../helpers/DogContext";
 import styled from "styled-components";
 import Item from "./DropdownItem";
-import FilterItems from "../../helpers/FilterItemsGallery";
 
 
 const GallerySort = ({handleReload}) => {
   const { breedsKey } = useContext(DogContext);
   const [breeds] = breedsKey;
-  const { handleFilterClick, handleMainAction } = FilterItems();
-
 
   const orderContent = [ 
     { id: 1, name: "Random", state: "rand" },
@@ -72,7 +69,6 @@ const Container = styled.section`
   background-color: ${ props => props.theme.bgSort};
   border-radius: 20px;
   padding: 20px;
-  /* margin-bottom: 10px; */
 `;
 
 const Grid = styled.div`
