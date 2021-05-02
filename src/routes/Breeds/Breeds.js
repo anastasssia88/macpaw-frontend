@@ -25,8 +25,8 @@ const Breeds = () => {
 
 useEffect(() => { 
     const breedID = currBreed.id;
+    setLoading(true);
     const fetchData = async () => { 
-        setLoading(true);
         const response = await axios(
             `https://api.thedogapi.com/v1/images/search?limit=${limit}&order=${order}&has_breeds=true&size=med&breed_id=${
             breedID ? breedID : ""
@@ -35,7 +35,7 @@ useEffect(() => {
         setDogs(response.data);
         setLoading(false);
         };
-    fetchData(); 
+    setTimeout(() => fetchData(), 1000); 
   }, [limit, currBreed, order]);
 
 
@@ -131,6 +131,7 @@ const Img = styled.img`
   width: 100%;
   height: 100%;
   min-height: 120px;
+  max-height: 300px;
   border-radius: 20px;
   object-fit: cover;
   position: relative;

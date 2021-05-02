@@ -36,22 +36,22 @@ const Gallery = () => {
 
   // Fetching dogs
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
-      setLoading(true);
       const response = await axios(
         "https://api.thedogapi.com/v1/images/search?limit=10"
       );
       setDogs(response.data);
       setLoading(false);
     };
-    fetchData();
+    setTimeout(() => fetchData(), 1000); 
   }, []);
 
   // reloading with filters
   const handleReload = () => {
     const breedID = currBreed.id;
+    setLoading(true);
     const fetchData = async () => {
-      setLoading(true);
       const response = await axios(
           `https://api.thedogapi.com/v1/images/search?limit=${limit}&order=${order}&mime_types=${type}&breed_id=${
           breedID ? breedID : ""
@@ -60,7 +60,7 @@ const Gallery = () => {
       setDogs(response.data);
       setLoading(false);
       };
-    fetchData(); 
+    setTimeout(() => fetchData(), 1000); 
   }
   
 
@@ -79,7 +79,6 @@ const Gallery = () => {
     }
   }, [dogs]);
 
-  
 
   return (
       <Wrapper>
@@ -104,7 +103,7 @@ const Gallery = () => {
             {chunked.map((tenDogs, index) => (
               <Pattern key={index}>
                 {tenDogs.map((dog, index) => (
-                  <GridItem key={dog.id} index={index}>
+                  <GridItem width={dog.width} height={dog.height} key={dog.id} index={index}>
                     <Img key={dog.id} src={dog.url} />
                     <Label onClick={() => favFromGallery(dog)}>
                       {favorites.indexOf(dog) === -1 ? (
@@ -202,6 +201,7 @@ const Pattern = styled.div`
     "nine nine ten";
   justify-content: space-evenly;
 `;
+
 const Img = styled.img`
   width: 100%;
   height: 100%;

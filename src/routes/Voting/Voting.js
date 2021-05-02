@@ -23,6 +23,7 @@ const Voting = ({ like, fav, disl }) => {
   const { handleClick } = HandleVote();
 
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
       setLoading(true);
       const response = await axios(
@@ -32,7 +33,7 @@ const Voting = ({ like, fav, disl }) => {
       setActive(false);
       setLoading(false);
     };
-    fetchData();
+    setTimeout(() => fetchData(), 1000); 
   }, [liked, disliked]);
 
   const url = randomDog.url;

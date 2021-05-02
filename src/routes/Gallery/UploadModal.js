@@ -15,10 +15,10 @@ const UploadModal = ({ open, onClose }) => {
   const [hidden, setHidden] = useState(false);
   const [ responseStatus, setResponseStatus ] = useState(0);
 
-
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*",
     onDrop: (acceptedFiles) => {
+      setResponseStatus(0)
       setFiles(
         acceptedFiles.map((file) =>
           Object.assign(file, {
@@ -37,13 +37,13 @@ const UploadModal = ({ open, onClose }) => {
         src={file.preview}
         style={{
           maxHeight: "280px",
+          maxWidth: "550px",
           borderRadius: "10px",
           objectFit: "contain",
         }}
       />
     </div>
   ));
-
 
 
   const handleUpload = () => {
