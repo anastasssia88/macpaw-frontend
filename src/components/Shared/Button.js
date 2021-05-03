@@ -1,10 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import { ClipLoader } from "react-spinners";
 
-const Button = ({ btnContent, hidden, onClick, bgText, noHover, responseStatus }) => {
+
+const Button = ({ btnContent, hidden, onClick, bgText, noHover, responseStatus, uploading }) => {
   return (
     <Div hidden={hidden} responseStatus={responseStatus} >
-      <Btn bgText={bgText} noHover={noHover} onClick={onClick}>{btnContent}</Btn>
+      
+      <Btn bgText={bgText} noHover={noHover} onClick={onClick} uploading={uploading}>
+        { uploading && <span><ClipLoader color="#FFFFFF" size="20" /></span> }
+        {btnContent}
+      </Btn>
     </Div>
   );
 };
@@ -46,6 +52,13 @@ const Btn = styled.button`
   -moz-transition: all 0.3s ease;  
   -o-transition: all 0.3s ease; 
   transition: all 0.3s ease;
+
+  span {
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   &:hover {
     background: ${ props => props.noHover ? "#FF868E": "#FBE0DC"};

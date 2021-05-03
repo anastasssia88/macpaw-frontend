@@ -62,7 +62,6 @@ const Gallery = () => {
       };
     setTimeout(() => fetchData(), 1000); 
   }
-  
 
   // displaying the dogs
   useEffect(() => {

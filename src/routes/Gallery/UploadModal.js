@@ -13,6 +13,7 @@ import { lightTheme } from "../../theme/theme";
 const UploadModal = ({ open, onClose }) => {
   const [files, setFiles] = useState([]);
   const [hidden, setHidden] = useState(false);
+  const [ uploadInProgress, setUploadInProgress ] = useState(false);
   const [ responseStatus, setResponseStatus ] = useState(0);
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -52,6 +53,10 @@ const UploadModal = ({ open, onClose }) => {
         "Content-Type": "multipart/form-data",
         "x-api-key": "220e3104-105e-4131-96f6-194253068792",
       },
+      onUploadProgress: progressEvent => {
+        setUploadInProgress(true)
+        console.log("Upload progress: " + Math.round(progressEvent.loaded / progressEvent.total * 100 ) + "%");
+      }
     };
     let fd = new FormData();
     files.map((file) => {
@@ -63,9 +68,11 @@ const UploadModal = ({ open, onClose }) => {
         setResponseStatus(response.status)
         setHidden(false);
         setFiles([]);
+        setUploadInProgress(false);
       })
       .catch((error) => {
-        setResponseStatus(400)
+        setResponseStatus(400);
+        setUploadInProgress(false);
         console.log(error);
       });
   };
@@ -109,13 +116,22 @@ const UploadModal = ({ open, onClose }) => {
         </DropArea>
         <p>{message}</p>
 
-        <Btn
+        { uploadInProgress && responseStatus === 0 ? (
+          <Btn
+          btnContent="Uploading" 
+          uploading
+          noHover
+          />
+        ) : (
+          <Btn
           btnContent="Upload photo"
           hidden={ !hidden }
           resStatus={ responseStatus }
           onClick={ handleUpload }
           responseStatus={ responseStatus }
         />
+        )}
+        
 
       { responseStatus === 201 && <UploadStatus status="success" /> }
       { responseStatus === 400 && <UploadStatus status="failure" /> }
