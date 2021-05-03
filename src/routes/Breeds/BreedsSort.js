@@ -42,10 +42,10 @@ const BreedsSort = () => {
           ml
           align
           gray
-          scroll
+          scrollOn
           title="All breeds"
           content={breedContent}
-          setState={setCurrBreed} 
+          
           
         />
         <Item

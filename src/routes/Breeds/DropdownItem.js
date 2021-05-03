@@ -5,7 +5,7 @@ import { BreedsContext } from "../../helpers/BreedsContext"
 import FilterItems from "../../helpers/FilterItemsBreeds";
 
 
-const DropdownItem = ({ label, title, xs, sm, content, gray, ml, setState }) => {
+const DropdownItem = ({ label, title, xs, sm, content, gray, ml, scrollOn }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { handleFilterClick } = FilterItems();
   
@@ -61,7 +61,7 @@ const DropdownItem = ({ label, title, xs, sm, content, gray, ml, setState }) => 
         </DropDownHeader>
         {isOpen && (
           <DropDownListContainer >
-            <DropDownList xs={xs} onMouseLeave={handleMouseLeave}>
+            <DropDownList xs={xs} onMouseLeave={handleMouseLeave} scrollOn={scrollOn}>
 
               {firstChild}
               {content.map((item) => (
@@ -141,7 +141,8 @@ const DropDownList = styled.ul`
   margin-top: 10px;
   padding: 1px 20px;
   max-height: 20rem;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
+  overflow-y: ${props => props.scrollOn && "scroll"};
   border-radius: 10px;
   font-size: 16px;
   box-sizing: border-box;

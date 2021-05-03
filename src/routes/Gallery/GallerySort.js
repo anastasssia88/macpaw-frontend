@@ -36,7 +36,7 @@ const GallerySort = ({handleReload}) => {
           <Item label="type" title="Static" content={typeContent} />
         </GridItem>
         <GridItem three>
-          <Item label="breed" title="None" content={breedContent} />
+          <Item label="breed" title="None" content={breedContent} scrollOn/>
         </GridItem>
         <GridItem four>
 
