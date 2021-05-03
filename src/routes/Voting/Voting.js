@@ -33,7 +33,7 @@ const Voting = ({ like, fav, disl }) => {
       setActive(false);
       setLoading(false);
     };
-    setTimeout(() => fetchData(), 1000); 
+    fetchData();
   }, [liked, disliked]);
 
   const url = randomDog.url;
