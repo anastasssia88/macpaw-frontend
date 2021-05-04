@@ -67,8 +67,17 @@ export default Sidenav;
 const Section = styled.section`
   background: ${(props) => props.theme.bgMain};
   min-height: 100vh;
-  height: auto;
+  max-height: auto;
   width: 50%;
+
+  @media (max-width: 1024px) {
+    width: auto;
+  }
+
+  @media (max-width: 768px) {
+    width: auto;
+    min-height: auto;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -76,6 +85,18 @@ const Wrapper = styled.div`
   margin: 2rem 8rem;
   position: fixed;
   background: ${(props) => props.theme.bgMain};
+
+  @media (max-width: 1024px) {
+    position: static;
+    width: auto;
+    margin: 40px;
+  }
+
+  @media (max-width: 768px) {
+    position: static;
+    width: auto;
+    margin: 25px;
+  }
  
   h1 {
     margin-top: 5rem;
@@ -98,6 +119,14 @@ const Nav = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  @media (max-width: 1024px) {
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 const Flex = styled.div`

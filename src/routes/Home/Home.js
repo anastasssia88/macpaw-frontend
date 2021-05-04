@@ -19,10 +19,16 @@ const Section = styled.section`
   height: 100vh;
   max-height: 100vh;
   width: 50%;
-
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-height: auto;
+    height: auto;
+  } 
+
 
   div {
     background: ${(props) => props.theme.bgPink};
@@ -30,6 +36,7 @@ const Section = styled.section`
     margin: 2rem;
     border-radius: 20px;
     position: relative;
+
 
     img {
       width: 100%;

@@ -84,6 +84,14 @@ const DocumentBody = styled.div`
   display: flex;
   flex-direction: row;
   height: auto;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const StyledSection = styled.div`
@@ -91,12 +99,18 @@ const StyledSection = styled.div`
   height: auto;
   min-height: 100vh;
   max-height: auto;
-
   width: 50%;
   padding: 1.8rem;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-
   flex-direction: ${(props) => (props.flexCol ? "column" : "row")};
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `

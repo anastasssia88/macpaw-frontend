@@ -59,6 +59,11 @@ const Div = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    display: none;
+  } 
+
 `;
 
 const A = styled.div`
@@ -66,13 +71,11 @@ const A = styled.div`
   max-height: 36px;
   background: ${(props) => props.theme.bgBox};
   background: ${(props) => props.active && "#FF868E"};
-
   color: #ff868e;
   color: ${(props) => props.active && "white"};
   font-size: 14px;
   letter-spacing: 2px;
   padding: 10px 0px;
-  /* padding: 0.5rem 2rem; */
   text-transform: uppercase;
   text-align: center;
   border-radius: 10px;
@@ -80,6 +83,11 @@ const A = styled.div`
   -moz-transition: all 0.3s ease;  
   -o-transition: all 0.3s ease; 
   transition: all 0.3s ease;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 1.4rem;
+  } 
 `;
 
 const Wrapper = styled.div`
@@ -96,5 +104,11 @@ const Wrapper = styled.div`
   &:hover ${Div} {
     border: 5px solid #ffffff;
     border: ${(props) => props.active && "5px solid #FBE0DC"};
+  }
+
+  a {
+    @media (max-width: 768px) {
+    width: 100%;
+    } 
   }
 `;
