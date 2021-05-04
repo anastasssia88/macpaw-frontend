@@ -23,7 +23,6 @@ const Voting = ({ like, fav, disl }) => {
   const { handleClick } = HandleVote();
 
   useEffect(() => {
-    setLoading(true);
     const fetchData = async () => {
       setLoading(true);
       const response = await axios(
@@ -31,7 +30,6 @@ const Voting = ({ like, fav, disl }) => {
       );
       setRandomDog(response.data[0]);
       setActive(false);
-      setLoading(false);
     };
     fetchData();
   }, [liked, disliked]);
@@ -50,12 +48,7 @@ const Voting = ({ like, fav, disl }) => {
   return (
       <Wrapper>
         <GoBack btnContent="Voting" />
-        { loading ? (
-            <Loader />
-        ) : (
-           <Img src={url} alt={randomDog.name} />
-        ) }
-
+        <Img src={url} alt={randomDog.name} />
         <Flexbox>
           <Actions>
             <div>
@@ -73,7 +66,7 @@ const Voting = ({ like, fav, disl }) => {
                 path={activePath}
               />
 
-              <ActionBtn
+              <ActionBtn 
                 onClick={() => handleClick("dis", randomDog)}
                 disl
                 viewBox="0 0 30 30"
@@ -106,6 +99,9 @@ const Img = styled.img`
   width: 100%;
   max-height: 30rem;
   object-fit: cover;
+  @media (max-width: 768px) {
+    margin-top: 10px;
+  }
 `;
 
 const Flexbox = styled.div`

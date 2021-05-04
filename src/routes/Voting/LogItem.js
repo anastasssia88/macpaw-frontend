@@ -31,13 +31,20 @@ const LogItem = ({ id, content, type, time }) => {
   }
 
   return (
+    // <Wrapper>
+    //   <div>
+    //     <Time>{time}</Time>
+    //     <p>
+    //       Image ID: <span>{id}</span> {content}
+    //     </p>
+    //   </div>
+    //   <SVG viewBox={viewBox}>{path}</SVG>
+    // </Wrapper>
     <Wrapper>
-      <div>
-        <Time>{time}</Time>
-        <p>
-          Image ID: <span>{id}</span> {content}
-        </p>
-      </div>
+      <Time>{time}</Time>
+      <p>
+        Image ID: <span>{id}</span> {content}
+      </p>
       <SVG viewBox={viewBox}>{path}</SVG>
     </Wrapper>
   );
@@ -53,29 +60,43 @@ const Wrapper = styled.div`
   padding: 0px 20px;
   margin: 10px 0px;
 
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center; */
+
+  display: grid;
+  grid-template-columns: auto 3fr auto;
+  grid-template-rows: auto;
+  grid-template-areas: "time content icon";
+  justify-content: center;
   align-items: center;
 
-  div {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+  @media (max-width: 768px) {
+    height: 130px;
+    padding: 10px 20px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+      "time icon"
+      "content content";
+  }
 
     p {
       color: ${(props) => props.theme.textSec};
+      grid-area: content;
+      line-height: 1.5;
 
       span {
         color: ${(props) => props.theme.textPrim};
         font-weight: 500;
       }
     }
-  }
+  
 `;
 
 const Time = styled.span`
+  grid-area: time;
   background-color: ${ props => props.theme.bgGaleryFilters};
   color: ${(props) => props.theme.textPrim};
   width: auto;
@@ -88,9 +109,12 @@ const Time = styled.span`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  
 `;
 
 const SVG = styled.svg`
+  grid-area: icon;
   fill: #97eab9;
   fill: ${(props) => props.fav && "#FF868E"};
   fill: ${(props) => props.dis && "#FFD280"};
@@ -99,3 +123,4 @@ const SVG = styled.svg`
   width: 20px;
   height: auto;
 `;
+

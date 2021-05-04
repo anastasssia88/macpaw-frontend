@@ -31,6 +31,10 @@ const Div = styled.div`
   flex-direction: row;
   justify-content: flex-start; 
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 10px;
+  }
 `;
 
 const BtnBack = styled.div`

@@ -9,6 +9,7 @@ import NavItem from "./NavItem";
 import ModeToggle from "./ModeToggle";
 import NavLogo from './Logo';
 import CloseButton from "../Shared/CloseButton"
+import MobileNav from "./MobileNav"
 
 const Sidenav = ({ theme , setTheme, isOpen, setIsOpen }) => {
   let location = useLocation();
@@ -61,53 +62,13 @@ const Sidenav = ({ theme , setTheme, isOpen, setIsOpen }) => {
       </div>
     </Section>
 
-    <MobileNav path={path} isOpen={isOpen}>
-      <CloseButton setIsOpen={setIsOpen} isOpen={isOpen}/>
-      <Nav >
-        <NavItem 
-          btnContent="Voting"
-          imgSrc={votingImg}
-          url="/voting"
-          alt="voting"
-          path={path}
-        />
-        <NavItem
-          btnContent="Breeds"
-          imgSrc={breedsImg}
-          green
-          url="/breeds"
-          alt="breeds"
-          path={path}
-        />
-        <NavItem
-          btnContent="Gallery"
-          imgSrc={galleryImg}
-          yellow
-          url="/gallery"
-          alt="gallery"
-          path={path}
-        />
-      </Nav>
-    </MobileNav>
+    <MobileNav path={path} isOpen={isOpen} setIsOpen={setIsOpen}/>
     </>
   );
 };
 
 export default Sidenav;
 
-const MobileNav = styled.nav`
-  display: none;
-  @media (max-width: 768px) {
-    padding: 20px;
-    display: ${ props => props.isOpen && "flex" };
-    display: ${ props => props.path === "/" && "none" };
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-end;
-    background: ${(props) => props.theme.bgMain};
-    height: 100vh;
-  }
-`
 const Section = styled.section`
   background: ${(props) => props.theme.bgMain};
   min-height: 100vh;

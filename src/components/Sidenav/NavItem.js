@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { DogContext } from "../../helpers/DogContext"
 
-const NavItem = ({ imgSrc, btnContent, url, green, yellow, alt, path }) => {
+const NavItem = ({ imgSrc, btnContent, url, green, yellow, alt, path, isOpen, setIsOpen }) => {
   const [active, setActive] = useState(false);
   const { searchTermKey } = useContext(DogContext);
   const [searchTerm , setSearchTerm ] = searchTermKey;

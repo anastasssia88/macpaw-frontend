@@ -5,7 +5,7 @@ import { BreedsContext } from "../../helpers/BreedsContext"
 import FilterItems from "../../helpers/FilterItemsBreeds";
 
 
-const DropdownItem = ({ label, title, xs, sm, content, gray, ml, scrollOn }) => {
+const DropdownItem = ({ label, title, xs, sm, content, gray, ml, scrollOn, gridArea }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { handleFilterClick } = FilterItems();
   
@@ -49,7 +49,7 @@ const DropdownItem = ({ label, title, xs, sm, content, gray, ml, scrollOn }) => 
 
  
   return (
-    <Main sm={sm} xs={xs} ml={ml}>
+    <Main sm={sm} xs={xs} ml={ml} gridArea={gridArea}>
       <DropDownContainer md onClick={openFilter} gray={gray}>
         <span>{label}</span>
         <DropDownHeader gray={gray} >
@@ -78,18 +78,23 @@ const DropdownItem = ({ label, title, xs, sm, content, gray, ml, scrollOn }) => 
 
 export default DropdownItem; 
 
-const Main = styled.div`
-  /* align-self: center; */
+const Main = styled.div` 
+  grid-area: ${ props => props.gridArea === "breed" && "breed"};
   margin: 5px 10px;
   transition: all 0.3s ease;
   width: 100%;
   width: ${(props) => props.sm && "100%"};
   width: ${(props) => props.xs && "60%"};
   margin: ${(props) => props.ml && "0px 0px 0px 10px"};
+
+  @media (max-width: 768px) {
+    margin: 0px;
+    width: 100%;
+  } 
 `;
 
 const DropDownContainer = styled.div`
-min-width: 100%;
+  min-width: 100%;
 
   span {
     color: #8c8c8c;

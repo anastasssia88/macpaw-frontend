@@ -21,11 +21,22 @@ const SVG = styled.svg`
   -moz-transition: all 0.3s ease;  
   -o-transition: all 0.3s ease; 
   transition: all 0.3s ease;
+
+  @media (max-width: 768px) {
+    width: 25px;
+    height: 25px;
+  }
 `;
 
 const Btn = styled.button`
   width: 80px;
   height: 80px;
+
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
+  }
+
   border: none;
   margin: ${(props) => props.fav && "0px 4px"};
 
