@@ -32,12 +32,13 @@ const Searchbar = () => {
 export default Searchbar;
 
 const Div = styled.div`
+  grid-area: search;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  position: relative;
+  position: relative;  
 `;
  
 const Input = styled.input`

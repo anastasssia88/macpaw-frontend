@@ -26,16 +26,17 @@ function App() {
   const [ theme, setTheme ] = useState(lightTheme)
   const { searchTermKey } = useContext(DogContext)
   const [ searchTerm , setSearchTerm ] = searchTermKey
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Router>
       <ThemeProvider theme={theme}>
         <DocumentBody>
-          <Sidenav theme={theme} setTheme={setTheme} />
+          <Sidenav theme={theme} setTheme={setTheme} isOpen={isOpen} setIsOpen={setIsOpen}/>
             <Switch>
               <Route exact path="/" component={Home} />
               <StyledSection flexCol>
-                <Search />         
+                <Search isOpen={isOpen} setIsOpen={setIsOpen} />         
                 <Route exact path="/voting">
                   <Voting />
                 </Route>

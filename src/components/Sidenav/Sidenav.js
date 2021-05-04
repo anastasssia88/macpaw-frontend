@@ -7,18 +7,20 @@ import breedsImg from "../../images/pet-breeds.svg";
 import galleryImg from "../../images/images-search.svg";
 import NavItem from "./NavItem";
 import ModeToggle from "./ModeToggle";
-import NavLogo from './Logo'
+import NavLogo from './Logo';
+import CloseButton from "../Shared/CloseButton"
 
-const Sidenav = ({ theme , setTheme }) => {
+const Sidenav = ({ theme , setTheme, isOpen, setIsOpen }) => {
   let location = useLocation();
   const [path, setPath] = useState(location.pathname);
-
+  
   useEffect(() => {
     setPath(location.pathname);
   }, [location.pathname]); 
 
   return (
-    <Section> 
+    <>
+    <Section path={path}> 
       <div>
         <Wrapper>
           <Flex>
@@ -58,12 +60,54 @@ const Sidenav = ({ theme , setTheme }) => {
         </Wrapper>
       </div>
     </Section>
+
+    <MobileNav path={path} isOpen={isOpen}>
+      <CloseButton setIsOpen={setIsOpen} isOpen={isOpen}/>
+      <Nav >
+        <NavItem 
+          btnContent="Voting"
+          imgSrc={votingImg}
+          url="/voting"
+          alt="voting"
+          path={path}
+        />
+        <NavItem
+          btnContent="Breeds"
+          imgSrc={breedsImg}
+          green
+          url="/breeds"
+          alt="breeds"
+          path={path}
+        />
+        <NavItem
+          btnContent="Gallery"
+          imgSrc={galleryImg}
+          yellow
+          url="/gallery"
+          alt="gallery"
+          path={path}
+        />
+      </Nav>
+    </MobileNav>
+    </>
   );
 };
 
 export default Sidenav;
 
-
+const MobileNav = styled.nav`
+  display: none;
+  @media (max-width: 768px) {
+    padding: 20px;
+    display: ${ props => props.isOpen && "flex" };
+    display: ${ props => props.path === "/" && "none" };
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    background: ${(props) => props.theme.bgMain};
+    height: 100vh;
+  }
+`
 const Section = styled.section`
   background: ${(props) => props.theme.bgMain};
   min-height: 100vh;
@@ -77,6 +121,7 @@ const Section = styled.section`
   @media (max-width: 768px) {
     width: auto;
     min-height: auto;
+    display: ${ props => props.path === "/" ? "block" : "none"};
   }
 `;
 

@@ -6,7 +6,7 @@ import styled from "styled-components";
 import SearchBar from "./Searchbar";
 import Filter from "./Filter";
 
-const Search = () => {
+const Search = ({ isOpen, setIsOpen}) => {
   let location = useLocation();
   const [path, setPath] = useState(location.pathname);
 
@@ -16,7 +16,7 @@ const Search = () => {
 
   return (
     <Div>
-      <SearchBar />
+      <SearchBar/>
       <FiltersBox>
         <Filter
           path={path}
@@ -37,6 +37,11 @@ const Search = () => {
           url="/disliked"
         />
       </FiltersBox>
+      <Humburger onClick={() => setIsOpen(!isOpen)}>
+        <span />
+        <span />
+        <span />
+      </Humburger>
     </Div>
   );
 };
@@ -45,12 +50,53 @@ export default Search;
 
 const Div = styled.div`
   width: 100%;
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-between; */
   margin-bottom: 10px;
+
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "search filters";
+
+  @media (max-width: 768px) {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+    "hum filters"
+    "search search";
+    grid-row-gap: 10px;
+  }  
 `;
+
 const FiltersBox = styled.div`
   display: flex;
   flex-direction: row;
+  grid-area: filters;
 `;
+
+const Humburger = styled.div`
+  display: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 20px;
+  
+  @media (max-width: 768px) {
+    background: ${(props) => props.theme.bgBox};
+    cursor: pointer;
+    grid-area: hum;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    span {
+      height: 2px;
+      width: 30px;
+      background: #FF868E;
+      margin-bottom: 4px;
+      border-radius: 5px;
+    }
+  }  
+`
