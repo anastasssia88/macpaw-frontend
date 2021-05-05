@@ -62,7 +62,7 @@ const Sidenav = ({ theme , setTheme, isOpen, setIsOpen }) => {
       </div>
     </Section>
 
-    <MobileNav path={path} isOpen={isOpen} setIsOpen={setIsOpen}/>
+    <MobileNav path={path} isOpen={isOpen} setIsOpen={setIsOpen} theme={theme} setTheme={setTheme}/>
     </>
   );
 };

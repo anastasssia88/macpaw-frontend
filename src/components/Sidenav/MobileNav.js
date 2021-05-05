@@ -2,13 +2,14 @@ import React from 'react'
 import styled from "styled-components"
 import NavItem from "./NavItem";
 import CloseButton from "../Shared/CloseButton"
+import ModeToggle from "../Sidenav/ModeToggle"
 
 import votingImg from "../../images/vote-table.svg";
 import breedsImg from "../../images/pet-breeds.svg";
 import galleryImg from "../../images/images-search.svg";
 
 
-const MobileNav = ({ isOpen, setIsOpen, path }) => {
+const MobileNav = ({ isOpen, setIsOpen, theme, setTheme, path }) => { 
     return (
     <NavWrapper path={path} isOpen={isOpen}>
       <CloseButton setIsOpen={setIsOpen} isOpen={isOpen}/>
@@ -19,6 +20,8 @@ const MobileNav = ({ isOpen, setIsOpen, path }) => {
           url="/voting"
           alt="voting"
           path={path}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
         />
         <NavItem
           btnContent="Breeds"
@@ -27,6 +30,8 @@ const MobileNav = ({ isOpen, setIsOpen, path }) => {
           url="/breeds"
           alt="breeds"
           path={path}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
         />
         <NavItem
           btnContent="Gallery"
@@ -37,8 +42,11 @@ const MobileNav = ({ isOpen, setIsOpen, path }) => {
           path={path}
           isOpen={isOpen}
           setIsOpen={setIsOpen}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
         />
       </Nav>
+      <ModeToggle theme={theme} setTheme={setTheme}/>
     </NavWrapper>
     )
 }
@@ -52,7 +60,7 @@ const NavWrapper = styled.nav`
     display: ${ props => props.isOpen && "flex" };
     display: ${ props => props.path === "/" && "none" };
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-end;
     background: ${(props) => props.theme.bgMain};
     height: 100vh;

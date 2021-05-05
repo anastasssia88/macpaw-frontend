@@ -27,12 +27,22 @@ const NavItem = ({ imgSrc, btnContent, url, green, yellow, alt, path, isOpen, se
       active={active}
       onClick={() => setSearchTerm("Search for breeds by name")}
     >
-      <Link to={url}>
-        <Div green={green} yellow={yellow} active={active}>
-          <img src={imgSrc} alt={alt} />
-        </Div>
-        <A active={active}>{btnContent}</A>
-      </Link>
+      { setIsOpen ? (
+          <Link to={url} onClick={() => setIsOpen(false)}>
+            <Div green={green} yellow={yellow} active={active}>
+              <img src={imgSrc} alt={alt} />
+            </Div>
+            <A active={active}>{btnContent}</A>
+          </Link>
+        ) : (
+          <Link to={url}>
+            <Div green={green} yellow={yellow} active={active}>
+              <img src={imgSrc} alt={alt} />
+            </Div>
+            <A active={active}>{btnContent}</A>
+          </Link>
+        )}
+      
     </Wrapper>
   );
 };

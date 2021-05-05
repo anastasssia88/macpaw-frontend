@@ -3,10 +3,10 @@ import styled from "styled-components";
 import ReactDom from "react-dom";
 import UploadPic from "../../images/upload.jpeg";
 import UploadDarkMode from "../../images/uploadDarkMode.png";
-import UploadStatus from "./UploadStatus"
 
-import { useDropzone } from "react-dropzone";
+import UploadStatus from "./UploadStatus"
 import Btn from "../../components/Shared/Button"; 
+import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import { lightTheme } from "../../theme/theme";
 
