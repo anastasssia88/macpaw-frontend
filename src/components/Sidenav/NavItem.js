@@ -70,10 +70,14 @@ const Div = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 768px) {
-    display: none;
+  @media (max-width: 1024px) {
+    display: flex;
   } 
 
+  @media (max-width: 767px) {
+    display: none;
+  } 
+  
 `;
 
 const A = styled.div`
@@ -122,7 +126,7 @@ const Wrapper = styled.div`
 
   a {
     @media (max-width: 768px) {
-    width: 100%;
+      width: 100%;
     } 
   }
 `;

@@ -50,9 +50,6 @@ export default Search;
 
 const Div = styled.div`
   width: 100%;
-  /* display: flex;
-  flex-direction: row;
-  justify-content: space-between; */
   margin-bottom: 10px;
 
   display: grid;
@@ -60,7 +57,14 @@ const Div = styled.div`
   grid-template-rows: auto;
   grid-template-areas: "search filters";
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "hum search filters";
+  }
+
+  @media (max-width: 767px) {
     grid-template-columns: 2fr 1fr;
     grid-template-rows: auto auto;
     grid-template-areas: 
@@ -74,6 +78,10 @@ const FiltersBox = styled.div`
   display: flex;
   flex-direction: row;
   grid-area: filters;
+
+  @media (max-width: 1024px) {
+    justify-content: flex-end;
+  }  
 `;
 
 const Humburger = styled.div`
@@ -82,7 +90,7 @@ const Humburger = styled.div`
   height: 60px;
   border-radius: 20px;
   
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     background: ${(props) => props.theme.bgBox};
     cursor: pointer;
     grid-area: hum;

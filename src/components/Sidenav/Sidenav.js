@@ -77,11 +77,7 @@ const Section = styled.section`
 
   @media (max-width: 1024px) {
     width: auto;
-  }
-
-  @media (max-width: 768px) {
-    width: auto;
-    min-height: auto;
+    height: 100vh;
     display: ${ props => props.path === "/" ? "block" : "none"};
   }
 `;
@@ -95,10 +91,10 @@ const Wrapper = styled.div`
   @media (max-width: 1024px) {
     position: static;
     width: auto;
-    margin: 40px;
+    margin: 1.8rem 7rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     position: static;
     width: auto;
     margin: 25px;
@@ -127,17 +123,18 @@ const Nav = styled.nav`
   justify-content: space-between;
 
   @media (max-width: 1024px) {
+    width: 85%;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     flex-direction: column;
     width: 100%;
   }
 `;
-
+ 
 const Flex = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-`;
+`; 

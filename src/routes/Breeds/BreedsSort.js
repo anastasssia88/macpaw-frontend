@@ -86,11 +86,16 @@ const Wrapper = styled.div`
   height: 40px;
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: row; 
   justify-content: flex-start;
   align-items: flex-end;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  } 
+
+  @media (max-width: 767px) {
     height: auto;
     display: grid;
     grid-template-columns: 3fr 1fr 1fr;

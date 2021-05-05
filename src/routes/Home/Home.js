@@ -23,10 +23,11 @@ const Section = styled.section`
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 768px) {
-    width: 100%;
+  @media (max-width: 1024px) {
+    /* width: 100%;
     max-height: auto;
-    height: auto;
+    height: auto; */
+    display: none;
   }  
 
 

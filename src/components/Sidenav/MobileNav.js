@@ -53,12 +53,13 @@ const MobileNav = ({ isOpen, setIsOpen, theme, setTheme, path }) => {
     )
 }
 
-export default MobileNav
+export default MobileNav 
 
 const NavWrapper = styled.nav`
-  display: none;
-  @media (max-width: 768px) {
-    padding: 20px;
+  display: none; 
+
+  @media (max-width: 1024px) {
+    padding: 40px;
     display: ${ props => props.isOpen && "flex" };
     display: ${ props => props.path === "/" && "none" };
     flex-direction: column;
@@ -66,6 +67,10 @@ const NavWrapper = styled.nav`
     align-items: space-between;
     background: ${(props) => props.theme.bgMain};
     height: 100vh;
+  }
+
+  @media (max-width: 767px) {
+    padding: 20px;
   }
 
   span {
@@ -84,10 +89,14 @@ const Nav = styled.nav`
   justify-content: space-between;
 
   @media (max-width: 1024px) {
+    margin: 3rem 8rem;
+    justify-content: space-between;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
+    margin: 1.5rem 0rem;
     flex-direction: column;
     width: 100%;
+    justify-content: space-between;
   }
 `;

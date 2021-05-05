@@ -87,15 +87,15 @@ const Grid = styled.div`
     "one two"
     "three four";
 
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-      grid-template-rows: repeat(4, auto);
-      grid-template-areas:
-        "one" 
-        "two"
-        "three" 
-        "four";
-    }
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+    grid-template-areas:
+      "one" 
+      "two"
+      "three" 
+      "four";
+  }
 `;
 
 const GridItem = styled.div`
@@ -112,9 +112,9 @@ const ItemFlex = styled.div`
   justify-content: space-between;
   align-items: flex-end;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     flex-direction: column;
-    }
+  }
 `;
 
 const ResetBtn = styled.div`
@@ -147,7 +147,7 @@ const ResetBtn = styled.div`
     fill: #ffffff;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     min-width: 100%;
     margin-top: 20px;
   }

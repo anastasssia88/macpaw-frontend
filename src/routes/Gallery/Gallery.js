@@ -106,7 +106,7 @@ const Gallery = () => {
             {chunked.map((tenDogs, index) => (
               <Pattern key={index}>
                 {tenDogs
-                .sort((a,b) => (a.width/a.height > b.width/b.height ? 1 : -1))
+                .sort((a,b) => (a.width/a.height > b.width/b.height ? 1 : -1)) 
                 .map((dog, index) => (
                   <GridItemWithLike width={dog.width} height={dog.height} key={dog.id} index={index}>
                     <Img key={dog.id} src={dog.url} />
@@ -140,7 +140,7 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     flex-direction: column;
   } 
 `;

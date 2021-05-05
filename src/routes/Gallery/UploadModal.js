@@ -166,7 +166,7 @@ const Section = styled.section`
   margin: 20px 30px;
   height: 95%;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     left: 0%;
     right: 0%;
     width: 100%;
@@ -195,7 +195,7 @@ const Section = styled.section`
     color: ${(props) => props.theme.textSec};
     display: ${(props) => props.hidden && "none"};
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       line-height: 1.2;
       text-align:center;
       margin: 10px;
@@ -223,7 +223,7 @@ const DropArea = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
       min-height: 170px;
     }
 
@@ -240,7 +240,7 @@ const DropArea = styled.div`
     justify-content: center;
     align-items: center;
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       height: 100px;
       background-size: contain;
     }
@@ -298,7 +298,7 @@ const Preview = styled.img`
   border-radius: 10px;
   object-fit: contain;
   
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
       max-height: 155px;
       max-width: 320px;
     }

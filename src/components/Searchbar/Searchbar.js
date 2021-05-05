@@ -38,7 +38,7 @@ const Div = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  position: relative;  
+  position: relative;    
 `;
  
 const Input = styled.input`

@@ -22,7 +22,7 @@ const SVG = styled.svg`
   -o-transition: all 0.3s ease; 
   transition: all 0.3s ease;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     width: 25px;
     height: 25px;
   }
@@ -32,7 +32,7 @@ const Btn = styled.button`
   width: 80px;
   height: 80px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     width: 60px;
     height: 60px;
   }

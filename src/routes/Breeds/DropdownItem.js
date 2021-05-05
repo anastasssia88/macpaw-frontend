@@ -87,7 +87,12 @@ const Main = styled.div`
   width: ${(props) => props.xs && "60%"};
   margin: ${(props) => props.ml && "0px 0px 0px 10px"};
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
+    margin: 0px 10px 0px 0px;
+    width: 100%;
+  } 
+
+  @media (max-width: 767px) {
     margin: 0px;
     width: 100%;
   } 
@@ -108,7 +113,6 @@ const DropDownContainer = styled.div`
 const DropDownHeader = styled.div`
   height: 40px;
   margin-left: 0px;
-
 
   background-color: ${(props) => props.gray && "#F8F8F7"};
   color: ${(props) => props.gray && "#8C8C8C"};
@@ -146,7 +150,6 @@ const DropDownList = styled.ul`
   margin-top: 10px;
   padding: 1px 20px;
   max-height: 20rem;
-  /* overflow-y: scroll; */
   overflow-y: ${props => props.scrollOn && "scroll"};
   border-radius: 10px;
   font-size: 16px;

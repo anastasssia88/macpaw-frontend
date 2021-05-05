@@ -10,7 +10,7 @@ export const Masonry = styled.div`
 export const Pattern = styled.div`
   padding: 0px 10px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     padding: 0px;
   } 
 
@@ -29,7 +29,7 @@ export const Pattern = styled.div`
     "nine nine ten";
   justify-content: space-evenly;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(10, auto);
     grid-template-areas:
@@ -131,8 +131,8 @@ export const GridItemWithName = styled.div`
   grid-area: ${(props) => props.index === 0 && "one"};
   grid-area: ${(props) => props.index === 2 && "two"};
   grid-area: ${(props) => props.index === 3 && "three"};
-  grid-area: ${(props) => props.index === 4 && "four"};
-  grid-area: ${(props) => props.index === 1 && "five"};
+  grid-area: ${(props) => props.index === 1 && "four"};
+  grid-area: ${(props) => props.index === 4 && "five"};
 
   grid-area: ${(props) => props.index === 6 && "six"};
   grid-area: ${(props) => props.index === 7 && "seven"};
@@ -196,8 +196,8 @@ export const GridItemWithLike = styled.div`
   grid-area: ${(props) => props.index === 0 && "one"};
   grid-area: ${(props) => props.index === 2 && "two"};
   grid-area: ${(props) => props.index === 3 && "three"};
-  grid-area: ${(props) => props.index === 4 && "four"};
-  grid-area: ${(props) => props.index === 1 && "five"};
+  grid-area: ${(props) => props.index === 1 && "four"};
+  grid-area: ${(props) => props.index === 4 && "five"};
 
   grid-area: ${(props) => props.index === 6 && "six"};
   grid-area: ${(props) => props.index === 7 && "seven"};

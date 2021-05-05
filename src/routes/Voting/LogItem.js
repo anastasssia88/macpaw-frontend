@@ -31,15 +31,6 @@ const LogItem = ({ id, content, type, time }) => {
   }
 
   return (
-    // <Wrapper>
-    //   <div>
-    //     <Time>{time}</Time>
-    //     <p>
-    //       Image ID: <span>{id}</span> {content}
-    //     </p>
-    //   </div>
-    //   <SVG viewBox={viewBox}>{path}</SVG>
-    // </Wrapper>
     <Wrapper>
       <Time>{time}</Time>
       <p>
@@ -60,11 +51,6 @@ const Wrapper = styled.div`
   padding: 0px 20px;
   margin: 10px 0px;
 
-  /* display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center; */
-
   display: grid;
   grid-template-columns: auto 3fr auto;
   grid-template-rows: auto;
@@ -72,7 +58,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     height: 130px;
     padding: 10px 20px;
     grid-template-columns: 1fr 1fr;
