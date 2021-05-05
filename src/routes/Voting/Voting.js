@@ -30,6 +30,7 @@ const Voting = ({ like, fav, disl }) => {
       );
       setRandomDog(response.data[0]);
       setActive(false);
+      setLoading(false);
     };
     fetchData();
   }, [liked, disliked]);
@@ -48,7 +49,13 @@ const Voting = ({ like, fav, disl }) => {
   return (
       <Wrapper>
         <GoBack btnContent="Voting" />
-        <Img src={url} alt={randomDog.name} />
+        { loading ? (
+          <Loader />
+        ) : (
+          <Img src={url} alt={randomDog.name} />
+        )}
+        
+        
         <Flexbox>
           <Actions>
             <div>

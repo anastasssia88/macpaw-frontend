@@ -56,7 +56,7 @@ useEffect(() => {
         setChunked(result);
         setLoading(false);
         }
-  }, [dogs]);
+  }, [dogs]); 
 
   return (
       <Wrapper>
