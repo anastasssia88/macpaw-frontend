@@ -1,13 +1,14 @@
 ## Welcome! 👋🏼
 Are you a dog lover? PetsPaw is the perfect place to explore breeds, to save your favorite pics and to share pictures of your four-legged friend.
 
-PetsPaw app is a test task built by Anastasia Titova for MSI 2021 application.
+PetsPaw app is a test task built by Anastasia Titova for MSI 2021 application. This aplication was built using React.js, Styled Components, and is based on The Dogs API. 
 ![App preview for the PetsPaw test task built by Anastasia](./src/images/app-home.png)
 
 ## More info ℹ️
-This aplication was built using React.js, Styled Components, and is based on The Dogs API. All the basic requirements of the task are met as well as some "plus" tasks:
-- the "go back" button works like in the browser
-- the app has both dark and light modes and a mode switcher
+All the basic requirements of the task are met as well as the following "plus" tasks:
+- "go back" button works like in the browser
+- there are dark & light modes and a mode switcher
+- app is optimized for mobile & tablet views
 
 ![App preview for the PetsPaw test task built by Anastasia](./src/images/app.png)
 
