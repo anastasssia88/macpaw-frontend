@@ -105,7 +105,9 @@ const Gallery = () => {
           <Masonry uploadOpen={uploadOpen}>
             {chunked.map((tenDogs, index) => (
               <Pattern key={index}>
-                {tenDogs.map((dog, index) => (
+                {tenDogs
+                .sort((a,b) => (a.width/a.height > b.width/b.height ? 1 : -1))
+                .map((dog, index) => (
                   <GridItemWithLike width={dog.width} height={dog.height} key={dog.id} index={index}>
                     <Img key={dog.id} src={dog.url} />
                     <Label onClick={() => favFromGallery(dog)}>

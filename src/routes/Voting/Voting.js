@@ -101,7 +101,8 @@ const Voting = ({ like, fav, disl }) => {
 export default Voting;
 
 
-const Img = styled.img`
+const Img = styled.img` 
+  object-position: center top;
   border-radius: 20px;
   width: 100%;
   max-height: 35rem;

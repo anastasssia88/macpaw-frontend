@@ -74,7 +74,9 @@ const SearchResult = () => {
                             <Masonry>
                             {chunked.map((tenDogs, index) => (
                                 <Pattern key={index}>
-                                {tenDogs.map((dog, index) => (
+                                {tenDogs
+                                .sort((a,b) => (a.width/a.height > b.width/b.height ? 1 : -1))
+                                .map((dog, index) => (
             
                                     <GridItemWithName key={dog.id} index={index}>
                                       <Img src={dog.url} />

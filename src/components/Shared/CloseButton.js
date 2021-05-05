@@ -11,10 +11,9 @@ const CloseButton = ({ isOpen, setIsOpen }) => {
     )
 }
 
-export default CloseButton
+export default CloseButton 
 
 const CloseBtn = styled.button`
-  /* position: absolute; */
   top: 1.8rem;
   right: 1.8rem;
   background: ${(props) => props.theme.bgBox};

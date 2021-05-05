@@ -47,6 +47,7 @@ export const Pattern = styled.div`
 `; 
 
 export const Img = styled.img`
+  object-position: center top;
   width: 100%;
   height: 100%;
   min-height: 120px;
@@ -128,13 +129,14 @@ export const GridItemWithName = styled.div`
   }
 
   grid-area: ${(props) => props.index === 0 && "one"};
-  grid-area: ${(props) => props.index === 1 && "two"};
-  grid-area: ${(props) => props.index === 2 && "three"};
-  grid-area: ${(props) => props.index === 3 && "four"};
-  grid-area: ${(props) => props.index === 4 && "five"};
-  grid-area: ${(props) => props.index === 5 && "six"};
-  grid-area: ${(props) => props.index === 6 && "seven"};
-  grid-area: ${(props) => props.index === 7 && "eight"};
+  grid-area: ${(props) => props.index === 2 && "two"};
+  grid-area: ${(props) => props.index === 3 && "three"};
+  grid-area: ${(props) => props.index === 4 && "four"};
+  grid-area: ${(props) => props.index === 1 && "five"};
+
+  grid-area: ${(props) => props.index === 6 && "six"};
+  grid-area: ${(props) => props.index === 7 && "seven"};
+  grid-area: ${(props) => props.index === 5 && "eight"};
   grid-area: ${(props) => props.index === 8 && "nine"};
   grid-area: ${(props) => props.index === 9 && "ten"};
 `;
@@ -192,13 +194,14 @@ export const GridItemWithLike = styled.div`
   }
 
   grid-area: ${(props) => props.index === 0 && "one"};
-  grid-area: ${(props) => props.index === 1 && "two"};
-  grid-area: ${(props) => props.index === 2 && "three"};
-  grid-area: ${(props) => props.index === 3 && "four"};
-  grid-area: ${(props) => props.index === 4 && "five"};
-  grid-area: ${(props) => props.index === 5 && "six"};
-  grid-area: ${(props) => props.index === 6 && "seven"};
-  grid-area: ${(props) => props.index === 7 && "eight"};
+  grid-area: ${(props) => props.index === 2 && "two"};
+  grid-area: ${(props) => props.index === 3 && "three"};
+  grid-area: ${(props) => props.index === 4 && "four"};
+  grid-area: ${(props) => props.index === 1 && "five"};
+
+  grid-area: ${(props) => props.index === 6 && "six"};
+  grid-area: ${(props) => props.index === 7 && "seven"};
+  grid-area: ${(props) => props.index === 5 && "eight"};
   grid-area: ${(props) => props.index === 8 && "nine"};
   grid-area: ${(props) => props.index === 9 && "ten"};
 `;
