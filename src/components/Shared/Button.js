@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { ClipLoader } from "react-spinners";
 
 
-const Button = ({ btnContent, hidden, onClick, bgText, noHover, responseStatus, uploading }) => {
+const Button = ({ btnContent, hidden, onClick, bgText, noHover, responseStatus, uploading, selected }) => {
   return (
     <Div hidden={hidden} responseStatus={responseStatus} >
       
-      <Btn bgText={bgText} noHover={noHover} onClick={onClick} uploading={uploading}>
+      <Btn bgText={bgText} noHover={noHover} onClick={onClick} uploading={uploading} selected={selected}>
         { uploading && <span><ClipLoader color="#FFFFFF" size="20" /></span> }
         {btnContent}
       </Btn>
@@ -27,6 +27,11 @@ const Div = styled.div`
   display: ${(props) => props.hidden && "none"};
   display: ${(props) => props.responseStatus === 400 && "none"};
   display: ${(props) => props.responseStatus === 201 && "none"};
+
+  @media (max-width: 768px) {
+      margin: 0px 0px;
+      width: ${ props => props.selected && "100%"};
+  }
 `;
 
 const Btn = styled.button` 
@@ -63,5 +68,10 @@ const Btn = styled.button`
   &:hover {
     background: ${ props => props.noHover ? "#FF868E": "#FBE0DC"};
     color: ${ props => props.noHover ? "#FFFFFF": "#FF868E"}
+  }
+
+  @media (max-width: 768px) {
+    padding: 5px 20px;
+    width: ${ props => props.selected && "100%"};
   }
 `;

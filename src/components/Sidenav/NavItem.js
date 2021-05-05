@@ -68,7 +68,7 @@ const Div = styled.div`
 
 const A = styled.div`
   width: 100%;
-  max-height: 36px;
+  height: 38px;
   background: ${(props) => props.theme.bgBox};
   background: ${(props) => props.active && "#FF868E"};
   color: #ff868e;
@@ -83,10 +83,14 @@ const A = styled.div`
   -moz-transition: all 0.3s ease;  
   -o-transition: all 0.3s ease; 
   transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   @media (max-width: 768px) {
     width: 100%;
     margin-bottom: 1.4rem;
+    height: 42px;
   } 
 `;
 

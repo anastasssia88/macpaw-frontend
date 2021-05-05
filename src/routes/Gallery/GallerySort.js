@@ -38,8 +38,8 @@ const GallerySort = ({handleReload}) => {
         <GridItem three>
           <Item label="breed" title="None" content={breedContent} scrollOn/>
         </GridItem>
-        <GridItem four>
 
+        <GridItem four>
           <ItemFlex>
               <Item
                 sm
@@ -58,6 +58,7 @@ const GallerySort = ({handleReload}) => {
               </ResetBtn>
           </ItemFlex>
         </GridItem>
+
       </Grid>
     </Container>
   );
@@ -69,19 +70,32 @@ const Container = styled.section`
   background-color: ${ props => props.theme.bgSort};
   border-radius: 20px;
   padding: 20px;
+  margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    margin: 20px 0px;
+  }
 `;
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
-
   column-gap: 15px;
   row-gap: 10px;
-
   grid-template-areas:
     "one two"
     "three four";
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, auto);
+      grid-template-areas:
+        "one" 
+        "two"
+        "three" 
+        "four";
+    }
 `;
 
 const GridItem = styled.div`
@@ -97,7 +111,11 @@ const ItemFlex = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
-  `;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    }
+`;
 
 const ResetBtn = styled.div`
   align-self: flex-end;
@@ -127,5 +145,10 @@ const ResetBtn = styled.div`
   }
   &:hover svg {
     fill: #ffffff;
+  }
+
+  @media (max-width: 768px) {
+    min-width: 100%;
+    margin-top: 20px;
   }
 `;

@@ -8,7 +8,7 @@ export const Masonry = styled.div`
 `;
 
 export const Pattern = styled.div`
-  padding: 10px;
+  padding: 0px 10px;
 
   @media (max-width: 768px) {
     padding: 0px;
@@ -44,7 +44,7 @@ export const Pattern = styled.div`
     "nine"
     "ten";
   }
-`;
+`; 
 
 export const Img = styled.img`
   width: 100%;

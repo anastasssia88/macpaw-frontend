@@ -6,7 +6,7 @@ import UploadDarkMode from "../../images/uploadDarkMode.png";
 import UploadStatus from "./UploadStatus"
 
 import { useDropzone } from "react-dropzone";
-import Btn from "../../components/Shared/Button";
+import Btn from "../../components/Shared/Button"; 
 import axios from "axios";
 import { lightTheme } from "../../theme/theme";
 
@@ -33,15 +33,9 @@ const UploadModal = ({ open, onClose }) => {
 
   const images = files.map((file) => (
     <div key={file.name}>
-      <img
+      <Preview
         alt={file.name} 
         src={file.preview}
-        style={{
-          maxHeight: "280px",
-          maxWidth: "550px",
-          borderRadius: "10px",
-          objectFit: "contain",
-        }}
       />
     </div>
   ));
@@ -156,6 +150,9 @@ const Overlay = styled.div`
   width: 100%;
   background-color: rgba(29, 29, 29, 0.6);
   z-index: 1000;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 const Section = styled.section`
   position: fixed;
@@ -169,6 +166,16 @@ const Section = styled.section`
   margin: 20px 30px;
   height: 95%;
 
+  @media (max-width: 768px) {
+    left: 0%;
+    right: 0%;
+    width: 100%;
+    height: 100vh;
+    padding: 20px;
+    margin: 0px;
+    border-radius: 0px;
+  }
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -176,6 +183,10 @@ const Section = styled.section`
 
   h1 {
     color: ${(props) => props.theme.textPrim};
+    @media (max-width: 768px) {
+      font-size: 20px; 
+      margin-bottom: 20px;
+    }
   }
 
   p {
@@ -183,6 +194,12 @@ const Section = styled.section`
     line-height: 3;
     color: ${(props) => props.theme.textSec};
     display: ${(props) => props.hidden && "none"};
+
+    @media (max-width: 768px) {
+      line-height: 1.2;
+      text-align:center;
+      margin: 10px;
+    }
   }
 
   a {
@@ -191,7 +208,6 @@ const Section = styled.section`
 `;
 
 const DropArea = styled.div`
-  
   min-height: 320px;
   width: 100%;
   margin: 30px 0px 10px 0px;
@@ -207,6 +223,10 @@ const DropArea = styled.div`
   justify-content: center;
   align-items: center;
 
+  @media (max-width: 768px) {
+      min-height: 170px;
+    }
+
   div {
     background: url(${UploadPic}) no-repeat center;
     background: ${ props => props.theme !== lightTheme && `url(${UploadDarkMode})`}; 
@@ -219,11 +239,19 @@ const DropArea = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 768px) {
+      height: 100px;
+      background-size: contain;
+    }
   }
 
   p {
     font-size: 20px;
     color: ${(props) => props.theme.textSec};
+    @media (max-width: 768px) {
+      padding: 0px 4rem;
+    }
   }
 
   span {
@@ -263,3 +291,15 @@ const CloseBtn = styled.button`
     fill: #ffffff;
   }
 `;
+
+const Preview = styled.img`
+  max-height: 280px;
+  max-width: 550px;
+  border-radius: 10px;
+  object-fit: contain;
+  
+  @media (max-width: 768px) {
+      max-height: 155px;
+      max-width: 320px;
+    }
+`

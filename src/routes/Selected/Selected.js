@@ -17,7 +17,7 @@ const Selected = () => {
         <Wrapper> 
             <Container>
                 <GoBack btnContent="Breeds" notActive /> 
-                <Button btnContent="28" bgText noHover />
+                <Button btnContent="28" bgText noHover selected />
             </Container>
             <Img src={selected.url} alr="selected dog" />
             
@@ -49,9 +49,9 @@ export default Selected
 
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+    display: flex; 
+    flex-direction: row;
+    justify-content: flex-start;
 `;
 
 const Img = styled.img`
@@ -79,12 +79,20 @@ const BreedFor = styled.div`
         color: ${(props) => props.theme.textPrim};
         font-size: 36px;
         padding: 0px 30px;
+
+        @media (max-width: 768px) {
+            font-size: 20px;
+        }
     }
 
     p {
         color: ${(props) => props.theme.textSec};
         font-size: 20px;
         margin-top: 10px;
+
+        @media (max-width: 768px) {
+            font-size: 16px;
+        }
     }
 `
 
@@ -95,6 +103,10 @@ const BreedDesc = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
 
     div {
         flex-basis: 50%;
