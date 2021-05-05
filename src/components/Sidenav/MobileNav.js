@@ -12,7 +12,10 @@ import galleryImg from "../../images/images-search.svg";
 const MobileNav = ({ isOpen, setIsOpen, theme, setTheme, path }) => { 
     return (
     <NavWrapper path={path} isOpen={isOpen}>
-      <CloseButton setIsOpen={setIsOpen} isOpen={isOpen}/>
+      <span>
+        <ModeToggle theme={theme} setTheme={setTheme}/>
+        <CloseButton setIsOpen={setIsOpen} isOpen={isOpen}/>
+      </span>
       <Nav >
         <NavItem 
           btnContent="Voting"
@@ -46,7 +49,6 @@ const MobileNav = ({ isOpen, setIsOpen, theme, setTheme, path }) => {
           setIsOpen={setIsOpen}
         />
       </Nav>
-      <ModeToggle theme={theme} setTheme={setTheme}/>
     </NavWrapper>
     )
 }
@@ -60,10 +62,18 @@ const NavWrapper = styled.nav`
     display: ${ props => props.isOpen && "flex" };
     display: ${ props => props.path === "/" && "none" };
     flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
+    justify-content: flex-start;
+    align-items: space-between;
     background: ${(props) => props.theme.bgMain};
     height: 100vh;
+  }
+
+  span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: space-between;
+    margin-bottom: 20px;
   }
 `
 

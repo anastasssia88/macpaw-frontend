@@ -97,7 +97,7 @@ export default Voting;
 const Img = styled.img`
   border-radius: 20px;
   width: 100%;
-  max-height: 30rem;
+  max-height: 35rem;
   object-fit: cover;
   @media (max-width: 768px) {
     margin-top: 10px;
