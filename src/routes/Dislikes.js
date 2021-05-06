@@ -10,17 +10,18 @@ import NoItemFound from "../components/Shared/NoItemFound";
 import Loader from "../components/Shared/Loader";
 
 import {
-  Pattern, Img, GridItemWithName, Label
-} from "../components/Shared/Masonry" 
+  Pattern,
+  Img,
+  GridItemWithName,
+  Label,
+} from "../components/Shared/Masonry";
 
 const Dislikes = () => {
   const { disKey } = useContext(DogContext);
   const [disliked] = disKey;
   const [chunked, setChunked] = useState([]);
-  const [ loading, setLoading ] = useState();
+  const [loading, setLoading] = useState();
   const { handleSelectedClick } = Select();
-
-
 
   useEffect(() => {
     if (disliked.length > 0) {
@@ -42,37 +43,44 @@ const Dislikes = () => {
   }
 
   return (
-      <Wrapper>
-        <GoBack btnContent="Disliked" />
-        {message}
+    <Wrapper>
+      <GoBack btnContent="Disliked" />
+      {message}
 
-        { loading ? (
-            <Loader />
-        ) : (
-          <>
-            {chunked.map((tenDogs, index) => (
-              <Pattern key={index}>
-                {tenDogs.map((dog, index) => (
-                  <GridItemWithName key={dog.id} index={index}>
-                    <Img src={dog.url} />
-                    { dog.breeds.length > 0 ? (
-                        <Label><StyledLink to="/breeds/selected" onClick={() => handleSelectedClick(dog)}>  {dog.breeds[0].name}</StyledLink></Label>
-                        ) : (
-                          <Label>No name provided</Label>
-                        ) }
-                  </GridItemWithName>
-                ))}
-              </Pattern>
-            ))}
-          </>
-        ) }
-
-      </Wrapper>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          {chunked.map((tenDogs, index) => (
+            <Pattern key={index}>
+              {tenDogs.map((dog, index) => (
+                <GridItemWithName key={dog.id} index={index}>
+                  <Img src={dog.url} />
+                  {dog.breeds.length > 0 ? (
+                    <Label>
+                      <StyledLink
+                        to="/breeds/selected"
+                        onClick={() => handleSelectedClick(dog)}
+                      >
+                        {" "}
+                        {dog.breeds[0].name}
+                      </StyledLink>
+                    </Label>
+                  ) : (
+                    <Label>No name provided</Label>
+                  )}
+                </GridItemWithName>
+              ))}
+            </Pattern>
+          ))}
+        </>
+      )}
+    </Wrapper>
   );
 };
 
 export default Dislikes;
 
 const StyledLink = styled(Link)`
-color: #FF868E; 
-`
+  color: #ff868e;
+`;

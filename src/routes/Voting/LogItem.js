@@ -63,27 +63,26 @@ const Wrapper = styled.div`
     padding: 10px 20px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
-    grid-template-areas: 
+    grid-template-areas:
       "time icon"
       "content content";
   }
 
-    p {
-      color: ${(props) => props.theme.textSec};
-      grid-area: content;
-      line-height: 1.5;
+  p {
+    color: ${(props) => props.theme.textSec};
+    grid-area: content;
+    line-height: 1.5;
 
-      span {
-        color: ${(props) => props.theme.textPrim};
-        font-weight: 500;
-      }
+    span {
+      color: ${(props) => props.theme.textPrim};
+      font-weight: 500;
     }
-  
+  }
 `;
 
 const Time = styled.span`
   grid-area: time;
-  background-color: ${ props => props.theme.bgGaleryFilters};
+  background-color: ${(props) => props.theme.bgGaleryFilters};
   color: ${(props) => props.theme.textPrim};
   width: auto;
   height: 30px;
@@ -95,8 +94,6 @@ const Time = styled.span`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
-  
 `;
 
 const SVG = styled.svg`
@@ -109,4 +106,3 @@ const SVG = styled.svg`
   width: 20px;
   height: auto;
 `;
-

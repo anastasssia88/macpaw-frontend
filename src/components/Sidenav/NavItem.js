@@ -1,12 +1,22 @@
 import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { DogContext } from "../../helpers/DogContext"
+import { DogContext } from "../../helpers/DogContext";
 
-const NavItem = ({ imgSrc, btnContent, url, green, yellow, alt, path, isOpen, setIsOpen }) => {
+const NavItem = ({
+  imgSrc,
+  btnContent,
+  url,
+  green,
+  yellow,
+  alt,
+  path,
+  isOpen,
+  setIsOpen,
+}) => {
   const [active, setActive] = useState(false);
   const { searchTermKey } = useContext(DogContext);
-  const [searchTerm , setSearchTerm ] = searchTermKey;
+  const [searchTerm, setSearchTerm] = searchTermKey;
 
   useEffect(() => {
     if (url === path) {
@@ -27,22 +37,21 @@ const NavItem = ({ imgSrc, btnContent, url, green, yellow, alt, path, isOpen, se
       active={active}
       onClick={() => setSearchTerm("Search for breeds by name")}
     >
-      { setIsOpen ? (
-          <Link to={url} onClick={() => setIsOpen(false)}>
-            <Div green={green} yellow={yellow} active={active}>
-              <img src={imgSrc} alt={alt} />
-            </Div>
-            <A active={active}>{btnContent}</A>
-          </Link>
-        ) : (
-          <Link to={url}>
-            <Div green={green} yellow={yellow} active={active}>
-              <img src={imgSrc} alt={alt} />
-            </Div>
-            <A active={active}>{btnContent}</A>
-          </Link>
-        )}
-      
+      {setIsOpen ? (
+        <Link to={url} onClick={() => setIsOpen(false)}>
+          <Div green={green} yellow={yellow} active={active}>
+            <img src={imgSrc} alt={alt} />
+          </Div>
+          <A active={active}>{btnContent}</A>
+        </Link>
+      ) : (
+        <Link to={url}>
+          <Div green={green} yellow={yellow} active={active}>
+            <img src={imgSrc} alt={alt} />
+          </Div>
+          <A active={active}>{btnContent}</A>
+        </Link>
+      )}
     </Wrapper>
   );
 };
@@ -61,9 +70,9 @@ const Div = styled.div`
   border-radius: 20px;
   border: 5px solid rgba(255, 255, 255, 0.6);
   border: ${(props) => props.active && "5px solid #FBE0DC"};
-  -webkit-transition: all 0.3s ease;  
-  -moz-transition: all 0.3s ease;  
-  -o-transition: all 0.3s ease; 
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 
   display: flex;
@@ -72,12 +81,11 @@ const Div = styled.div`
 
   @media (max-width: 1024px) {
     display: flex;
-  } 
+  }
 
   @media (max-width: 767px) {
     display: none;
-  } 
-  
+  }
 `;
 
 const A = styled.div`
@@ -93,9 +101,9 @@ const A = styled.div`
   text-transform: uppercase;
   text-align: center;
   border-radius: 10px;
-  -webkit-transition: all 0.3s ease;  
-  -moz-transition: all 0.3s ease;  
-  -o-transition: all 0.3s ease; 
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
   display: flex;
   justify-content: center;
@@ -105,7 +113,7 @@ const A = styled.div`
     width: 100%;
     margin-bottom: 1.4rem;
     height: 42px;
-  } 
+  }
 `;
 
 const Wrapper = styled.div`
@@ -127,6 +135,6 @@ const Wrapper = styled.div`
   a {
     @media (max-width: 768px) {
       width: 100%;
-    } 
+    }
   }
 `;

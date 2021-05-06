@@ -4,8 +4,8 @@ import ReactDom from "react-dom";
 import UploadPic from "../../images/upload.jpeg";
 import UploadDarkMode from "../../images/uploadDarkMode.png";
 
-import UploadStatus from "./UploadStatus"
-import Btn from "../../components/Shared/Button"; 
+import UploadStatus from "./UploadStatus";
+import Btn from "../../components/Shared/Button";
 import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import { lightTheme } from "../../theme/theme";
@@ -13,13 +13,13 @@ import { lightTheme } from "../../theme/theme";
 const UploadModal = ({ open, onClose }) => {
   const [files, setFiles] = useState([]);
   const [hidden, setHidden] = useState(false);
-  const [ uploadInProgress, setUploadInProgress ] = useState(false);
-  const [ responseStatus, setResponseStatus ] = useState(0);
+  const [uploadInProgress, setUploadInProgress] = useState(false);
+  const [responseStatus, setResponseStatus] = useState(0);
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*",
     onDrop: (acceptedFiles) => {
-      setResponseStatus(0)
+      setResponseStatus(0);
       setFiles(
         acceptedFiles.map((file) =>
           Object.assign(file, {
@@ -33,13 +33,9 @@ const UploadModal = ({ open, onClose }) => {
 
   const images = files.map((file) => (
     <div key={file.name}>
-      <Preview
-        alt={file.name} 
-        src={file.preview}
-      />
+      <Preview alt={file.name} src={file.preview} />
     </div>
   ));
-
 
   const handleUpload = () => {
     const config = {
@@ -47,10 +43,14 @@ const UploadModal = ({ open, onClose }) => {
         "Content-Type": "multipart/form-data",
         "x-api-key": "220e3104-105e-4131-96f6-194253068792",
       },
-      onUploadProgress: progressEvent => {
-        setUploadInProgress(true)
-        console.log("Upload progress: " + Math.round(progressEvent.loaded / progressEvent.total * 100 ) + "%");
-      }
+      onUploadProgress: (progressEvent) => {
+        setUploadInProgress(true);
+        console.log(
+          "Upload progress: " +
+            Math.round((progressEvent.loaded / progressEvent.total) * 100) +
+            "%"
+        );
+      },
     };
     let fd = new FormData();
     files.map((file) => {
@@ -59,7 +59,7 @@ const UploadModal = ({ open, onClose }) => {
     axios
       .post("https://api.thedogapi.com/v1/images/upload", fd, config)
       .then((response) => {
-        setResponseStatus(response.status)
+        setResponseStatus(response.status);
         setHidden(false);
         setFiles([]);
         setUploadInProgress(false);
@@ -71,14 +71,12 @@ const UploadModal = ({ open, onClose }) => {
       });
   };
 
-
   let message;
   if (files.length === 0 || responseStatus === 201) {
     message = "No item selected";
   } else {
     message = `Image File Name: ${files[0].name}`;
   }
-  
 
   if (!open) return null;
   return ReactDom.createPortal(
@@ -93,12 +91,18 @@ const UploadModal = ({ open, onClose }) => {
 
         <h1>Upload a .jpg or .png Dog Image</h1>
         <p>
-          Any uploads must comply with the <a href="https://www.thedogapi.com/privacy" target="_blank" rel="noreferrer">
-            upload guidelines </a> or face deletion.
+          Any uploads must comply with the{" "}
+          <a
+            href="https://www.thedogapi.com/privacy"
+            target="_blank"
+            rel="noreferrer"
+          >
+            upload guidelines{" "}
+          </a>{" "}
+          or face deletion.
         </p>
 
-
-        <DropArea {...getRootProps()} responseStatus={responseStatus} >
+        <DropArea {...getRootProps()} responseStatus={responseStatus}>
           <div>
             <input {...getInputProps()} />
             <p hidden={hidden}>
@@ -110,28 +114,20 @@ const UploadModal = ({ open, onClose }) => {
         </DropArea>
         <p>{message}</p>
 
-        { uploadInProgress && responseStatus === 0 ? (
-          <Btn
-          btnContent="Uploading" 
-          uploading
-          noHover
-          />
+        {uploadInProgress && responseStatus === 0 ? (
+          <Btn btnContent="Uploading" uploading noHover />
         ) : (
           <Btn
-          btnContent="Upload photo"
-          hidden={ !hidden }
-          resStatus={ responseStatus }
-          onClick={ handleUpload }
-          responseStatus={ responseStatus }
-        />
+            btnContent="Upload photo"
+            hidden={!hidden}
+            resStatus={responseStatus}
+            onClick={handleUpload}
+            responseStatus={responseStatus}
+          />
         )}
-        
 
-      { responseStatus === 201 && <UploadStatus status="success" /> }
-      { responseStatus === 400 && <UploadStatus status="failure" /> }
-        
-        
-
+        {responseStatus === 201 && <UploadStatus status="success" />}
+        {responseStatus === 400 && <UploadStatus status="failure" />}
       </Section>
     </>,
     document.getElementById("portal")
@@ -184,7 +180,7 @@ const Section = styled.section`
   h1 {
     color: ${(props) => props.theme.textPrim};
     @media (max-width: 768px) {
-      font-size: 20px; 
+      font-size: 20px;
       margin-bottom: 20px;
     }
   }
@@ -197,7 +193,7 @@ const Section = styled.section`
 
     @media (max-width: 767px) {
       line-height: 1.2;
-      text-align:center;
+      text-align: center;
       margin: 10px;
     }
   }
@@ -215,8 +211,8 @@ const DropArea = styled.div`
   border: 2px dashed #fbe0dc;
   background-color: ${(props) => props.theme.bgDroparea};
 
-  border: ${props => props.responseStatus === 400 && "2px dashed #FF868E"};
-  background-color: ${props => props.responseStatus === 400 && "#FBE0DC"};
+  border: ${(props) => props.responseStatus === 400 && "2px dashed #FF868E"};
+  background-color: ${(props) => props.responseStatus === 400 && "#FBE0DC"};
 
   display: flex;
   flex-direction: column;
@@ -224,12 +220,13 @@ const DropArea = styled.div`
   align-items: center;
 
   @media (max-width: 767px) {
-      min-height: 170px;
-    }
+    min-height: 170px;
+  }
 
   div {
     background: url(${UploadPic}) no-repeat center;
-    background: ${ props => props.theme !== lightTheme && `url(${UploadDarkMode})`}; 
+    background: ${(props) =>
+      props.theme !== lightTheme && `url(${UploadDarkMode})`};
     background-position: center;
     background-repeat: no-repeat;
     height: 200px;
@@ -273,9 +270,9 @@ const CloseBtn = styled.button`
   align-items: center;
   cursor: pointer;
 
-  -webkit-transition: all 0.3s ease;  
-  -moz-transition: all 0.3s ease;  
-  -o-transition: all 0.3s ease; 
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 
   svg {
@@ -297,9 +294,9 @@ const Preview = styled.img`
   max-width: 550px;
   border-radius: 10px;
   object-fit: contain;
-  
+
   @media (max-width: 767px) {
-      max-height: 155px;
-      max-width: 320px;
-    }
-`
+    max-height: 155px;
+    max-width: 320px;
+  }
+`;

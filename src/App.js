@@ -1,5 +1,10 @@
-import React, {useState, useContext } from "react";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
 import { lightTheme } from "./theme/theme";
@@ -15,64 +20,65 @@ import Breeds from "./routes/Breeds/Breeds";
 import Gallery from "./routes/Gallery/Gallery";
 import Liked from "./routes/Liked";
 import Favorites from "./routes/Favorites";
-import Disliked from "./routes/Dislikes"; 
+import Disliked from "./routes/Dislikes";
 import Selected from "./routes/Selected/Selected";
 import SearchResult from "./routes/Search/SearchResult";
-import Search from "./components/Searchbar/Search"
-
-
+import Search from "./components/Searchbar/Search";
 
 function App() {
-  const [ theme, setTheme ] = useState(lightTheme)
-  const { searchTermKey } = useContext(DogContext)
-  const [ searchTerm , setSearchTerm ] = searchTermKey
+  const [theme, setTheme] = useState(lightTheme);
+  const { searchTermKey } = useContext(DogContext);
+  const [searchTerm, setSearchTerm] = searchTermKey;
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Router>
       <ThemeProvider theme={theme}>
         <DocumentBody>
-          <Sidenav theme={theme} setTheme={setTheme} isOpen={isOpen} setIsOpen={setIsOpen}/>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <StyledSection flexCol>
-                <Search isOpen={isOpen} setIsOpen={setIsOpen} />         
-                <Route exact path="/voting">
-                  <Voting />
-                </Route>
-                <Route exact path="/breeds">
-                  <BreedsProvider>
-                    <Breeds />
-                  </BreedsProvider>
-                </Route>
-                <Route exact path="/breeds/selected" component={Selected} />
-                <Route exact path="/gallery">
-                  <GalleryProvider>
-                    <Gallery />
-                  </GalleryProvider>
-                </Route>
-                <Route exact path="/liked">
-                  <Liked />
-                </Route>
-                <Route exact path="/favorites">
-                  <Favorites />
-                </Route>
-  
-                <Route exact path="/disliked">
-                  <Disliked />
-                </Route>
+          <Sidenav
+            theme={theme}
+            setTheme={setTheme}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+          />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <StyledSection flexCol>
+              <Search isOpen={isOpen} setIsOpen={setIsOpen} />
+              <Route exact path="/voting">
+                <Voting />
+              </Route>
+              <Route exact path="/breeds">
+                <BreedsProvider>
+                  <Breeds />
+                </BreedsProvider>
+              </Route>
+              <Route exact path="/breeds/selected" component={Selected} />
+              <Route exact path="/gallery">
+                <GalleryProvider>
+                  <Gallery />
+                </GalleryProvider>
+              </Route>
+              <Route exact path="/liked">
+                <Liked />
+              </Route>
+              <Route exact path="/favorites">
+                <Favorites />
+              </Route>
 
-                <Route exact path="/search">
-                  <SearchResult />
-                </Route>
+              <Route exact path="/disliked">
+                <Disliked />
+              </Route>
 
-              </StyledSection>
+              <Route exact path="/search">
+                <SearchResult />
+              </Route>
+            </StyledSection>
+          </Switch>
 
-            </Switch>
-
-            {searchTerm !== "Search for breeds by name" && (
-              <Redirect push to="/search" />
-            )}
+          {searchTerm !== "Search for breeds by name" && (
+            <Redirect push to="/search" />
+          )}
         </DocumentBody>
       </ThemeProvider>
     </Router>
@@ -110,8 +116,8 @@ const StyledSection = styled.div`
   @media (max-width: 1024px) {
     width: 100%;
   }
-  
+
   @media (max-width: 768px) {
     width: 100%;
   }
-`
+`;

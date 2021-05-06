@@ -17,9 +17,9 @@ const SVG = styled.svg`
   width: 30px;
   height: 30px;
   fill: white;
-  -webkit-transition: all 0.3s ease;  
-  -moz-transition: all 0.3s ease;  
-  -o-transition: all 0.3s ease; 
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 
   @media (max-width: 767px) {
@@ -51,9 +51,9 @@ const Btn = styled.button`
 
   border-radius: ${(props) => props.disl && "#97EAB9"};
 
-  -webkit-transition: all 0.3s ease;  
-  -moz-transition: all 0.3s ease;  
-  -o-transition: all 0.3s ease; 
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 
   &:hover {

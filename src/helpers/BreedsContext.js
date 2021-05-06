@@ -16,8 +16,8 @@ export const BreedsProvider = ({ children }) => {
   const [limitOpen, setLimitOpen] = useState(false);
 
   // dynamic titles
-  const [breedTitle, setBreedTitle] = useState("All breeds")
-  const [limitTitle, setLimitTitle] = useState(10)
+  const [breedTitle, setBreedTitle] = useState("All breeds");
+  const [limitTitle, setLimitTitle] = useState(10);
 
   useEffect(() => {
     const fetchData = async () => {

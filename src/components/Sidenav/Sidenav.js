@@ -7,62 +7,68 @@ import breedsImg from "../../images/pet-breeds.svg";
 import galleryImg from "../../images/images-search.svg";
 import NavItem from "./NavItem";
 import ModeToggle from "./ModeToggle";
-import NavLogo from './Logo';
-import CloseButton from "../Shared/CloseButton"
-import MobileNav from "./MobileNav"
+import NavLogo from "./Logo";
+import MobileNav from "./MobileNav";
 
-const Sidenav = ({ theme , setTheme, isOpen, setIsOpen }) => {
+const Sidenav = ({ theme, setTheme, isOpen, setIsOpen }) => {
   let location = useLocation();
   const [path, setPath] = useState(location.pathname);
-  
+
   useEffect(() => {
     setPath(location.pathname);
-  }, [location.pathname]); 
+  }, [location.pathname]);
 
   return (
     <>
-    <Section path={path}> 
-      <div>
-        <Wrapper>
-          <Flex>
-            <NavLogo theme={theme} />
-            <ModeToggle theme={theme} setTheme={setTheme} />
-          </Flex>
-          <div>
-            <h1>Hi MacPaw!</h1>
-            <p>Welcome to MSI 2021 Front-end test completed by Anastasia Titova</p>
-            <h3>Lets start using The Dogs API</h3>
-            <Nav>
-              <NavItem 
-                btnContent="Voting"
-                imgSrc={votingImg}
-                url="/voting"
-                alt="voting"
-                path={path}
-              />
-              <NavItem
-                btnContent="Breeds"
-                imgSrc={breedsImg}
-                green
-                url="/breeds"
-                alt="breeds"
-                path={path}
-              />
-              <NavItem
-                btnContent="Gallery"
-                imgSrc={galleryImg}
-                yellow
-                url="/gallery"
-                alt="gallery"
-                path={path}
-              />
-            </Nav>
-          </div>
-        </Wrapper>
-      </div>
-    </Section>
-
-    <MobileNav path={path} isOpen={isOpen} setIsOpen={setIsOpen} theme={theme} setTheme={setTheme}/>
+      <Section path={path}>
+        <div>
+          <Wrapper>
+            <Flex>
+              <NavLogo theme={theme} />
+              <ModeToggle theme={theme} setTheme={setTheme} />
+            </Flex>
+            <div>
+              <h1>Hi MacPaw!</h1>
+              <p>
+                Welcome to MSI 2021 Front-end test completed by Anastasia Titova
+              </p>
+              <h3>Lets start using The Dogs API</h3>
+              <Nav>
+                <NavItem
+                  btnContent="Voting"
+                  imgSrc={votingImg}
+                  url="/voting"
+                  alt="voting"
+                  path={path}
+                />
+                <NavItem
+                  btnContent="Breeds"
+                  imgSrc={breedsImg}
+                  green
+                  url="/breeds"
+                  alt="breeds"
+                  path={path}
+                />
+                <NavItem
+                  btnContent="Gallery"
+                  imgSrc={galleryImg}
+                  yellow
+                  url="/gallery"
+                  alt="gallery"
+                  path={path}
+                />
+              </Nav>
+            </div>
+          </Wrapper>
+        </div>
+      </Section>
+      <MobileNav
+        path={path}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        theme={theme}
+        setTheme={setTheme}
+      />
     </>
   );
 };
@@ -78,7 +84,7 @@ const Section = styled.section`
   @media (max-width: 1024px) {
     width: auto;
     height: 100vh;
-    display: ${ props => props.path === "/" ? "block" : "none"};
+    display: ${(props) => (props.path === "/" ? "block" : "none")};
   }
 `;
 
@@ -99,7 +105,7 @@ const Wrapper = styled.div`
     width: auto;
     margin: 25px;
   }
- 
+
   h1 {
     margin-top: 5rem;
     color: ${(props) => props.theme.textPrim};
@@ -131,10 +137,10 @@ const Nav = styled.nav`
     width: 100%;
   }
 `;
- 
+
 const Flex = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-`; 
+`;

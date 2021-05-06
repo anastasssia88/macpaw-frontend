@@ -1,10 +1,10 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Masonry = styled.div`
-    border-radius: 20px;
-    width: 100%;
-    height: auto;
-    display: ${(props) => props.uploadOpen && "none"};
+  border-radius: 20px;
+  width: 100%;
+  height: auto;
+  display: ${(props) => props.uploadOpen && "none"};
 `;
 
 export const Pattern = styled.div`
@@ -12,7 +12,7 @@ export const Pattern = styled.div`
 
   @media (max-width: 767px) {
     padding: 0px;
-  } 
+  }
 
   display: grid;
   grid-template-columns: repeat(3, 32%);
@@ -33,18 +33,18 @@ export const Pattern = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: repeat(10, auto);
     grid-template-areas:
-    "one"
-    "two"
-    "three"
-    "four"
-    "five"
-    "six"
-    "seven"
-    "eight"
-    "nine"
-    "ten";
+      "one"
+      "two"
+      "three"
+      "four"
+      "five"
+      "six"
+      "seven"
+      "eight"
+      "nine"
+      "ten";
   }
-`; 
+`;
 
 export const Img = styled.img`
   object-position: center top;
@@ -59,9 +59,9 @@ export const Img = styled.img`
   z-index: 1;
 
   opacity: 1;
-  -webkit-transition: all 0.4s ease;  
-  -moz-transition: all 0.4s ease;  
-  -o-transition: all 0.4s ease; 
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
 `;
 
@@ -82,7 +82,7 @@ export const GridItemWithName = styled.div`
   max-height: ${(props) => props.index === 3 && "300px"};
   max-height: ${(props) => props.index === 7 && "300px"};
   max-height: ${(props) => props.index === 8 && "300px"};
-  
+
   color: white;
   border-radius: 20px;
   position: relative;
@@ -94,9 +94,9 @@ export const GridItemWithName = styled.div`
   align-items: center;
 
   opacity: 1;
-  -webkit-transition: all 0.3s ease;  
-  -moz-transition: all 0.3s ease;  
-  -o-transition: all 0.3s ease; 
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 
   &:hover {
@@ -154,16 +154,16 @@ export const GridItemWithLike = styled.div`
   border-radius: 20px;
   position: relative;
   cursor: pointer;
-  
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   opacity: 1;
-  -webkit-transition: all 0.3s ease;  
-  -moz-transition: all 0.3s ease;  
-  -o-transition: all 0.3s ease; 
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 
   &:hover {

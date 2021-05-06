@@ -9,15 +9,17 @@ import GoBack from "../components/Shared/GoBack";
 import NoItemFound from "../components/Shared/NoItemFound";
 
 import {
-  Pattern, Img, GridItemWithName, Label
-} from "../components/Shared/Masonry" 
+  Pattern,
+  Img,
+  GridItemWithName,
+  Label,
+} from "../components/Shared/Masonry";
 
 const Liked = () => {
   const { likeKey } = useContext(DogContext);
   const [liked] = likeKey;
   const [chunked, setChunked] = useState([]);
   const { handleSelectedClick } = Select();
-
 
   useEffect(() => {
     if (liked.length > 0) {
@@ -37,31 +39,38 @@ const Liked = () => {
   }
 
   return (
-      <Wrapper>
-        <GoBack btnContent="Liked" />
-        {message}
-        {chunked.map((tenDogs, index) => (
-          <Pattern key={index}>
-            {tenDogs
-            .sort((a,b) => (a.width/a.height > b.width/b.height ? 1 : -1))
+    <Wrapper>
+      <GoBack btnContent="Liked" />
+      {message}
+      {chunked.map((tenDogs, index) => (
+        <Pattern key={index}>
+          {tenDogs
+            .sort((a, b) => (a.width / a.height > b.width / b.height ? 1 : -1))
             .map((dog, index) => (
               <GridItemWithName key={dog.id} index={index}>
                 <Img src={dog.url} />
-                { dog.breeds.length > 0 ? (
-                    <Label><StyledLink to="/breeds/selected" onClick={() => handleSelectedClick(dog)}>{dog.breeds[0].name}</StyledLink></Label>
-                  ) : (
-                    <Label>No name provided</Label>
-                  ) }
+                {dog.breeds.length > 0 ? (
+                  <Label>
+                    <StyledLink
+                      to="/breeds/selected"
+                      onClick={() => handleSelectedClick(dog)}
+                    >
+                      {dog.breeds[0].name}
+                    </StyledLink>
+                  </Label>
+                ) : (
+                  <Label>No name provided</Label>
+                )}
               </GridItemWithName>
             ))}
-          </Pattern>
-        ))}
-      </Wrapper>
+        </Pattern>
+      ))}
+    </Wrapper>
   );
 };
 
 export default Liked;
 
 const StyledLink = styled(Link)`
-color: #FF868E; 
-`
+  color: #ff868e;
+`;

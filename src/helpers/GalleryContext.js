@@ -30,7 +30,7 @@ export const GalleryProvider = ({ children }) => {
         typeKey: [type, setType],
         currBreedKey: [currBreed, setCurrBreed],
         limitKey: [limit, setLimit],
-        
+
         dogsKey: [dogs, setDogs],
         chunkedKey: [chunked, setChunked],
       }}

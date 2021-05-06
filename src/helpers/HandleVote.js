@@ -11,12 +11,12 @@ const HandleVote = () => {
     return time;
   };
 
-  const { likeKey, favKey, disKey, logKey, activeKey } = useContext(DogContext); 
-  const [ liked, addToLiked] = likeKey;
+  const { likeKey, favKey, disKey, logKey, activeKey } = useContext(DogContext);
+  const [liked, addToLiked] = likeKey;
   const [favorites, addToFav] = favKey;
-  const [ disliked, addToDisliked] = disKey;
-  const [ log , setLog] = logKey;
-  const [ active, setActive] = activeKey;
+  const [disliked, addToDisliked] = disKey;
+  const [log, setLog] = logKey;
+  const [active, setActive] = activeKey;
 
   const handleClick = (type, randomDog) => {
     let time = getTime();

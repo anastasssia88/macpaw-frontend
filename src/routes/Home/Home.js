@@ -28,8 +28,7 @@ const Section = styled.section`
     max-height: auto;
     height: auto; */
     display: none;
-  }  
-
+  }
 
   div {
     background: ${(props) => props.theme.bgPink};
@@ -37,7 +36,6 @@ const Section = styled.section`
     margin: 2rem;
     border-radius: 20px;
     position: relative;
-
 
     img {
       width: 100%;

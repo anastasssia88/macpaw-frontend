@@ -5,37 +5,40 @@ import styled from "styled-components";
 import axios from "axios";
 import HandleVote from "../../helpers/HandleVote";
 
-import Wrapper from "../../components/Shared/Wrapper"
+import Wrapper from "../../components/Shared/Wrapper";
 import GoBack from "../../components/Shared/GoBack";
 import GallerySort from "./GallerySort";
 import UploadModal from "./UploadModal";
 import Loader from "../../components/Shared/Loader";
 
 import {
-  Masonry, Pattern, Img, Label, GridItemWithLike
-} from "../../components/Shared/Masonry"
-
+  Masonry,
+  Pattern,
+  Img,
+  Label,
+  GridItemWithLike,
+} from "../../components/Shared/Masonry";
 
 const Gallery = () => {
   const { favKey } = useContext(DogContext);
   const [favorites] = favKey;
-  const { 
-    dogsKey, 
+  const {
+    dogsKey,
     chunkedKey,
     orderKey,
     typeKey,
     currBreedKey,
-    limitKey
-  } = useContext( GalleryContext );
+    limitKey,
+  } = useContext(GalleryContext);
   const [dogs, setDogs] = dogsKey;
-  const [chunked, setChunked] = chunkedKey; 
+  const [chunked, setChunked] = chunkedKey;
   const [order] = orderKey;
-  const [type] = typeKey
-  const [currBreed] = currBreedKey
-  const [limit] = limitKey
+  const [type] = typeKey;
+  const [currBreed] = currBreedKey;
+  const [limit] = limitKey;
 
   const [uploadOpen, setUploadOpen] = useState(false);
-  const [ loading, setLoading ] = useState();
+  const [loading, setLoading] = useState();
   const { favFromGallery } = HandleVote();
 
   // Fetching dogs
@@ -48,7 +51,7 @@ const Gallery = () => {
       setDogs(response.data);
       setLoading(false);
     };
-    setTimeout(() => fetchData(), 1000); 
+    setTimeout(() => fetchData(), 1000);
   }, []);
 
   // reloading with filters
@@ -57,15 +60,15 @@ const Gallery = () => {
     setLoading(true);
     const fetchData = async () => {
       const response = await axios(
-          `https://api.thedogapi.com/v1/images/search?limit=${limit}&order=${order}&mime_types=${type}&breed_id=${
+        `https://api.thedogapi.com/v1/images/search?limit=${limit}&order=${order}&mime_types=${type}&breed_id=${
           breedID ? breedID : ""
-          }`
+        }`
       );
       setDogs(response.data);
       setLoading(false);
-      };
-    setTimeout(() => fetchData(), 1000); 
-  }
+    };
+    setTimeout(() => fetchData(), 1000);
+  };
 
   // displaying the dogs
   useEffect(() => {
@@ -78,37 +81,40 @@ const Gallery = () => {
       }
       setChunked(result);
       setLoading(false);
-
     }
   }, [dogs]);
 
-
   return (
-      <Wrapper>
-        <Container>
-          <GoBack btnContent="Gallery" /> 
-          <Upload onClick={() => setUploadOpen(true)}>
-            <svg viewBox="0 0 16 16">
-              <path d="M7.86601 0L12.2355 4.03339L11.4129 4.92452L8.48919 2.22567V12.3618H7.27645V2.30464L4.67336 4.90772L3.81583 4.05019L7.86601 0ZM1.21274 14.7873V7.51081H0V16H15.7656V7.51081H14.5529V14.7873H1.21274Z"></path>
-            </svg>
-            Upload
-          </Upload>
-        </Container>
+    <Wrapper>
+      <Container>
+        <GoBack btnContent="Gallery" />
+        <Upload onClick={() => setUploadOpen(true)}>
+          <svg viewBox="0 0 16 16">
+            <path d="M7.86601 0L12.2355 4.03339L11.4129 4.92452L8.48919 2.22567V12.3618H7.27645V2.30464L4.67336 4.90772L3.81583 4.05019L7.86601 0ZM1.21274 14.7873V7.51081H0V16H15.7656V7.51081H14.5529V14.7873H1.21274Z"></path>
+          </svg>
+          Upload
+        </Upload>
+      </Container>
 
-        <UploadModal open={uploadOpen} onClose={() => setUploadOpen(false)} />
-
-        { loading ? ( 
-            <Loader />
-        ) : (
-          <>
-          <GallerySort handleReload={handleReload}/>
-          <Masonry uploadOpen={uploadOpen}>
-            {chunked.map((tenDogs, index) => (
-              <Pattern key={index}>
-                {tenDogs
-                .sort((a,b) => (a.width/a.height > b.width/b.height ? 1 : -1)) 
+      <UploadModal open={uploadOpen} onClose={() => setUploadOpen(false)} />
+      <GallerySort handleReload={handleReload} />
+      {loading ? (
+        <Loader />
+      ) : (
+        <Masonry uploadOpen={uploadOpen}>
+          {chunked.map((tenDogs, index) => (
+            <Pattern key={index}>
+              {tenDogs
+                .sort((a, b) =>
+                  a.width / a.height > b.width / b.height ? 1 : -1
+                )
                 .map((dog, index) => (
-                  <GridItemWithLike width={dog.width} height={dog.height} key={dog.id} index={index}>
+                  <GridItemWithLike
+                    width={dog.width}
+                    height={dog.height}
+                    key={dog.id}
+                    index={index}
+                  >
                     <Img key={dog.id} src={dog.url} />
                     <Label onClick={() => favFromGallery(dog)}>
                       {favorites.indexOf(dog) === -1 ? (
@@ -123,17 +129,15 @@ const Gallery = () => {
                     </Label>
                   </GridItemWithLike>
                 ))}
-              </Pattern>
-            ))}
-          </Masonry>
-          </>
-        ) }
-      </Wrapper>
+            </Pattern>
+          ))}
+        </Masonry>
+      )}
+    </Wrapper>
   );
 };
 
 export default Gallery;
-
 
 const Container = styled.div`
   display: flex;
@@ -142,14 +146,14 @@ const Container = styled.div`
 
   @media (max-width: 767px) {
     flex-direction: column;
-  } 
+  }
 `;
 
 const Upload = styled.button`
   border-radius: 10px;
   border: none;
   height: 40px;
-  background: ${ props => props.theme.pinkBtn };
+  background: ${(props) => props.theme.pinkBtn};
   color: #ff868e;
   min-width: 143px;
   text-transform: uppercase;
@@ -161,9 +165,9 @@ const Upload = styled.button`
   align-items: center;
   justify-content: center;
 
-  -webkit-transition: all 0.3s ease;  
-  -moz-transition: all 0.3s ease;  
-  -o-transition: all 0.3s ease; 
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 
   &:hover {
@@ -182,7 +186,6 @@ const Upload = styled.button`
     fill: #ffffff;
   }
 `;
-
 
 // Masonry layout
 // const Masonry = styled.div`
@@ -223,9 +226,9 @@ const Upload = styled.button`
 //   z-index: 1;
 
 //   opacity: 1;
-//   -webkit-transition: all 0.3s ease;  
-//   -moz-transition: all 0.3s ease;  
-//   -o-transition: all 0.3s ease; 
+//   -webkit-transition: all 0.3s ease;
+//   -moz-transition: all 0.3s ease;
+//   -o-transition: all 0.3s ease;
 //   transition: all 0.3s ease;
 // `;
 

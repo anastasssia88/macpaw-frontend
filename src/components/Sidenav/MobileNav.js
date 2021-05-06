@@ -1,23 +1,22 @@
-import React from 'react'
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
 import NavItem from "./NavItem";
-import CloseButton from "../Shared/CloseButton"
-import ModeToggle from "../Sidenav/ModeToggle"
+import CloseButton from "../Shared/CloseButton";
+import ModeToggle from "../Sidenav/ModeToggle";
 
 import votingImg from "../../images/vote-table.svg";
 import breedsImg from "../../images/pet-breeds.svg";
 import galleryImg from "../../images/images-search.svg";
 
-
-const MobileNav = ({ isOpen, setIsOpen, theme, setTheme, path }) => { 
-    return (
+const MobileNav = ({ isOpen, setIsOpen, theme, setTheme, path }) => {
+  return (
     <NavWrapper path={path} isOpen={isOpen}>
       <span>
-        <ModeToggle theme={theme} setTheme={setTheme}/>
-        <CloseButton setIsOpen={setIsOpen} isOpen={isOpen}/>
+        <ModeToggle theme={theme} setTheme={setTheme} />
+        <CloseButton setIsOpen={setIsOpen} isOpen={isOpen} />
       </span>
-      <Nav >
-        <NavItem 
+      <Nav>
+        <NavItem
           btnContent="Voting"
           imgSrc={votingImg}
           url="/voting"
@@ -50,18 +49,18 @@ const MobileNav = ({ isOpen, setIsOpen, theme, setTheme, path }) => {
         />
       </Nav>
     </NavWrapper>
-    )
-}
+  );
+};
 
-export default MobileNav 
+export default MobileNav;
 
 const NavWrapper = styled.nav`
-  display: none; 
+  display: none;
 
   @media (max-width: 1024px) {
     padding: 40px;
-    display: ${ props => props.isOpen && "flex" };
-    display: ${ props => props.path === "/" && "none" };
+    display: ${(props) => props.isOpen && "flex"};
+    display: ${(props) => props.path === "/" && "none"};
     flex-direction: column;
     justify-content: flex-start;
     align-items: space-between;
@@ -80,7 +79,7 @@ const NavWrapper = styled.nav`
     align-items: space-between;
     margin-bottom: 20px;
   }
-`
+`;
 
 const Nav = styled.nav`
   margin: 1.5rem 0rem;

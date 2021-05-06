@@ -29,7 +29,7 @@ const Section = styled.section`
   overflow: ${(props) => props.uploadOpen && "hidden"};
 
   width: 100%;
-  display: flex; 
+  display: flex;
   justify-content: flex-start;
   align-items: flex-start;
 

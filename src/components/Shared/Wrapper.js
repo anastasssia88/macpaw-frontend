@@ -1,15 +1,11 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
 
 const Wrapper = ({ children }) => {
-    return (
-        <Div>
-            { children }
-        </Div>
-    )
-} 
+  return <Div>{children}</Div>;
+};
 
-export default Wrapper
+export default Wrapper;
 
 const Div = styled.div`
   background: ${(props) => props.theme.bgBox};
