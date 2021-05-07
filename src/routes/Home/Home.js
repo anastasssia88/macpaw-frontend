@@ -24,9 +24,6 @@ const Section = styled.section`
   align-items: center;
 
   @media (max-width: 1024px) {
-    /* width: 100%;
-    max-height: auto;
-    height: auto; */
     display: none;
   }
 

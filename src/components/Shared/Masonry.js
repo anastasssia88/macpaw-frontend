@@ -9,6 +9,7 @@ export const Masonry = styled.div`
 
 export const Pattern = styled.div`
   padding: 0px 10px;
+  margin-bottom: 20px;
 
   @media (max-width: 767px) {
     padding: 0px;
@@ -47,13 +48,14 @@ export const Pattern = styled.div`
 `;
 
 export const Img = styled.img`
-  object-position: center top;
+  object-position: center center;
   width: 100%;
   height: 100%;
   min-height: 120px;
   max-height: 300px;
   border-radius: 20px;
   object-fit: cover;
+
 
   position: relative;
   z-index: 1;
@@ -129,10 +131,10 @@ export const GridItemWithName = styled.div`
   }
 
   grid-area: ${(props) => props.index === 0 && "one"};
-  grid-area: ${(props) => props.index === 2 && "two"};
+  grid-area: ${(props) => props.index === 4 && "two"};
   grid-area: ${(props) => props.index === 3 && "three"};
   grid-area: ${(props) => props.index === 1 && "four"};
-  grid-area: ${(props) => props.index === 4 && "five"};
+  grid-area: ${(props) => props.index === 2 && "five"};
 
   grid-area: ${(props) => props.index === 6 && "six"};
   grid-area: ${(props) => props.index === 7 && "seven"};
