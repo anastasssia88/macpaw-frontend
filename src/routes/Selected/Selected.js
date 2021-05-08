@@ -32,7 +32,7 @@ const Selected = () => {
           </div>
           <div>
             <p>
-              <span>Height:</span> {selected.breeds[0].height.metric} at the
+              <span>Height:</span> {selected.breeds[0].height.metric} sm at the
               withers
             </p>
             <p>
@@ -40,7 +40,7 @@ const Selected = () => {
             </p>
 
             <p>
-              <span>Life span</span> {selected.breeds[0].life_span} years
+              <span>Life span</span> {selected.breeds[0].life_span}
             </p>
           </div>
         </BreedDesc>
