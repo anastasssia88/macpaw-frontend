@@ -28,11 +28,11 @@ const Sidenav = ({ theme, setTheme, isOpen, setIsOpen }) => {
               <ModeToggle theme={theme} setTheme={setTheme} />
             </Flex>
             <div>
-              <h1>Hi MacPaw!</h1>
+              <h1>Hi, dog lover!</h1>
               <p>
-                Welcome to MSI 2021 Front-end test completed by Anastasia Titova
+                Welcome to PetsPaw breed explorer application
               </p>
-              <h3>Lets start using The Dogs API</h3>
+              <h3>Let's start exploring breeds</h3>
               <Nav>
                 <NavItem
                   btnContent="Voting"
